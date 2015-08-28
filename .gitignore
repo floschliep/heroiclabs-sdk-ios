@@ -1,0 +1,23 @@
+# Apple bugs: 15564624 - what does the xccheckout file in Xcode5 do? Where's the documentation?
+
+.idea/
+
+.DS_Store
+.Trashes
+*.swp
+
+*~.nib
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+xcuserdata
+*.moved-aside
+
+DerivedData/
+build/
+Pods/
