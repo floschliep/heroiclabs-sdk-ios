@@ -16,7 +16,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <PromiseKit/Promise.h>
-#import <Base64.h>
+#import <Base64nl/Base64.h>
 
 #import "HLHttpClient.h"
 #import "HLRequestRetryHandlerProtocol.h"
@@ -178,7 +178,7 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
     return [PMKPromise promiseWithResolver:^(PMKResolver resolver) {
         [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id JSON) {
             [retryHandler requestSucceed:request];
-            NSNumber* statusCode = [NSNumber numberWithInt:[[operation response] statusCode]];
+            NSNumber* statusCode = @([[operation response] statusCode]);
             if ([statusCode intValue] == 204 || successCallback == nil) {
                 resolver(JSON);
             } else {

@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-#import <Base64.h>
+#import <Base64nl/Base64.h>
 #import "HLSessionClient.h"
 #import "HLHttpClient.h"
 #import "HLRequestRetryHandlerProtocol.h"
