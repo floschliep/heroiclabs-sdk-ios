@@ -42,6 +42,15 @@ id leaderboardId = @"5141dd1c31354741967e77f409ce755e";
 id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
 
 + (void)setUp {
+    NSString *path = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"local-config.plist"];
+    NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    apikey = [config valueForKey:@"apikey"];
+    deviceId = [config valueForKey:@"anonId"];
+    heroicEmail = [config valueForKey:@"email"];
+    heroicPassword = [config valueForKey:@"password"];
+    heroicName = [config valueForKey:@"name"];
+    
     [HLClient setApiKey:apikey];
 }
 
@@ -151,7 +160,13 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
     }) withErrorBlock:errorHandler];
 }
 
-- (void)testLoginOrCreateHeroicLabsProfileWith {
+- (void)testLoginOrCreateHeroicLabsProfileWithoutSession {
+    [self checkPromise:[HLClient createProfileWithEmail:heroicEmail andPassword:heroicPassword andConfirm:heroicPassword andName:heroicName] withBlock:(^(HLSessionClient* session) {
+        expect([session getGamerToken]).toNot.beNil;
+    }) withErrorBlock:errorHandler];
+}
+
+- (void)testLoginOrCreateHeroicLabsProfileWithSession {
     [HLClient loginAnonymouslyWith:deviceId].then(^(HLSessionClient* anonymousSession) {
         [HLClient loginWithEmail:heroicEmail andPassword:heroicPassword andLink:anonymousSession].then(^(HLSessionClient* newSession) {
             expect([newSession getGamerToken]).toNot.beNil;

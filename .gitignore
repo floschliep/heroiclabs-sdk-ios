@@ -1,5 +1,7 @@
 # Apple bugs: 15564624 - what does the xccheckout file in Xcode5 do? Where's the documentation?
 
+Tests/local-config.plist
+
 .idea/
 
 .DS_Store

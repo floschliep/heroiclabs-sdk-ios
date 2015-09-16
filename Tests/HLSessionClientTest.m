@@ -53,6 +53,15 @@ id matchTurnData = @"MatchTurnData";
 id productId = @"some.purchased.product.id";
 
 + (void)setUp {
+    NSString *path = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"local-config.plist"];
+    NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    hlapikey = [config valueForKey:@"apikey"];
+    anonId = [config valueForKey:@"anonId2"];
+    gamerEmail = [config valueForKey:@"email"];
+    gamerPassword = [config valueForKey:@"password"];
+    gamerName = [config valueForKey:@"name"];
+    gamerNickname = [config valueForKey:@"nickname"];
     storageData = @{@"key": @"value"};
     [HLClient setApiKey:hlapikey];
     [HLClient loginWithEmail:gamerEmail andPassword:gamerPassword].then(^(id newSession) {
