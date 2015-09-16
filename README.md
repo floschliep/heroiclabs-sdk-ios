@@ -95,10 +95,18 @@ The iOS SDK is still in _flux_, we're looking for [feedback](mailto:hello@heroic
 
 #### Test
 
+Tests require a file called `local-config.plist`. This file needs to be in the same folder as the tests and should not be committed to the repo.
+
 To run the SDK tests, execute the following command:
 
 ```
 xcodebuild test -workspace HeroicLabs.xcworkspace -scheme heroiclabs-sdk-tests -destination "name=iPhone 4s"
+```
+
+or to see a pretty output
+
+```
+xcodebuild test -workspace HeroicLabs.xcworkspace -scheme heroiclabs-sdk-tests -destination "name=iPhone 4s" | xcpretty -c
 ```
 
 ### Contribute
