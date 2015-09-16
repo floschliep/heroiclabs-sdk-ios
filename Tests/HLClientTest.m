@@ -161,7 +161,12 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
 }
 
 - (void)testLoginOrCreateHeroicLabsProfileWithoutSession {
-    [self checkPromise:[HLClient createProfileWithEmail:heroicEmail andPassword:heroicPassword andConfirm:heroicPassword andName:heroicName] withBlock:(^(HLSessionClient* session) {
+    NSString * timestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    id email = [NSMutableString stringWithString:@"iosdev+"];
+    [email appendString:timestamp];
+    [email appendString:@"@heroiclabs.com"];
+    
+    [self checkPromise:[HLClient createProfileWithEmail:email andPassword:heroicPassword andConfirm:heroicPassword andName:heroicName] withBlock:(^(HLSessionClient* session) {
         expect([session getGamerToken]).toNot.beNil;
     }) withErrorBlock:errorHandler];
 }
