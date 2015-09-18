@@ -160,7 +160,7 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
     }) withErrorBlock:errorHandler];
 }
 
-- (void)testLoginOrCreateHeroicLabsProfileWithoutSession {
+- (void)testCreateHeroicLabsProfileWithoutSession {
     NSString * timestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
     id email = [NSMutableString stringWithString:@"iosdev+"];
     [email appendString:timestamp];
