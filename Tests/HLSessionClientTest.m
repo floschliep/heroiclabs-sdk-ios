@@ -17,6 +17,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <Expecta/Expecta.h>
+#import "HLHttpClient.h"
 #import "HLClient.h"
 #import "HLSessionClient.h"
 #import "HLPing.h"
@@ -90,11 +91,8 @@ id productId = @"some.purchased.product.id";
 
 - (id)convertErrorToString:(NSError*) error
 {
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:[[error userInfo] objectForKey:@"com.alamofire.serialization.response.error.data"]
-                                                         options:kNilOptions
-                                                           error:nil];
-    
-    return [NSString stringWithFormat:@"%@ %@ ([%@] %@)", [json objectForKey:@"status"], [json objectForKey:@"message"], [[json objectForKey:@"request"] objectForKey:@"method"], [[error userInfo] objectForKey:@"NSErrorFailingURLKey"]];
+    id method = [[[[error userInfo] objectForKey:HLHttpErrorResponseDataKey] objectForKey:@"request"] objectForKey:@"method"];
+    return [NSString stringWithFormat:@"%ld %@ ([%@] %@)", (long)[error code], [error localizedDescription], method, [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]];
 }
 
 - (void)checkPromise:(PMKPromise*)promise
@@ -260,7 +258,7 @@ id productId = @"some.purchased.product.id";
     id segments = @[@"heroiciossegment"];
     
     [self checkPromise:[session subscribePushWithDeviceToken:badDeviceToken toSegments:segments] withErrorBlock:(^(NSError *error) {
-        expect([self convertErrorToString:error]).to.contain(@"400 Identifier invalid");
+        expect([error code]).to.equal(400);
     })];
 }
 
@@ -268,7 +266,7 @@ id productId = @"some.purchased.product.id";
     NSData* badPurchase = [@"bad_purchase" dataUsingEncoding:NSUTF8StringEncoding];
     
     [self checkPromise:[session verifyPurchase:badPurchase ofProduct:productId] withErrorBlock:(^(NSError *error) {
-        expect([self convertErrorToString:error]).to.contain(@"400");
+        expect([error code]).to.equal(400);
     })];
 }
 

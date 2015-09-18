@@ -40,7 +40,6 @@ static NSString *const USER_AGENT_NAME=@"heroiclabs-ios-sdk";
 static NSString *USER_AGENT = nil;
 static NSInteger REQUEST_TIMEOUT=30;
 
-static NSDictionary *REQUEST_URLS = nil;
 static NSDictionary *REQUEST_METHODS = nil;
 static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
 
@@ -194,11 +193,11 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
                              withRetryHandler:retryHandler
                              withSuccessBlock:successCallback];
                 } else {
-                    resolver(error);
+                    resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
                 }
             } else {
                 [retryHandler requestSucceed:request];
-                resolver(error);
+                resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
             }
         }];
         [NETWORK_MANAGER.operationQueue addOperation:op];
@@ -210,5 +209,19 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
     NSError *error = nil;
     NSData *json = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     return json;
+}
+
++ (NSError*)createNewHttpError:(NSError*)error andStatusCode:(NSInteger) statusCode
+{
+    NSDictionary* jsonError = [NSJSONSerialization JSONObjectWithData:[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]
+                                                         options:kNilOptions
+                                                           error:nil];
+    NSDictionary *userInfo = @{
+                               NSLocalizedDescriptionKey:[[error userInfo] objectForKey:NSLocalizedDescriptionKey],
+                               NSURLErrorFailingURLStringErrorKey:[[error userInfo] objectForKey:@"NSErrorFailingURLKey"],
+                               HLHttpErrorResponseKey: [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey],
+                               HLHttpErrorResponseDataKey:jsonError,
+                               };
+    return [NSError errorWithDomain:HLHttpErrorDomain code:statusCode userInfo:userInfo];
 }
 @end

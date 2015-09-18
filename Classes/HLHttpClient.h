@@ -18,8 +18,12 @@
 #import <PromiseKit/Promise.h>
 #import "HLRequestRetryHandlerProtocol.h"
 
-static NSString *const HEROICLABS_ACCOUNTS_URL = @"https://accounts.heroiclabs.com";
-static NSString *const HEROICLABS_API_URL = @"https://api.heroiclabs.com";
+static NSString * const HLHttpErrorDomain = @"com.heroiclabs.errors.http";
+static NSString * const HLHttpErrorResponseKey = @"com.heroiclabs.errors.http.response";
+static NSString * const HLHttpErrorResponseDataKey = @"com.heroiclabs.errors.http.response.data";
+
+static NSString * const HEROICLABS_ACCOUNTS_URL = @"https://accounts.heroiclabs.com";
+static NSString * const HEROICLABS_API_URL = @"https://api.heroiclabs.com";
 
 typedef NS_ENUM(NSInteger, HLRequestMethod)
 {
