@@ -171,7 +171,11 @@
                      withMethod:POST
                      withEntity:@{@"count": count}
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
-                   resolver([[HLGamer alloc] initWithDictionary:data]);
+                   if ([statusCode intValue] == 200) {
+                       resolver([[HLAchievement alloc] initWithDictionary:data]);
+                   } else {
+                       resolver(data);
+                   }
                }];
 }
 
