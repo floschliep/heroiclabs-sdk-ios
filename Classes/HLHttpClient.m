@@ -80,11 +80,11 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
 
 + (PMKPromise*)sendAccountsRequestTo:(NSString*)endpoint
                           withMethod:(enum HLRequestMethod)method
-                          withApiKey:(NSString*)apiKey
-                           withToken:(NSString*)token
-                          withEntity:(id)entity
-                    withRetryHandler:(id<HLRequestRetryHandlerProtocol>)handler
-                    withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
+                          apiKey:(NSString*)apiKey
+                           token:(NSString*)token
+                          entity:(id)entity
+                    retryHandler:(id<HLRequestRetryHandlerProtocol>)handler
+                    successBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
 {
     return [HLHttpClient sendRequestTo:HEROICLABS_ACCOUNTS_URL
                           withEndpoint:endpoint
@@ -98,27 +98,27 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
 
 + (PMKPromise*)sendApiRequestTo:(NSString*)endpoint
                      withMethod:(enum HLRequestMethod)method
-                     withApiKey:(NSString*)apiKey
-                      withToken:(NSString*)token
-                     withEntity:(id)entity
-               withRetryHandler:(id<HLRequestRetryHandlerProtocol>)handler
+                     apiKey:(NSString*)apiKey
+                      token:(NSString*)token
+                     entity:(id)entity
+               retryHandler:(id<HLRequestRetryHandlerProtocol>)handler
 {
     return [HLHttpClient sendApiRequestTo:endpoint
                                withMethod:method
-                               withApiKey:apiKey
-                                withToken:token
-                               withEntity:entity
-                         withRetryHandler:handler
-                         withSuccessBlock:nil];
+                               apiKey:apiKey
+                                token:token
+                               entity:entity
+                         retryHandler:handler
+                         successBlock:nil];
 }
 
 + (PMKPromise*)sendApiRequestTo:(NSString*)endpoint
                      withMethod:(enum HLRequestMethod)method
-                     withApiKey:(NSString*)apiKey
-                      withToken:(NSString*)token
-                     withEntity:(id)entity
-               withRetryHandler:(id<HLRequestRetryHandlerProtocol>)handler
-               withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
+                     apiKey:(NSString*)apiKey
+                      token:(NSString*)token
+                     entity:(id)entity
+               retryHandler:(id<HLRequestRetryHandlerProtocol>)handler
+               successBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
 {
     return [HLHttpClient sendRequestTo:HEROICLABS_API_URL
                           withEndpoint:endpoint
@@ -179,7 +179,7 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
         [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id JSON) {
             [retryHandler requestSucceed:request];
             NSNumber* statusCode = @([[operation response] statusCode]);
-            if ([statusCode intValue] == 204 || successCallback == nil) {
+            if (successCallback == nil) { //used mainly for 204s
                 resolver(JSON);
             } else {
                 successCallback(statusCode, JSON, resolver);

@@ -35,26 +35,26 @@ typedef NS_ENUM(NSInteger, HLRequestMethod)
 
 + (PMKPromise*)sendAccountsRequestTo:(NSString*)endpoint
                           withMethod:(enum HLRequestMethod)method
-                          withApiKey:(NSString*)apikeyToUse
-                           withToken:(NSString*)token
-                          withEntity:(id)entity
-                    withRetryHandler:(id<HLRequestRetryHandlerProtocol>)handler
-                    withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback;
+                              apiKey:(NSString*)apikeyToUse
+                               token:(NSString*)token
+                              entity:(id)entity
+                        retryHandler:(id<HLRequestRetryHandlerProtocol>)handler
+                        successBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback;
 
 + (PMKPromise*)sendApiRequestTo:(NSString*)endpoint
                      withMethod:(enum HLRequestMethod)method
-                     withApiKey:(NSString*)apiKey
-                      withToken:(NSString*)token
-                     withEntity:(id)entity
-               withRetryHandler:(id<HLRequestRetryHandlerProtocol>)handler;
+                         apiKey:(NSString*)apiKey
+                          token:(NSString*)token
+                         entity:(id)entity
+                   retryHandler:(id<HLRequestRetryHandlerProtocol>)handler;
 
 + (PMKPromise*)sendApiRequestTo:(NSString*)endpoint
                      withMethod:(enum HLRequestMethod)method
-                     withApiKey:(NSString*)apikeyToUse
-                      withToken:(NSString*)token
-                     withEntity:(id)entity
-               withRetryHandler:(id<HLRequestRetryHandlerProtocol>)handler
-               withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback;
+                         apiKey:(NSString*)apikeyToUse
+                          token:(NSString*)token
+                         entity:(id)entity
+                   retryHandler:(id<HLRequestRetryHandlerProtocol>)handler
+                   successBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback;
 
 
 @end

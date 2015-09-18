@@ -131,11 +131,11 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/login/%@",@"anonymous"];
     return [HLHttpClient sendAccountsRequestTo:endpoint
                                     withMethod:POST
-                                    withApiKey:apiKey
-                                     withToken:@""
-                                    withEntity:entity
-                              withRetryHandler:retryHandler
-                              withSuccessBlock:successLoginBlock];
+                                    apiKey:apiKey
+                                     token:@""
+                                    entity:entity
+                              retryHandler:retryHandler
+                              successBlock:successLoginBlock];
 }
 +(PMKPromise*)loginWithFacebook:(NSString*)accessToken
 {
@@ -165,11 +165,11 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
     NSDictionary* entity = @{@"type" : provider, @"access_token": accessToken};
     return [HLHttpClient sendAccountsRequestTo:@"v0/gamer/login/oauth2"
                                     withMethod:POST
-                                    withApiKey:apiKey
-                                     withToken:token
-                                    withEntity:entity
-                              withRetryHandler:retryHandler
-                              withSuccessBlock:successLoginBlock];
+                                    apiKey:apiKey
+                                     token:token
+                                    entity:entity
+                              retryHandler:retryHandler
+                              successBlock:successLoginBlock];
 }
 
 +(PMKPromise*)loginWithEmail:(NSString*)email andPassword:(NSString*)password
@@ -187,11 +187,11 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/login/%@",@"gameup"];
     return [HLHttpClient sendAccountsRequestTo:endpoint
                                     withMethod:POST
-                                    withApiKey:apiKey
-                                     withToken:token
-                                    withEntity:entity
-                              withRetryHandler:retryHandler
-                              withSuccessBlock:successLoginBlock];
+                                    apiKey:apiKey
+                                     token:token
+                                    entity:entity
+                              retryHandler:retryHandler
+                              successBlock:successLoginBlock];
 }
 
 +(PMKPromise*)createProfileWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation
@@ -220,11 +220,11 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
     
     return [HLHttpClient sendAccountsRequestTo:@"/v0/gamer/account/gameup/create"
                                     withMethod:POST
-                                    withApiKey:apiKey
-                                     withToken:token
-                                    withEntity:entity
-                              withRetryHandler:retryHandler
-                              withSuccessBlock:successLoginBlock];
+                                    apiKey:apiKey
+                                     token:token
+                                    entity:entity
+                              retryHandler:retryHandler
+                              successBlock:successLoginBlock];
 }
 
 +(PMKPromise*)sendLoginReset:(NSString*)email
@@ -232,11 +232,11 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
     id entity = @{@"email" : email};
     return [HLHttpClient sendAccountsRequestTo:@"/v0/gamer/account/gameup/reset/send"
                                     withMethod:POST
-                                    withApiKey:apiKey
-                                     withToken:@""
-                                    withEntity:entity
-                              withRetryHandler:retryHandler
-                              withSuccessBlock:successLoginBlock];
+                                    apiKey:apiKey
+                                     token:@""
+                                    entity:entity
+                              retryHandler:retryHandler
+                              successBlock:successLoginBlock];
 }
 
 +(PMKPromise*)sendApiRequest:(NSString*)endpoint
@@ -246,10 +246,10 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLHttpClient sendApiRequestTo:endpoint
                                withMethod:method
-                               withApiKey:apiKey
-                                withToken:@""
-                               withEntity:entity
-                         withRetryHandler:retryHandler
-                         withSuccessBlock:successCallback];
+                               apiKey:apiKey
+                                token:@""
+                               entity:entity
+                         retryHandler:retryHandler
+                         successBlock:successCallback];
 }
 @end

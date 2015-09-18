@@ -60,10 +60,10 @@
 {
     return [HLHttpClient sendApiRequestTo:endpoint
                                withMethod:method
-                               withApiKey:apiKey
-                                withToken:token
-                               withEntity:entity
-                         withRetryHandler:retryHandler];
+                               apiKey:apiKey
+                                token:token
+                               entity:entity
+                         retryHandler:retryHandler];
 }
 
 - (PMKPromise*)sendApiRequest:(NSString*)endpoint
@@ -73,11 +73,11 @@
 {
     return [HLHttpClient sendApiRequestTo:endpoint
                                withMethod:method
-                               withApiKey:apiKey
-                                withToken:token
-                               withEntity:entity
-                         withRetryHandler:retryHandler
-                         withSuccessBlock:successCallback];
+                               apiKey:apiKey
+                                token:token
+                               entity:entity
+                         retryHandler:retryHandler
+                         successBlock:successCallback];
 }
 
 - (PMKPromise*)ping
@@ -105,11 +105,11 @@
     id entity = @{@"nickname" : nickname};
     return [HLHttpClient sendAccountsRequestTo:@"/v0/gamer/"
                                     withMethod:POST
-                                    withApiKey:apiKey
-                                     withToken:token
-                                    withEntity:entity
-                              withRetryHandler:retryHandler
-                              withSuccessBlock:nil];
+                                    apiKey:apiKey
+                                     token:token
+                                    entity:entity
+                              retryHandler:retryHandler
+                              successBlock:nil];
 }
 
 - (PMKPromise*)getStoredDataWithKey:(NSString*)key
@@ -306,10 +306,10 @@
     
     return [HLHttpClient sendApiRequestTo:@"/v0/gamer/push/"
                                withMethod:PUT
-                               withApiKey:apiKey
-                                withToken:token
-                               withEntity:payload
-                         withRetryHandler:retryHandler];
+                               apiKey:apiKey
+                                token:token
+                               entity:payload
+                         retryHandler:retryHandler];
 }
 
 - (PMKPromise*)verifyPurchase:(NSData*)receipt ofProduct:(NSString*)productId
