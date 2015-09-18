@@ -194,15 +194,15 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
                               successBlock:successLoginBlock];
 }
 
-+(PMKPromise*)createProfileWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation
 {
-    return [HLClient createProfileWithEmail:email andPassword:password andConfirm:passwordConfirmation andName:nil];
+    return [HLClient createAccountWithEmail:email andPassword:password andConfirm:passwordConfirmation andName:nil];
 }
-+(PMKPromise*)createProfileWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name
 {
-    return [HLClient createProfileWithEmail:email andPassword:password andConfirm:passwordConfirmation andName:nil andLink:nil];
+    return [HLClient createAccountWithEmail:email andPassword:password andConfirm:passwordConfirmation andName:nil andLink:nil];
 }
-+(PMKPromise*)createProfileWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andLink:(HLSessionClient*)session
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andLink:(HLSessionClient*)session
 {
     id entity = @{@"email" : email,
                   @"password" : password,

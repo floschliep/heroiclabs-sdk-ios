@@ -137,7 +137,7 @@
  @param password Password of the account.
  @param passwordConfirmation Password of the account.
  */
-+(PMKPromise*)createProfileWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation;
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation;
 
 /**
  Creates a new Heroic Labs account with the supplied info.
@@ -146,7 +146,7 @@
  @param passwordConfirmation Password of the account.
  @param name Name of the gamer.
  */
-+(PMKPromise*)createProfileWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name;
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name;
 
 /**
  Creates a new Heroic Labs account with the supplied info.
@@ -158,7 +158,7 @@
  successful login the profile will be bound to this same account
  if possible, data will be migrated from the given account to the new one.
  */
-+(PMKPromise*)createProfileWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andLink:(HLSessionClient*)session;
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andLink:(HLSessionClient*)session;
 
 /**
  Sends a password reset email to the gamer with a token to reset the password.

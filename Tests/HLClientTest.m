@@ -166,7 +166,7 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
     [email appendString:timestamp];
     [email appendString:@"@heroiclabs.com"];
     
-    [self checkPromise:[HLClient createProfileWithEmail:email andPassword:heroicPassword andConfirm:heroicPassword andName:heroicName] withBlock:(^(HLSessionClient* session) {
+    [self checkPromise:[HLClient createAccountWithEmail:email andPassword:heroicPassword andConfirm:heroicPassword andName:heroicName] withBlock:(^(HLSessionClient* session) {
         expect([session getGamerToken]).toNot.beNil;
     }) withErrorBlock:errorHandler];
 }
@@ -180,7 +180,7 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
             NSLog(@"Error Login in Heroic Labs Gamer: %@", [self convertErrorToString: error]);
             NSLog(@"Trying to create a new user");
             
-            [HLClient createProfileWithEmail:heroicEmail andPassword:heroicPassword andConfirm:heroicPassword andName:heroicName andLink:anonymousSession].then(^(HLSessionClient* newSession) {
+            [HLClient createAccountWithEmail:heroicEmail andPassword:heroicPassword andConfirm:heroicPassword andName:heroicName andLink:anonymousSession].then(^(HLSessionClient* newSession) {
                 expect([newSession getGamerToken]).toNot.beNil;
                 [expectation fulfill];
             }).catch(^(NSError* error) {
