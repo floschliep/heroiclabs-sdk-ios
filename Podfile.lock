@@ -21,7 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Base64nl (1.2)
-  - Expecta (1.0.2)
+  - Expecta (1.0.3)
   - PromiseKit/Promise (1.6.0)
 
 DEPENDENCIES:
@@ -33,7 +33,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Base64nl: a497bdcd1c01ea793d36b399016195a8713c0e95
-  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
+  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
   PromiseKit: 6be651503d4af22830b5313be993c5a0ef77bf77
 
 COCOAPODS: 0.38.2
