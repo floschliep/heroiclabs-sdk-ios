@@ -52,6 +52,7 @@ id gameAchievementId = @"ec6764eadd274b9298887de9f5da0a5e";
 id gameLeaderboardId = @"5141dd1c31354741967e77f409ce755e";
 id matchTurnData = @"MatchTurnData";
 id productId = @"some.purchased.product.id";
+id scriptId = @"";
 
 + (void)setUp {
     NSString *path = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"local-config.plist"];
@@ -268,6 +269,13 @@ id productId = @"some.purchased.product.id";
     [self checkPromise:[session verifyPurchase:badPurchase ofProduct:productId] withErrorBlock:(^(NSError *error) {
         expect([error code]).to.equal(400);
     })];
+}
+
+- (void)testScriptExecution {
+    [self checkPromise:[session executeScript:scriptId withPayload:@{@"a": @1, @"b": @2}] withBlock:(^(id data) {
+        expect([data objectForKey:@"a"]).to.equal(2);
+        expect([data objectForKey:@"b"]).to.equal(1);
+    }) withErrorBlock:errorHandler];
 }
 
 @end

@@ -328,4 +328,15 @@
                }];
 }
 
+- (PMKPromise*)executeScript:(NSString*)scriptId withPayload:(id)json
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/game/scripts/%@",scriptId];
+    return [self sendApiRequest:endpoint
+                     withMethod:POST
+                     withEntity:json
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver(data);
+               }];
+}
+
 @end

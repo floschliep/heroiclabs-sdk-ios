@@ -102,6 +102,7 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
 - (void)testServerInfo {
     NSTimeInterval currentTimestamp = [[NSDate date] timeIntervalSince1970];
     [self checkPromise:[HLClient getServerInfo] withBlock:(^(HLServer* data) {
+        NSLog(@"%@", [data time]);
         expect([data time]).to.beGreaterThan(currentTimestamp);
     }) withErrorBlock:errorHandler];
 }

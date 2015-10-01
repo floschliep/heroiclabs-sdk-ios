@@ -187,4 +187,12 @@
  */
 - (PMKPromise*)verifyPurchase:(NSData*)receipt ofProduct:(NSString*)productId;
 
+/**
+ Executes a script on the server, with the current player authenticated.
+ 
+ @param scriptId The Script ID to use.
+ @param json The Payload to send to the server. Can be nil or NSDictionary or NSString.
+ */
+- (PMKPromise*)executeScript:(NSString*)scriptId withPayload:(id)json;
+
 @end
