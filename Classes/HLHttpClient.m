@@ -158,7 +158,7 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    if (method == PUT || method == POST || method == PATCH) {
+    if ((method == PUT || method == POST || method == PATCH) && entity != nil) {
         [request setHTTPBody:[HLHttpClient serialiseDictionaryToData:entity]];
     }
     
@@ -171,37 +171,48 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
           withRetryHandler:(id<HLRequestRetryHandlerProtocol>)retryHandler
           withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback;
 {
-    
+    return [PMKPromise promiseWithResolver:^(PMKResolver resolver) {
+        [HLHttpClient sendRequest:request
+                 withRetryHandler:retryHandler
+                 withSuccessBlock:successCallback
+                     withResolver:resolver];
+    }];
+}
+
++ (void)sendRequest:(NSURLRequest*)request
+   withRetryHandler:(id<HLRequestRetryHandlerProtocol>)retryHandler
+   withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
+       withResolver:(PMKResolver) resolver
+{
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     op.responseSerializer = [AFJSONResponseSerializer serializer];
-    return [PMKPromise promiseWithResolver:^(PMKResolver resolver) {
-        [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id JSON) {
-            [retryHandler requestSucceed:request];
-            NSNumber* statusCode = @([[operation response] statusCode]);
-            if (successCallback == nil) { //used mainly for 204s
-                resolver(JSON);
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id JSON) {
+        [retryHandler requestSucceed:request];
+        NSNumber* statusCode = @([[operation response] statusCode]);
+        if (successCallback == nil) { //used mainly for 204s
+            resolver(JSON);
+        } else {
+            successCallback(statusCode, JSON, resolver);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSHTTPURLResponse *response = [operation response];
+        
+        if ([response statusCode] == 500) {
+            [retryHandler requestFailed:request];
+            if ([retryHandler shouldRetryRequest:request]) {
+                [HLHttpClient sendRequest:request
+                         withRetryHandler:retryHandler
+                         withSuccessBlock:successCallback
+                             withResolver:resolver];
             } else {
-                successCallback(statusCode, JSON, resolver);
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSHTTPURLResponse *response = [operation response];
-            
-            if ([response statusCode] >= 500) {
-                [retryHandler requestFailed:request];
-                if ([retryHandler shouldRetryRequest:request]) {
-                    [HLHttpClient sendRequest:request
-                             withRetryHandler:retryHandler
-                             withSuccessBlock:successCallback];
-                } else {
-                    resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
-                }
-            } else {
-                [retryHandler requestSucceed:request];
                 resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
             }
-        }];
-        [NETWORK_MANAGER.operationQueue addOperation:op];
+        } else {
+            [retryHandler requestSucceed:request];
+            resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
+        }
     }];
+    [NETWORK_MANAGER.operationQueue addOperation:op];
 }
 
 + (NSData*)serialiseDictionaryToData:(NSDictionary*)dict

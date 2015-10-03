@@ -125,6 +125,17 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
                    }];
 }
 
++ (PMKPromise*)executeScript:(NSString*)scriptId withPayload:(id)json
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/game/script/%@",scriptId];
+    return [HLClient sendApiRequest:endpoint
+                         withMethod:POST
+                         withEntity:json
+                   withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                       resolver(data);
+                   }];
+}
+
 +(PMKPromise*)loginAnonymouslyWith:(NSString*)deviceId
 {
     id entity = @{@"id" : deviceId};

@@ -40,8 +40,10 @@ id heroicPassword = @"";
 id heroicName = @"";
 id leaderboardId = @"5141dd1c31354741967e77f409ce755e";
 id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
+id execScriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 
 + (void)setUp {
+    [Expecta setAsynchronousTestTimeout:10];
     NSString *path = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"local-config.plist"];
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:path];
     
@@ -102,7 +104,6 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
 - (void)testServerInfo {
     NSTimeInterval currentTimestamp = [[NSDate date] timeIntervalSince1970];
     [self checkPromise:[HLClient getServerInfo] withBlock:(^(HLServer* data) {
-        NSLog(@"%@", [data time]);
         expect([data time]).to.beGreaterThan(currentTimestamp);
     }) withErrorBlock:errorHandler];
 }
@@ -134,6 +135,12 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
     [self checkPromise:[HLClient getLeaderboards] withBlock:(^(NSArray* data) {
         expect([data count]).to.equal(1);
     }) withErrorBlock:errorHandler];
+}
+
+- (void)testScriptExecution {
+    [self checkPromise:[HLClient executeScript:execScriptId withPayload:nil] withBlock:(^(id data){}) withErrorBlock:(^(NSError *error) {
+        expect([error code]).to.equal(401);
+    })];
 }
 
 - (void)testLeaderboardData {
@@ -195,5 +202,4 @@ id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
     });
     [self waitForExpectationsWithTimeout:30 handler:nil];
 }
-
 @end

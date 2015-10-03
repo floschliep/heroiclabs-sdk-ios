@@ -29,6 +29,7 @@
 		CD8828AF19910818009E8D10 /* HLGamer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD77CF85197F1B13006ACC0D /* HLGamer.h */; };
 		CD8828B21991083D009E8D10 /* HLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8828B11991083D009E8D10 /* HLClient.m */; };
 		CD8828B319910860009E8D10 /* HLClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD8828B01991083D009E8D10 /* HLClient.h */; };
+		CD97C1111BC03D5B009ABCDB /* iosunittest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD97C1101BC03D5B009ABCDB /* iosunittest.js */; settings = {ASSET_TAGS = (); }; };
 		CDA951041B1F67F70058955C /* HLMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA951031B1F67F70058955C /* HLMatch.m */; };
 		CDA951071B1F68130058955C /* HLMatchTurn.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA951061B1F68130058955C /* HLMatchTurn.m */; };
 		CDCB23B11BA96A7C00C2BCCA /* local-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDCB23AE1BA95E6700C2BCCA /* local-config.plist */; };
@@ -116,6 +117,7 @@
 		CD77CF86197F1B13006ACC0D /* HLGamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGamer.m; sourceTree = "<group>"; };
 		CD8828B01991083D009E8D10 /* HLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CD8828B11991083D009E8D10 /* HLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HLClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CD97C1101BC03D5B009ABCDB /* iosunittest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosunittest.js; sourceTree = "<group>"; };
 		CDA951021B1F67E90058955C /* HLMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatch.h; sourceTree = "<group>"; };
 		CDA951031B1F67F70058955C /* HLMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatch.m; sourceTree = "<group>"; };
 		CDA951051B1F68030058955C /* HLMatchTurn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatchTurn.h; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		CDEEBF111B9F3CF500A57588 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CD97C1101BC03D5B009ABCDB /* iosunittest.js */,
 				CDCB23AE1BA95E6700C2BCCA /* local-config.plist */,
 				CD6EAB001BA0FC6000DC7E96 /* HLClientTest.m */,
 				CDEEBF141B9F3CF500A57588 /* HLSessionClientTest.m */,
@@ -366,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD97C1111BC03D5B009ABCDB /* iosunittest.js in Resources */,
 				CDCB23B11BA96A7C00C2BCCA /* local-config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

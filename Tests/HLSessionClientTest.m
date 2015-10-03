@@ -52,9 +52,10 @@ id gameAchievementId = @"ec6764eadd274b9298887de9f5da0a5e";
 id gameLeaderboardId = @"5141dd1c31354741967e77f409ce755e";
 id matchTurnData = @"MatchTurnData";
 id productId = @"some.purchased.product.id";
-id scriptId = @"";
+id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 
 + (void)setUp {
+    [Expecta setAsynchronousTestTimeout:10];
     NSString *path = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"local-config.plist"];
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:path];
     
@@ -204,7 +205,7 @@ id scriptId = @"";
                 [expectation fulfill];
             });
         });
-    }).catch(^(NSNumber* statusCode, NSError* error) {
+    }).catch(^(NSError* error) {
         [self checkError:error];
         [expectation fulfill];
     });
