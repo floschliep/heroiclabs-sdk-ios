@@ -1,14 +1,13 @@
 Pod::Spec.new do |s|
   s.name         = "HeroicLabs"
-  s.version      = "0.1.0"
+  s.version      = "0.2.0"
   s.summary      = "Heroic Labs SDK for iOS"
   s.description  = "Heroic Labs is a backend for games."
   s.homepage     = "https://heroiclabs.com"
   s.authors      = { "Heroic Labs" => "support@heroiclabs.com"}
   s.social_media_url   = "http://twitter.com/gameupio"
   s.platform     = :ios, "6.0"
-  s.source       = { :git => "https://github.com/heroiclabs/heroiclabs-sdk-ios.git", :tag => "0.1.0"}
-
+  s.source       = { :git => "https://github.com/heroiclabs/heroiclabs-sdk-ios.git", :tag => "0.2.0"}
   s.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
   s.source_files  = "Classes/*.{h,m}"
   s.public_header_files = "Classes/*.h"
