@@ -313,6 +313,7 @@
 				CDEEBF0D1B9F3CF500A57588 /* Frameworks */,
 				CDEEBF0E1B9F3CF500A57588 /* Resources */,
 				F5CE2724BF7CE2229B5DAAB2 /* Copy Pods Resources */,
+				3DFE5D26EC22DA12B5D37F0D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,6 +378,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3DFE5D26EC22DA12B5D37F0D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4D99E197D3E29BEE9AC854A3 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
