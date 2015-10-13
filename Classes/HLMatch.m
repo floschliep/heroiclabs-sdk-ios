@@ -24,7 +24,7 @@
     if (self) {
         _whoami = [dictionary valueForKey:@"whoami"];
         _matchId = [dictionary valueForKey:@"match_id"];
-        _turn_count = [dictionary valueForKey:@"turn_count"];
+        _turnCount = [dictionary valueForKey:@"turn_count"];
         _turn = [dictionary valueForKey:@"turn"];
         _createdAt = [dictionary valueForKey:@"created_at"];
         _active = [[dictionary valueForKey:@"active"] boolValue];

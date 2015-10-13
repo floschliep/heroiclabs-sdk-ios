@@ -23,6 +23,9 @@
 		CD34E7E01A50AFE500A253E0 /* HLNoRequestRetryHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD34E7D91A50992D00A253E0 /* HLNoRequestRetryHandler.h */; };
 		CD3ECA791B123E1C0020DD1F /* HLSessionClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */; };
 		CD3ECA7B1B123E360020DD1F /* HLSessionClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */; };
+		CD52662F1BCE898C00C23093 /* local-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD52662E1BCE898C00C23093 /* local-config.plist */; settings = {ASSET_TAGS = (); }; };
+		CD5266311BCE89AE00C23093 /* iosmailboxtest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD5266301BCE89AE00C23093 /* iosmailboxtest.js */; settings = {ASSET_TAGS = (); }; };
+		CD6063171BC81638007D4F70 /* HLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6063161BC81638007D4F70 /* HLMessage.m */; settings = {ASSET_TAGS = (); }; };
 		CD6EAB011BA0FC6000DC7E96 /* HLClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6EAB001BA0FC6000DC7E96 /* HLClientTest.m */; };
 		CD6EAB041BA23A3D00DC7E96 /* HLPing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6EAB031BA23A3D00DC7E96 /* HLPing.m */; };
 		CD8828AD199107A4009E8D10 /* HLGamer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD77CF86197F1B13006ACC0D /* HLGamer.m */; };
@@ -32,7 +35,6 @@
 		CD97C1111BC03D5B009ABCDB /* iosunittest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD97C1101BC03D5B009ABCDB /* iosunittest.js */; settings = {ASSET_TAGS = (); }; };
 		CDA951041B1F67F70058955C /* HLMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA951031B1F67F70058955C /* HLMatch.m */; };
 		CDA951071B1F68130058955C /* HLMatchTurn.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA951061B1F68130058955C /* HLMatchTurn.m */; };
-		CDCB23B11BA96A7C00C2BCCA /* local-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDCB23AE1BA95E6700C2BCCA /* local-config.plist */; };
 		CDCFE6F31AED2133006A20CB /* HLHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFE6F21AED2133006A20CB /* HLHttpClient.m */; };
 		CDCFE6F41AEDA430006A20CB /* HLHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDCFE6F11AED211C006A20CB /* HLHttpClient.h */; };
 		CDDD98751B4CA2FB00CD56E6 /* HLPurchaseVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDD98741B4CA2FB00CD56E6 /* HLPurchaseVerification.m */; };
@@ -110,6 +112,10 @@
 		CD34E7DD1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+HLURLRequest.m"; sourceTree = "<group>"; };
 		CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HLSessionClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLSessionClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CD52662E1BCE898C00C23093 /* local-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "local-config.plist"; sourceTree = "<group>"; };
+		CD5266301BCE89AE00C23093 /* iosmailboxtest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosmailboxtest.js; sourceTree = "<group>"; };
+		CD6063141BC81619007D4F70 /* HLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMessage.h; sourceTree = "<group>"; };
+		CD6063161BC81638007D4F70 /* HLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMessage.m; sourceTree = "<group>"; };
 		CD6EAB001BA0FC6000DC7E96 /* HLClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLClientTest.m; sourceTree = "<group>"; };
 		CD6EAB021BA23A3D00DC7E96 /* HLPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPing.h; sourceTree = "<group>"; };
 		CD6EAB031BA23A3D00DC7E96 /* HLPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPing.m; sourceTree = "<group>"; };
@@ -123,7 +129,6 @@
 		CDA951051B1F68030058955C /* HLMatchTurn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatchTurn.h; sourceTree = "<group>"; };
 		CDA951061B1F68130058955C /* HLMatchTurn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatchTurn.m; sourceTree = "<group>"; };
 		CDC0F6A6196FD80800670565 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		CDCB23AE1BA95E6700C2BCCA /* local-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "local-config.plist"; sourceTree = "<group>"; };
 		CDCE13BE1B9F408B000FAC7F /* Pods-heroiclabs-sdk.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.debug.xcconfig"; sourceTree = "<group>"; };
 		CDCE13BF1B9F408B000FAC7F /* Pods-heroiclabs-sdk.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.release.xcconfig"; sourceTree = "<group>"; };
 		CDCFE6F11AED211C006A20CB /* HLHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLHttpClient.h; sourceTree = "<group>"; };
@@ -240,6 +245,8 @@
 				CDA951061B1F68130058955C /* HLMatchTurn.m */,
 				CDDD98731B4CA2EF00CD56E6 /* HLPurchaseVerification.h */,
 				CDDD98741B4CA2FB00CD56E6 /* HLPurchaseVerification.m */,
+				CD6063141BC81619007D4F70 /* HLMessage.h */,
+				CD6063161BC81638007D4F70 /* HLMessage.m */,
 				CD34E7DC1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.h */,
 				CD34E7DD1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m */,
 				8AB0CBDE1982ADEC004E243D /* HLJSONSerialisableProtocol.h */,
@@ -265,10 +272,11 @@
 			isa = PBXGroup;
 			children = (
 				CD97C1101BC03D5B009ABCDB /* iosunittest.js */,
-				CDCB23AE1BA95E6700C2BCCA /* local-config.plist */,
+				CD5266301BCE89AE00C23093 /* iosmailboxtest.js */,
 				CD6EAB001BA0FC6000DC7E96 /* HLClientTest.m */,
 				CDEEBF141B9F3CF500A57588 /* HLSessionClientTest.m */,
 				CDEEBF121B9F3CF500A57588 /* Supporting Files */,
+				CD52662E1BCE898C00C23093 /* local-config.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -370,8 +378,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD52662F1BCE898C00C23093 /* local-config.plist in Resources */,
+				CD5266311BCE89AE00C23093 /* iosmailboxtest.js in Resources */,
 				CD97C1111BC03D5B009ABCDB /* iosunittest.js in Resources */,
-				CDCB23B11BA96A7C00C2BCCA /* local-config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +472,7 @@
 				8A018FB31A2F7DEF007EF85E /* HLAchievement.m in Sources */,
 				CD8828B21991083D009E8D10 /* HLClient.m in Sources */,
 				8A018FB41A2F7DEF007EF85E /* HLServer.m in Sources */,
+				CD6063171BC81638007D4F70 /* HLMessage.m in Sources */,
 				CDA951041B1F67F70058955C /* HLMatch.m in Sources */,
 				CD8828AD199107A4009E8D10 /* HLGamer.m in Sources */,
 				CD6EAB041BA23A3D00DC7E96 /* HLPing.m in Sources */,

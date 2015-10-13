@@ -19,6 +19,7 @@
 #import <Expecta/Expecta.h>
 #import "HLClient.h"
 #import "HLSessionClient.h"
+#import "HLHttpClient.h"
 #import "HLPing.h"
 #import "HLServer.h"
 #import "HLGame.h"
@@ -63,10 +64,7 @@ id execScriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 
 - (id)convertErrorToString:(NSError*) error
 {
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:[[error userInfo] objectForKey:@"com.alamofire.serialization.response.error.data"]
-                                                         options:kNilOptions
-                                                           error:nil];
-    
+    NSDictionary* json = [[error userInfo] objectForKey:HLHttpErrorResponseDataKey];
     return [NSString stringWithFormat:@"%@ %@: %@ %@", [json objectForKey:@"status"], [json objectForKey:@"message"], [[json objectForKey:@"request"] objectForKey:@"method"], [[error userInfo] objectForKey:@"NSErrorFailingURLKey"]];
 }
 

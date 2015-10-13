@@ -28,6 +28,7 @@
 #import "HLMatch.h"
 #import "HLMatchTurn.h"
 #import "HLPurchaseVerification.h"
+#import "HLMessage.h"
 
 @implementation HLSessionClient
 {
@@ -155,7 +156,7 @@
                        HLAchievement* achievement = [[HLAchievement alloc] initWithDictionary:jsonAchievement];
                        [result addObject:achievement];
                    }
-                   resolver([[NSArray alloc] initWithArray:result]);
+                   resolver([NSArray arrayWithArray:result]);
                }];
 }
 
@@ -204,7 +205,7 @@
                }];
 }
 
--(PMKPromise*)updateRankWithId:(NSString*)leaderboardId withScore:(NSNumber*) score andScoretags:(NSDictionary*)scoretags
+-(PMKPromise*)updateRankWithId:(NSString*)leaderboardId withScore:(NSNumber*)score andScoretags:(NSDictionary*)scoretags
 {
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/leaderboard/%@",leaderboardId];
     id update = @{@"score": score,
@@ -227,7 +228,7 @@
                    for (id turn in [data objectForKey:@"matches"]) {
                        [result addObject:[[HLMatch alloc] initWithDictionary:turn]];
                    }
-                   resolver(result);
+                   resolver([NSArray arrayWithArray:result]);
                }];
 }
 -(PMKPromise*)getMatchWithId:(NSString*) matchId
@@ -251,7 +252,7 @@
                    for (id turn in [data objectForKey:@"turns"]) {
                        [result addObject:[[HLMatchTurn alloc] initWithDictionary:turn]];
                    }
-                   resolver(result);
+                   resolver([NSArray arrayWithArray:result]);
                }];
 }
 -(PMKPromise*)submitTurn:(NSNumber*)turn
@@ -334,6 +335,51 @@
     return [self sendApiRequest:endpoint
                      withMethod:POST
                      withEntity:json
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver(data);
+               }];
+}
+
+- (PMKPromise*)getMessagesWithBody:(BOOL)body
+{
+    return [self getMessagesWithBody:body newerSince:[NSNumber numberWithInt:0]];
+    
+}
+- (PMKPromise*)getMessagesWithBody:(BOOL)body newerSince:(NSNumber*)utcMilliTimestamp
+{
+    NSString * booleanString = (body) ? @"true" : @"false";
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/message/?with_body=%@&since=%@",booleanString, utcMilliTimestamp];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:@""
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   id result = [[NSMutableArray alloc] init];
+                   for (id message in [data objectForKey:@"messages"]) {
+                       [result addObject:[[HLMessage alloc] initWithDictionary:message]];
+                   }
+                   resolver([NSArray arrayWithArray:result]);
+
+               }];
+}
+
+- (PMKPromise*)getMessageWithId:(NSString*)messageId withBody:(BOOL)body
+{
+    NSString * booleanString = (body) ? @"true" : @"false";
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/message/%@/?with_body=%@", messageId, booleanString];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:@""
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver([[HLMessage alloc] initWithDictionary:data]);
+               }];
+}
+
+- (PMKPromise*)deleteMessageWithId:(NSString*)messageId
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/message/%@", messageId];
+    return [self sendApiRequest:endpoint
+                     withMethod:DELETE
+                     withEntity:@""
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    resolver(data);
                }];

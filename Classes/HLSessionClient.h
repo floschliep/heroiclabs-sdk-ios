@@ -195,4 +195,36 @@
  */
 - (PMKPromise*)executeScript:(NSString*)scriptId withPayload:(id)json;
 
+/**
+ Checks and retrieves all messages from the server.
+ 
+ @param body Whether to retrieve message body as well. Recommended NO.
+ */
+- (PMKPromise*)getMessagesWithBody:(BOOL)body;
+
+/**
+ Checks and retrieves all messages from the server since a given UTC timestamp in millisecond.
+ 
+ @param body Whether to retrieve message body as well. Recommended NO. 
+ @param utcMilliTimestamp Get messages that are newer than this timestamp.
+ */
+- (PMKPromise*)getMessagesWithBody:(BOOL)body newerSince:(NSNumber*)utcMilliTimestamp;
+
+/**
+ Retrieves a message from the mailbox. This sets the message as READ.
+ 
+ @param messageId ID of the message to be retrieved from the player's mailbox. 
+ @param body Whether to retrieve message body as well.
+ */
+- (PMKPromise*)getMessageWithId:(NSString*)messageId withBody:(BOOL)body;
+
+/**
+ Deletes a message from the mailbox.
+ 
+ @param messageId ID of the message to be deleted from the player's mailbox.
+ */
+- (PMKPromise*)deleteMessageWithId:(NSString*)messageId;
+
+
+
 @end

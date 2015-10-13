@@ -33,7 +33,7 @@
 @property(readonly) NSString* matchId;
 
 /** Current turn number */
-@property(readonly) NSNumber* turn_count;
+@property(readonly) NSNumber* turnCount;
 
 /** Name of gamer for the given turn */
 @property(readonly) NSString* turn;

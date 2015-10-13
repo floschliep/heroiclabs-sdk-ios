@@ -27,6 +27,7 @@
 #import "HLLeaderboardRank.h"
 #import "HLMatch.h"
 #import "HLMatchTurn.h"
+#import "HLMessage.h"
 
 @interface HLSessionClientTest : XCTestCase
 @end
@@ -40,6 +41,8 @@ HLSessionClient* session;
 HLMatch* match;
 HLGamer* gamer;
 NSInteger nextTurnNumber;
+NSNumber* totalMessages;
+NSString* messageId;
 id hlapikey = @"";
 id anonId = @"";
 id gamerEmail = @"";
@@ -53,6 +56,7 @@ id gameLeaderboardId = @"5141dd1c31354741967e77f409ce755e";
 id matchTurnData = @"MatchTurnData";
 id productId = @"some.purchased.product.id";
 id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
+id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
 
 + (void)setUp {
     [Expecta setAsynchronousTestTimeout:10];
@@ -71,10 +75,16 @@ id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
         session = newSession;
         NSLog(@"Gamer Token: %@", [session getGamerToken]);
     }).catch(^(NSError *error) {
-        NSLog(@"Could not login. Error: %@", error);
+        NSLog(@"Could not login. Error: %@", [HLSessionClientTest convertErrorToString:error]);
     });
     // HACK: block all tests until we are logged in...
     expect(session).will.notTo.beNil();
+}
+
++ (id)convertErrorToString:(NSError*) error
+{
+    NSDictionary* json = [[error userInfo] objectForKey:HLHttpErrorResponseDataKey];
+    return [NSString stringWithFormat:@"%@ %@: %@ %@", [json objectForKey:@"status"], [json objectForKey:@"message"], [[json objectForKey:@"request"] objectForKey:@"method"], [[error userInfo] objectForKey:@"NSErrorFailingURLKey"]];
 }
 
 - (void)setUp {
@@ -88,13 +98,7 @@ id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 
 - (void)checkError:(NSError*) error
 {
-    XCTAssertTrue(error == nil, @"%@", [self convertErrorToString:error]);
-}
-
-- (id)convertErrorToString:(NSError*) error
-{
-    id method = [[[[error userInfo] objectForKey:HLHttpErrorResponseDataKey] objectForKey:@"request"] objectForKey:@"method"];
-    return [NSString stringWithFormat:@"%ld %@ ([%@] %@)", (long)[error code], [error localizedDescription], method, [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]];
+    XCTAssertTrue(error == nil, @"%@", [HLSessionClientTest convertErrorToString:error]);
 }
 
 - (void)checkPromise:(PMKPromise*)promise
@@ -142,7 +146,7 @@ id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 
 - (void)testStorage_1_Delete {
     [self checkPromise:[session deleteStoredDataWithKey:storageKey] withErrorBlock:(^(NSError *error) {
-        expect([self convertErrorToString:error]).to.contain(@"404");
+        expect([error code]).to.equal(404);
     })];
 }
 
@@ -243,7 +247,7 @@ id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
         expect([data count]).to.beGreaterThan(0);
         HLMatchTurn* turn = data[0];
         expect([turn type]).to.match(@"data");
-        expect([turn turn_number]).to.equal(1);
+        expect([turn turnNumber]).to.equal(1);
         expect([turn gamer]).to.match(gamerNickname);
         expect([turn data]).to.match(matchTurnData);
         expect([turn createdAt]).to.beGreaterThan(0);
@@ -277,6 +281,73 @@ id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
         expect([data objectForKey:@"a"]).to.equal(2);
         expect([data objectForKey:@"b"]).to.equal(1);
     }) withErrorBlock:errorHandler];
+}
+
+- (void)testMessage_1_List {
+    [session executeScript:mailboxScriptId withPayload:nil].then(^{
+        return [session getMessagesWithBody:NO];
+    }).then(^(NSArray* messages) {
+        expect([messages count]).to.beGreaterThan(0);
+        messageId = [messages[0] messageId];
+        totalMessages = [NSNumber numberWithInt:[messages count]];
+    }).catch(^(NSError* error) {
+        [self checkError:error];
+    }).finally(^{
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:300 handler:nil];
+}
+
+- (void)testMessage_2_Get {
+    [self checkPromise:[session getMessageWithId:messageId withBody:YES] withBlock:(^(HLMessage* message) {
+        expect([[message tags] count]).to.beGreaterThan(0);
+        expect([[message subject] length]).to.beGreaterThan(0);
+        expect([message createdAt]).to.beGreaterThan(0);
+        expect([message expiresAt]).to.beGreaterThan(0);
+        expect([message readAt]).to.beGreaterThan(0);
+        expect([message body]).toNot.beNil();
+    }) withErrorBlock:errorHandler];
+}
+
+- (void)testMessage_3_Delete {
+    [self checkPromise:[session deleteMessageWithId:messageId] withErrorBlock:errorHandler];
+}
+
+- (void)testMessage_4_List {
+    [self checkPromise:[session getMessagesWithBody:NO] withBlock:(^(NSArray* messages) {
+        expect([messages count]).to.equal([totalMessages integerValue] - 1);
+    }) withErrorBlock:errorHandler];
+}
+
+- (void)testListingGettingDeletingMessages {
+    __block NSNumber* numberOfMessages = [NSNumber numberWithInt:0];
+    [session executeScript:mailboxScriptId withPayload:nil].then(^{
+        return [session getMessagesWithBody:NO];
+    }).then(^(NSArray* messages) {
+        expect([messages count]).to.beGreaterThan(0);
+        numberOfMessages = [NSNumber numberWithInt:[messages count]];
+        return [session getMessageWithId:[messages[0] messageId] withBody:YES];
+    }).then(^(HLMessage* message) {
+        expect([[message tags] count]).to.beGreaterThan(0);
+        expect([[message subject] length]).to.beGreaterThan(0);
+        expect([message createdAt]).to.beGreaterThan(0);
+        expect([message expiresAt]).to.beGreaterThan(0);
+        expect([message readAt]).to.beGreaterThan(0);
+        expect([message body]).toNot.beNil();
+        
+        return [session deleteMessageWithId:[message messageId]];
+    }).then(^{
+        return [session getMessagesWithBody:NO];
+    }).then(^(NSArray* messages) {
+        expect([messages count]).to.equal([numberOfMessages integerValue] - 1);
+    }).catch(^(NSError* error) {
+        [self checkError:error];
+    }).finally(^{
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:30 handler:nil];
 }
 
 @end

@@ -14,19 +14,21 @@
  limitations under the License.
  */
 
-#import "HLMatchTurn.h"
+#import "HLMessage.h"
 
-@implementation HLMatchTurn
+@implementation HLMessage
 
 - (id)initWithDictionary:(NSDictionary*) dictionary
 {
     self = [super init];
     if (self) {
-        _type = [dictionary valueForKey:@"type"];
-        _turnNumber = [dictionary valueForKey:@"turn_number"];
-        _gamer = [dictionary valueForKey:@"gamer"];
-        _data = [dictionary valueForKey:@"data"];
-        _createdAt = [dictionary valueForKey:@"created_at"];
+        _messageId = [dictionary objectForKey:@"message_id"];
+        _tags = [dictionary objectForKey:@"tags"];
+        _subject = [dictionary objectForKey:@"subject"];
+        _body = [dictionary objectForKey:@"body"];
+        _createdAt = [dictionary objectForKey:@"created_at"];
+        _expiresAt = [dictionary objectForKey:@"expires_at"];
+        _readAt = [dictionary objectForKey:@"read_at"];
     }
     return self;
 }

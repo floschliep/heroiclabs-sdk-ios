@@ -141,7 +141,7 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
     NSMutableString *finalUrl = [[NSMutableString alloc] initWithString:url];
     [finalUrl appendString:endpoint];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:finalUrl]
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[finalUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                        timeoutInterval:REQUEST_TIMEOUT];
     
@@ -224,15 +224,20 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
 
 + (NSError*)createNewHttpError:(NSError*)error andStatusCode:(NSInteger) statusCode
 {
-    NSDictionary* jsonError = [NSJSONSerialization JSONObjectWithData:[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]
-                                                              options:kNilOptions
-                                                                error:nil];
-    NSDictionary *userInfo = @{
-                               NSLocalizedDescriptionKey:[[error userInfo] objectForKey:NSLocalizedDescriptionKey],
-                               NSURLErrorFailingURLStringErrorKey:[[error userInfo] objectForKey:@"NSErrorFailingURLKey"],
-                               HLHttpErrorResponseKey: [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey],
-                               HLHttpErrorResponseDataKey:jsonError,
-                               };
+    NSDictionary *userInfo = [error userInfo];
+    if ([[error domain] isEqualToString:AFURLResponseSerializationErrorDomain]) {
+        NSDictionary* jsonError = [NSJSONSerialization JSONObjectWithData:[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]
+                                                                  options:kNilOptions
+                                                                    error:nil];
+        userInfo = @{
+                     NSLocalizedDescriptionKey:[[error userInfo] objectForKey:NSLocalizedDescriptionKey],
+                     NSURLErrorFailingURLStringErrorKey:[[error userInfo] objectForKey:@"NSErrorFailingURLKey"],
+                     HLHttpErrorResponseKey: [[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey],
+                     HLHttpErrorResponseDataKey:jsonError,
+                     };
+    } else {
+        statusCode = 500;
+    }
     return [NSError errorWithDomain:HLHttpErrorDomain code:statusCode userInfo:userInfo];
 }
 @end

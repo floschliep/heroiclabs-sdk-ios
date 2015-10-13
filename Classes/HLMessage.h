@@ -18,23 +18,29 @@
 #import "HLJSONSerialisableProtocol.h"
 
 /**
- Represents a response containing Heroic Labs global and/or server instance info.
+ Represents a message from the mailbox.
  */
-@interface HLMatchTurn : NSObject <HLJSONSerialisableProtocol>
+@interface HLMessage : NSObject <HLJSONSerialisableProtocol>
 
-/** Turn type */
-@property(readonly) NSString* type;
+/** ID of the message */
+@property(readonly) NSString* messageId;
 
-/** Current turn number */
-@property(readonly) NSNumber* turnNumber;
+/** Tags associated with this message */
+@property(readonly) NSArray* tags;
 
-/** Name of gamer for this turn */
-@property(readonly) NSString* gamer;
+/** Subject of the message */
+@property(readonly) NSString* subject;
 
-/** Data stored for this turn */
-@property(readonly) NSString* data;
-
-/** When the match was created */
+/** When the message was created */
 @property(readonly) NSNumber* createdAt;
+
+/** When the message will expire */
+@property(readonly) NSNumber* expiresAt;
+
+/** When the message was first read */
+@property(readonly) NSNumber* readAt;
+
+/** Raw Key-Value representing the body of the message */
+@property(readonly) NSDictionary* body;
 
 @end
