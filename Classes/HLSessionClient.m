@@ -14,7 +14,6 @@
  limitations under the License.
  */
 
-#import <Base64nl/Base64.h>
 #import "HLSessionClient.h"
 #import "HLHttpClient.h"
 #import "HLRequestRetryHandlerProtocol.h"
@@ -319,7 +318,7 @@
 
 - (PMKPromise*)verifyPurchase:(NSData*)receipt ofProduct:(NSString*)productId
 {
-    NSString* receiptString = [[[NSString alloc] initWithData:receipt encoding:NSUTF8StringEncoding] base64EncodedString];
+    NSString* receiptString = [receipt base64EncodedStringWithOptions:0];
     
     return [self sendApiRequest:@"/v0/gamer/purchase/verify/apple/"
                      withMethod:POST

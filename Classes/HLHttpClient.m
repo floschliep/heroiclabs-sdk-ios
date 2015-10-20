@@ -16,7 +16,6 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <PromiseKit/Promise.h>
-#import <Base64nl/Base64.h>
 
 #import "HLHttpClient.h"
 #import "HLRequestRetryHandlerProtocol.h"
@@ -32,31 +31,18 @@
 #import "HLMatchTurn.h"
 #import "HLPurchaseVerification.h"
 
-static NSString *const HEROICLABS_VERSION=@"0.1.0";
-static NSString *const AFN_VERSION=@"AFN2.5.4";
+static NSString *const HEROICLABS_VERSION=@"0.3.0";
+static NSString *const AFN_VERSION=@"AFN3.0.0-beta.1";
 
 static NSString *const USER_AGENT_NAME=@"heroiclabs-ios-sdk";
-
 static NSString *USER_AGENT = nil;
-static NSInteger REQUEST_TIMEOUT=30;
-
-static NSDictionary *REQUEST_METHODS = nil;
-static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
 
 @implementation HLHttpClient
 
+static NSURL *baseURL;
+
 + (void)initialize
 {
-    REQUEST_METHODS = @{
-                        @(HEAD) : @"HEAD",
-                        @(GET): @"GET",
-                        @(POST): @"POST",
-                        @(PUT) : @"PUT",
-                        @(PATCH) : @"PATCH",
-                        @(DELETE) : @"DELETE"
-                        };
-    
-    
     UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
     NSString* secretAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     NSMutableString *USER_AGENT_MUTABLE = [[NSMutableString alloc] initWithString:USER_AGENT_NAME];
@@ -73,8 +59,7 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
     [USER_AGENT_MUTABLE appendString:@")"];
     USER_AGENT = [[NSString alloc] initWithString:USER_AGENT_MUTABLE];
     
-    NSURL *baseURL = [NSURL URLWithString:HEROICLABS_API_URL];
-    NETWORK_MANAGER = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+    baseURL = [NSURL URLWithString:HEROICLABS_API_URL];
 }
 
 + (PMKPromise*)sendAccountsRequestTo:(NSString*)endpoint
@@ -135,75 +120,66 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
                   withApiKey:(NSString*)apiKey
                    withToken:(NSString*)token
                   withEntity:(id)entity
-            withRetryHandler:(id<HLRequestRetryHandlerProtocol>)handler
+            withRetryHandler:(id<HLRequestRetryHandlerProtocol>)retryHandler
             withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
 {
-    NSMutableString *finalUrl = [[NSMutableString alloc] initWithString:url];
-    [finalUrl appendString:endpoint];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[finalUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
-                                                           cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                       timeoutInterval:REQUEST_TIMEOUT];
+    NSMutableString *fullUrl = [[NSMutableString alloc] initWithString:url];
+    [fullUrl appendString:endpoint];
+    NSString* finalUrl = [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSMutableString *authorization = [[NSMutableString alloc] initWithString:apiKey];
     [authorization appendString:@":"];
     [authorization appendString:token];
     
     NSMutableString *base64EncodedAuth = [[NSMutableString alloc] initWithString:@"Basic "];
-    [base64EncodedAuth appendString:[authorization base64EncodedString]];
+    [base64EncodedAuth appendString:[[authorization dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0]];
     
-    [request setHTTPMethod:[REQUEST_METHODS objectForKey:@(method)]];
-    [request setValue:base64EncodedAuth forHTTPHeaderField:@"Authorization"];
-    [request setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    if ((method == PUT || method == POST || method == PATCH) && entity != nil) {
-        [request setHTTPBody:[HLHttpClient serialiseDictionaryToData:entity]];
-    }
-    
-    return [HLHttpClient sendRequest:request
-                    withRetryHandler:handler
-                    withSuccessBlock:successCallback];
-}
+    AFJSONRequestSerializer* requestSerializer = [[AFJSONRequestSerializer alloc] init];
+    [requestSerializer setValue:base64EncodedAuth forHTTPHeaderField:@"Authorization"];
+    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
 
-+ (PMKPromise*)sendRequest:(NSURLRequest*)request
-          withRetryHandler:(id<HLRequestRetryHandlerProtocol>)retryHandler
-          withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback;
-{
+    AFHTTPSessionManager *networkManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    networkManager.requestSerializer = requestSerializer;
+    
     return [PMKPromise promiseWithResolver:^(PMKResolver resolver) {
-        [HLHttpClient sendRequest:request
-                 withRetryHandler:retryHandler
-                 withSuccessBlock:successCallback
-                     withResolver:resolver];
+        [HLHttpClient sendRequestTo:finalUrl withEndpoint:endpoint withMethod:method withEntity:entity withNetworkManager:networkManager withRetryHandler:retryHandler withSuccessBlock:successCallback withResolver:resolver];
     }];
 }
 
-+ (void)sendRequest:(NSURLRequest*)request
-   withRetryHandler:(id<HLRequestRetryHandlerProtocol>)retryHandler
-   withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
-       withResolver:(PMKResolver) resolver
++ (void) sendRequestTo:(NSString*)finalUrl
+          withEndpoint:(NSString*)endpoint
+            withMethod:(enum HLRequestMethod)method
+            withEntity:(id)entity
+    withNetworkManager:(AFHTTPSessionManager*)networkManager
+      withRetryHandler:(id<HLRequestRetryHandlerProtocol>)retryHandler
+      withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
+          withResolver:(PMKResolver)resolver
 {
-    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id JSON) {
-        [retryHandler requestSucceed:request];
-        NSNumber* statusCode = @([[operation response] statusCode]);
+
+    
+    void (^httpSuccess)(NSURLSessionDataTask *task, id responseObject) = ^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull JSON) {
+        [retryHandler requestSucceed:[task originalRequest]];
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *) [task response];
+        NSNumber* statusCode = @([response statusCode]);
         if (successCallback == nil) { //used mainly for 204s
             resolver(JSON);
         } else {
             successCallback(statusCode, JSON, resolver);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSHTTPURLResponse *response = [operation response];
+    };
+    void (^httpHeadSuccess)(NSURLSessionDataTask *task) = ^(NSURLSessionDataTask * _Nonnull task) {
+        httpSuccess(task, nil);
+    };
+    void (^httpFailure)(NSURLSessionDataTask *task, NSError *error) = ^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        NSURLRequest *request = [task originalRequest];
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *) [task response];
         
         if ([response statusCode] == 500) {
             [retryHandler requestFailed:request];
             if ([retryHandler shouldRetryRequest:request]) {
-                [HLHttpClient sendRequest:request
-                         withRetryHandler:retryHandler
-                         withSuccessBlock:successCallback
-                             withResolver:resolver];
+                [HLHttpClient sendRequestTo:finalUrl withEndpoint:endpoint withMethod:method withEntity:entity withNetworkManager:networkManager withRetryHandler:retryHandler withSuccessBlock:successCallback withResolver:resolver];
             } else {
                 resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
             }
@@ -211,15 +187,28 @@ static AFHTTPRequestOperationManager *NETWORK_MANAGER = nil;
             [retryHandler requestSucceed:request];
             resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
         }
-    }];
-    [NETWORK_MANAGER.operationQueue addOperation:op];
-}
-
-+ (NSData*)serialiseDictionaryToData:(NSDictionary*)dict
-{
-    NSError *error = nil;
-    NSData *json = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-    return json;
+    };
+    
+    switch (method) {
+        case HEAD:
+            [networkManager HEAD:finalUrl parameters:entity success:httpHeadSuccess failure:httpFailure];
+            break;
+        case GET:
+            [networkManager GET:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
+            break;
+        case DELETE:
+            [networkManager DELETE:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
+            break;
+        case PUT:
+            [networkManager PUT:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
+            break;
+        case POST:
+            [networkManager POST:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
+            break;
+        case PATCH:
+            [networkManager PATCH:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
+            break;
+    }
 }
 
 + (NSError*)createNewHttpError:(NSError*)error andStatusCode:(NSInteger) statusCode
