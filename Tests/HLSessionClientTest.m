@@ -20,14 +20,6 @@
 #import "HLHttpClient.h"
 #import "HLClient.h"
 #import "HLSessionClient.h"
-#import "HLPing.h"
-#import "HLGamer.h"
-#import "HLAchievement.h"
-#import "HLLeaderboard.h"
-#import "HLLeaderboardRank.h"
-#import "HLMatch.h"
-#import "HLMatchTurn.h"
-#import "HLMessage.h"
 
 @interface HLSessionClientTest : XCTestCase
 @end
@@ -38,8 +30,8 @@
     void (^errorHandler)(NSError *error);
 }
 HLSessionClient* session;
-HLMatch* match;
 HLGamer* gamer;
+HLMatch* match;
 NSInteger nextTurnNumber;
 NSNumber* totalMessages;
 NSString* messageId;
@@ -57,6 +49,7 @@ id matchTurnData = @"MatchTurnData";
 id productId = @"some.purchased.product.id";
 id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
+id sharedStorageKey = @"HeroicSharedKey";
 
 + (void)setUp {
     [Expecta setAsynchronousTestTimeout:10];
@@ -186,7 +179,7 @@ id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
 }
 
 - (void)testLeaderboard_2_AndRank {
-    [session getLeaderboardAndRankWithId:gameLeaderboardId].then(^(HLLeaderboard* leaderboard, HLLeaderboardRank* rank) {
+    [session getLeaderboardAndRankWithId:gameLeaderboardId limit:@10 offset:@0 includingScoretags:YES].then(^(HLLeaderboard* leaderboard, HLLeaderboardRank* rank) {
         expect(leaderboard).toNot.beNil();
         expect(rank).toNot.beNil();
         expect([[leaderboard entries] count]).to.beGreaterThanOrEqualTo(1);
@@ -197,7 +190,7 @@ id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
     }).catch(errorHandler).finally(^() {
         [expectation fulfill];
     });
-    [self waitForExpectationsWithTimeout:30 handler:nil];
+    [self waitForExpectationsWithTimeout:300 handler:nil];
 }
 
 - (void)testMatch_1_Create {
@@ -289,7 +282,7 @@ id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
     }).then(^(NSArray* messages) {
         expect([messages count]).to.beGreaterThan(0);
         messageId = [messages[0] messageId];
-        totalMessages = [NSNumber numberWithInt:[messages count]];
+        totalMessages = @([messages count]);
     }).catch(^(NSError* error) {
         [self checkError:error];
     }).finally(^{
@@ -326,7 +319,7 @@ id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
         return [session getMessagesWithBody:NO];
     }).then(^(NSArray* messages) {
         expect([messages count]).to.beGreaterThan(0);
-        numberOfMessages = [NSNumber numberWithInt:[messages count]];
+        numberOfMessages = @([messages count]);
         return [session getMessageWithId:[messages[0] messageId] withBody:YES];
     }).then(^(HLMessage* message) {
         expect([[message tags] count]).to.beGreaterThan(0);
@@ -348,6 +341,33 @@ id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
     });
     
     [self waitForExpectationsWithTimeout:30 handler:nil];
+}
+
+- (void)test_SharedStorage_1_Put {
+    id data = @{@"sharedKey": @"sharedValue"};
+    [self checkPromise:[session storeSharedData:data withKey:sharedStorageKey] withErrorBlock:errorHandler];
+}
+
+- (void)test_SharedStorage_2_PartialUpdate {
+    id data = @{@"sharedKey": @"sharedValueUpdated"};
+    [self checkPromise:[session partialUpdateSharedData:data withKey:sharedStorageKey] withErrorBlock:errorHandler];
+}
+
+- (void)test_SharedStorage_3_Get {
+    id data = @{@"sharedKey": @"sharedValueUpdated"};
+    [self checkPromise:[session getSharedDataWithKey:sharedStorageKey] withBlock:(^(HLSharedStorageObject* sharedData){
+        expect([sharedData publicData]).to.beSupersetOf(data);
+    }) withErrorBlock:errorHandler];
+}
+
+- (void)test_SharedStorage_4_Search {
+    id data = @{@"sharedKey": @"sharedValueUpdated"};
+    [self checkPromise:[session searchSharedStorageWithQuery:@"*" andFilter:nil sort:nil limit:@10 offset:@0] withBlock:(^(HLSharedStorageSearchResults* sharedData){
+        expect([sharedData totalCount]).to.equal(1);
+        expect([sharedData count]).to.equal(1);
+        expect([[sharedData results] count]).to.equal(1);
+        expect([[sharedData results][0] publicData]).to.beSupersetOf(data);
+    }) withErrorBlock:errorHandler];
 }
 
 @end

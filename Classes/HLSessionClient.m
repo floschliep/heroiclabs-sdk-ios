@@ -16,18 +16,6 @@
 
 #import "HLSessionClient.h"
 #import "HLHttpClient.h"
-#import "HLRequestRetryHandlerProtocol.h"
-#import "HLPing.h"
-#import "HLServer.h"
-#import "HLGame.h"
-#import "HLGamer.h"
-#import "HLAchievement.h"
-#import "HLLeaderboard.h"
-#import "HLLeaderboardRank.h"
-#import "HLMatch.h"
-#import "HLMatchTurn.h"
-#import "HLPurchaseVerification.h"
-#import "HLMessage.h"
 
 @implementation HLSessionClient
 {
@@ -84,7 +72,7 @@
 {
     return [self sendApiRequest:@"/v0/"
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    resolver([[HLPing alloc] initWithDictionary:data]);
                }];
@@ -94,7 +82,7 @@
 {
     return [self sendApiRequest:@"/v0/gamer/"
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    resolver([[HLGamer alloc] initWithDictionary:data]);
                }];
@@ -117,7 +105,7 @@
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/storage/%@",key];
     return [self sendApiRequest:endpoint
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    NSString* jsonString = [data objectForKey:@"value"];
                    NSData *encData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
@@ -139,14 +127,14 @@
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/storage/%@",key];
     return [self sendApiRequest:endpoint
                      withMethod:DELETE
-                     withEntity:@""];
+                     withEntity:nil];
 }
 
 -(PMKPromise*)getAchievements
 {
     return [self sendApiRequest:@"/v0/gamer/achievement/"
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    NSMutableArray* result = [[NSMutableArray alloc] init];
                    
@@ -184,13 +172,36 @@
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/leaderboard/%@",leaderboardId];
     return [self sendApiRequest:endpoint
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    resolver(PMKManifold(
                                         [[HLLeaderboard alloc] initWithDictionary:[data objectForKey:@"leaderboard"]],
                                         [[HLLeaderboardRank alloc] initWithDictionary:[data objectForKey:@"rank"]])
                             );
                }];
+}
+
+-(PMKPromise*)getLeaderboardAndRankWithId:(NSString*)leaderboardId
+                                    limit:(NSNumber*)limit
+                                   offset:(NSNumber*)offset
+                       includingScoretags:(BOOL)withScoretags
+{
+    NSString * booleanString = (withScoretags) ? @"true" : @"false";
+    NSString * autoOffset = (offset < 0) ? @"true" : @"false";
+    
+    id query = [[NSString stringWithFormat:@"offset=%@&limit=%@&auto_offset=%@&with_scoretags=%@",offset, limit, autoOffset, booleanString] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+    
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/leaderboard/%@/?%@", leaderboardId, query];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver(PMKManifold(
+                                        [[HLLeaderboard alloc] initWithDictionary:[data objectForKey:@"leaderboard"]],
+                                        [[HLLeaderboardRank alloc] initWithDictionary:[data objectForKey:@"rank"]])
+                            );
+               }];
+
 }
 
 -(PMKPromise*)updateRankWithId:(NSString*)leaderboardId withScore:(NSNumber*)score
@@ -221,7 +232,7 @@
 {
     return [self sendApiRequest:@"/v0/gamer/match/"
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    id result = [[NSMutableArray alloc] init];
                    for (id turn in [data objectForKey:@"matches"]) {
@@ -235,7 +246,7 @@
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/match/%@",matchId];
     return [self sendApiRequest:endpoint
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    resolver([[HLMatch alloc] initWithDictionary:data]);
                }];
@@ -245,7 +256,7 @@
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/match/%@/turn/%@", matchId, [turnNumber stringValue]];
     return [self sendApiRequest:endpoint
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    id result = [[NSMutableArray alloc] init];
                    for (id turn in [data objectForKey:@"turns"]) {
@@ -299,7 +310,6 @@
 {
     NSString* trimmedDeviceToken = [[inDeviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     NSString* parsedDeviceToken = [[trimmedDeviceToken componentsSeparatedByString:@" "] componentsJoinedByString:@""];
-    NSLog(@"didRegisterForRemoteNotifications device token %@", parsedDeviceToken);
     
     id payload = @{
                    @"platform":@"ios",
@@ -347,10 +357,13 @@
 - (PMKPromise*)getMessagesWithBody:(BOOL)body newerSince:(NSNumber*)utcMilliTimestamp
 {
     NSString * booleanString = (body) ? @"true" : @"false";
-    id endpoint = [NSString stringWithFormat:@"/v0/gamer/message/?with_body=%@&since=%@",booleanString, utcMilliTimestamp];
+    
+    id query = [[NSString stringWithFormat:@"with_body=%@&since=%@", booleanString, utcMilliTimestamp] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+    
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/message/?%@", query];
     return [self sendApiRequest:endpoint
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    id result = [[NSMutableArray alloc] init];
                    for (id message in [data objectForKey:@"messages"]) {
@@ -364,10 +377,13 @@
 - (PMKPromise*)getMessageWithId:(NSString*)messageId withBody:(BOOL)body
 {
     NSString * booleanString = (body) ? @"true" : @"false";
-    id endpoint = [NSString stringWithFormat:@"/v0/gamer/message/%@/?with_body=%@", messageId, booleanString];
+    
+    id query = [[NSString stringWithFormat:@"with_body=%@", booleanString] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+    
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/message/%@/?%@", messageId, query];
     return [self sendApiRequest:endpoint
                      withMethod:GET
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    resolver([[HLMessage alloc] initWithDictionary:data]);
                }];
@@ -378,9 +394,88 @@
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/message/%@", messageId];
     return [self sendApiRequest:endpoint
                      withMethod:DELETE
-                     withEntity:@""
+                     withEntity:nil
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    resolver(data);
+               }];
+}
+
+
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery
+{
+    return [self searchSharedStorageWithQuery:luceneQuery andFilter:nil sort:nil limit:@10 offset:@0];
+}
+
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key
+{
+    return [self searchSharedStorageWithQuery:luceneQuery andFilter:key sort:nil limit:@10 offset:@0];
+}
+
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey
+{
+    return [self searchSharedStorageWithQuery:luceneQuery andFilter:key sort:sortKey limit:@10 offset:@0];
+}
+
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey limit:(NSNumber*)limit
+{
+    return [self searchSharedStorageWithQuery:luceneQuery andFilter:key sort:sortKey limit:limit offset:@0];
+}
+
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset
+{
+    
+    id optionalParams = [NSMutableString stringWithString:@""];
+    if (key) {
+        [optionalParams appendFormat:@"filter_key=%@", key];
+    }
+    if (key && sortKey) {
+        [optionalParams appendString:@"&"];
+    }
+    if (sortKey) {
+        [optionalParams appendFormat:@"sort=%@", sortKey];
+    }
+    
+    id query = [[NSString stringWithFormat:@"query=%@&limit=%@&offset=%@&%@", luceneQuery, limit, offset, optionalParams] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/?%@", query];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver([[HLSharedStorageSearchResults alloc] initWithDictionary:data]);
+               }];
+}
+
+- (PMKPromise*)getSharedDataWithKey:(NSString*)key
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/%@", key];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver([[HLSharedStorageObject alloc] initWithDictionary:data]);
+               }];
+}
+
+- (PMKPromise*)storeSharedData:(NSDictionary*)data withKey:(NSString*)key
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/%@/public", key];
+    return [self sendApiRequest:endpoint
+                     withMethod:PUT
+                     withEntity:data
+               withSuccessBlock:^(NSNumber* statusCode, id result, PMKResolver resolver) {
+                   resolver(result);
+               }];
+}
+
+- (PMKPromise*)partialUpdateSharedData:(NSDictionary*)data withKey:(NSString*)key
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/%@/public", key];
+    return [self sendApiRequest:endpoint
+                     withMethod:PATCH
+                     withEntity:data
+               withSuccessBlock:^(NSNumber* statusCode, id result, PMKResolver resolver) {
+                   resolver(result);
                }];
 }
 

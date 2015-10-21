@@ -15,15 +15,7 @@
  */
 
 #import "HLClient.h"
-#import "HLSessionClient.h"
 #import "HLHttpClient.h"
-#import "HLDefaultRequestRetryHandler.h"
-#import "HLPing.h"
-#import "HLServer.h"
-#import "HLGame.h"
-#import "HLAchievement.h"
-#import "HLLeaderboard.h"
-#import "HLLeaderboardRank.h"
 
 @implementation HLClient
 id<HLRequestRetryHandlerProtocol> retryHandler;
@@ -57,7 +49,7 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLClient sendApiRequest:@"/v0/"
                          withMethod:GET
-                         withEntity:@""
+                         withEntity:nil
                    withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                        resolver([[HLPing alloc] initWithDictionary:data]);
                    }];
@@ -67,7 +59,7 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLClient sendApiRequest:@"/v0/server/"
                          withMethod:GET
-                         withEntity:@""
+                         withEntity:nil
                    withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                        resolver([[HLServer alloc] initWithDictionary:data]);
                    }];
@@ -77,7 +69,7 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLClient sendApiRequest:@"/v0/game/"
                          withMethod:GET
-                         withEntity:@""
+                         withEntity:nil
                    withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                        resolver([[HLGame alloc] initWithDictionary:data]);
                    }];
@@ -87,7 +79,7 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLClient sendApiRequest:@"/v0/game/achievement/"
                          withMethod:GET
-                         withEntity:@""
+                         withEntity:nil
                    withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                        NSMutableArray* result = [[NSMutableArray alloc] init];
                        
@@ -104,7 +96,7 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLClient sendApiRequest:@"/v0/game/leaderboard/"
                          withMethod:GET
-                         withEntity:@""
+                         withEntity:nil
                    withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                        id result = [[NSMutableArray alloc] init];
                        for (id leaderboard in [data objectForKey:@"leaderboards"]) {
@@ -119,7 +111,23 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
     id endpoint = [NSString stringWithFormat:@"/v0/game/leaderboard/%@",leaderboardId];
     return [HLClient sendApiRequest:endpoint
                          withMethod:GET
-                         withEntity:@""
+                         withEntity:nil
+                   withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                       resolver([[HLLeaderboard alloc] initWithDictionary:data]);
+                   }];
+}
+
++(PMKPromise*)getLeaderboardWithId:(NSString*)leaderboardId
+                             limit:(NSNumber*)limit
+                            offset:(NSNumber*)offset
+                includingScoretags:(BOOL)withScoretags
+{
+    NSString * booleanString = (withScoretags) ? @"true" : @"false";
+    id query = [[NSString stringWithFormat:@"offset=%@&limit=%@&with_scoretags=%@", offset, limit, booleanString] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+    id endpoint = [NSString stringWithFormat:@"/v0/game/leaderboard/%@/?%@",leaderboardId, query];
+    return [HLClient sendApiRequest:endpoint
+                         withMethod:GET
+                         withEntity:nil
                    withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                        resolver([[HLLeaderboard alloc] initWithDictionary:data]);
                    }];
@@ -215,13 +223,25 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 }
 +(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andLink:(HLSessionClient*)session
 {
+    return [HLClient createAccountWithEmail:email andPassword:password andConfirm:passwordConfirmation andName:name andNickname:nil andLink:session];
+}
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andNickname:(NSString*) nickname
+{
+    return [HLClient createAccountWithEmail:email andPassword:password andConfirm:passwordConfirmation andName:name andNickname:nickname andLink:nil];
+}
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andNickname:(NSString*)nickname andLink:(HLSessionClient*)session
+{
     id entity = @{@"email" : email,
                   @"password" : password,
                   @"confirm_password" : passwordConfirmation};
     
+
+    entity = [[NSMutableDictionary alloc] initWithDictionary:entity];
     if (name != nil) {
-        entity = [[NSMutableDictionary alloc] initWithDictionary:entity];
         [entity setObject:name forKey:@"name"];
+    }
+    if (nickname != nil) {
+        [entity setObject:nickname forKey:@"nickname"];
     }
     
     id token = @"";
@@ -236,6 +256,7 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
                                         entity:entity
                                   retryHandler:retryHandler
                                   successBlock:successLoginBlock];
+    
 }
 
 +(PMKPromise*)sendLoginReset:(NSString*)email

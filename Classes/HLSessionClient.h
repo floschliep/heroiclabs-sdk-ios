@@ -17,6 +17,18 @@
 #import <Foundation/Foundation.h>
 #import <PromiseKit/Promise.h>
 #import "HLRequestRetryHandlerProtocol.h"
+#import "HLPing.h"
+#import "HLServer.h"
+#import "HLGame.h"
+#import "HLGamer.h"
+#import "HLAchievement.h"
+#import "HLLeaderboard.h"
+#import "HLLeaderboardRank.h"
+#import "HLMatch.h"
+#import "HLMatchTurn.h"
+#import "HLPurchaseVerification.h"
+#import "HLMessage.h"
+#import "HLSharedStorageSearchResults.h"
 
 /**
  Represents interface for interacting with the Heroic Labs service with a gamer token
@@ -107,6 +119,17 @@
 -(PMKPromise*)getLeaderboardAndRankWithId:(id)leaderboardId;
 
 /**
+ Get the metadata including leaderboard enteries for given leaderboard.
+ This also retrieves the current gamer's leaderboard standing
+ 
+ @param leaderboardId The Leadeboard ID to use.
+ @param limit Number of entries to return. Integer between 10 and 50 inclusive.
+ @param offset Starting point to return ranking. Must be positive, if negative it is treated as an "auto offset".
+ @param withScoretags Whether to retrieve scoretags or not.
+ */
+-(PMKPromise*)getLeaderboardAndRankWithId:(NSString*)leaderboardId limit:(NSNumber*)limit offset:(NSNumber*)offset includingScoretags:(BOOL)withScoretags;
+
+/**
  Update the gamer's stand in the leaderboard with a new score leaving scoretags untouched.
  
  @param leaderboardId Leaderboard ID to be updated.
@@ -163,7 +186,6 @@
  @param matchId The match identifier
  */
 -(PMKPromise*)endMatchWithId:(NSString*)matchId;
-
 
 /**
  Leave match. This will only work if it's NOT the current gamer's turn.
@@ -225,6 +247,73 @@
  */
 - (PMKPromise*)deleteMessageWithId:(NSString*)messageId;
 
+/**
+ Get data in Shared Storage matching the query.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ */
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery;
 
+/**
+ Get data in Shared Storage matching the query.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ @param key Key name to restrict searches to. Only results among those keys will be returned. Can be null.
+ */
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key;
+
+/**
+ Get data in Shared Storage matching the query.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ @param key Key name to restrict searches to. Only results among those keys will be returned. Can be null.
+ @param sortKey Lucene-like sort clauses used to order search results. Can be null.
+ */
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey;
+
+/**
+ Get data in Shared Storage matching the query.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ @param key Key name to restrict searches to. Only results among those keys will be returned. Can be null.
+ @param sortKey Lucene-like sort clauses used to order search results. Can be null.
+ @param limit Maximum number of results to return.
+ */
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey limit:(NSNumber*)limit;
+
+/**
+ Get data in Shared Storage matching the query. Use this to paginate the results.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ @param key Key name to restrict searches to. Only results among those keys will be returned. Can be null.
+ @param sortKey Lucene-like sort clauses used to order search results. Can be null.
+ @param limit Maximum number of results to return.
+ @param offset Starting position of the result.
+ */
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset;
+
+/**
+ Get data in SharedStorage matching the given key.
+ 
+ @param key Data in shared storage in the given key. Alphanumeric characters only.
+ */
+- (PMKPromise*)getSharedDataWithKey:(NSString*)key;
+
+/**
+ Get data in SharedStorage matching the given key.
+ 
+ @param key Data in shared storage in the given key. Alphanumeric characters only.
+ */
+- (PMKPromise*)storeSharedData:(NSDictionary*)data withKey:(NSString*)key;
+
+/**
+ Partially update data in SharedStorage for the given key.
+ - If data doesn't exist, it will be added
+ - If data exists, then the matching portion will be overwritten
+ - If data exists, but new data is 'null' then the matching portion will be erased.
+ 
+ @param key Data in shared storage in the given key. Alphanumeric characters only.
+ */
+- (PMKPromise*)partialUpdateSharedData:(NSDictionary*)data withKey:(NSString*)key;
 
 @end

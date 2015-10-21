@@ -18,6 +18,13 @@
 #import <PromiseKit/Promise.h>
 #import "HLSessionClient.h"
 #import "HLRequestRetryHandlerProtocol.h"
+#import "HLDefaultRequestRetryHandler.h"
+#import "HLPing.h"
+#import "HLServer.h"
+#import "HLGame.h"
+#import "HLAchievement.h"
+#import "HLLeaderboard.h"
+#import "HLLeaderboardRank.h"
 
 /**
  Represents interface for interacting with the Heroic Labs service
@@ -82,6 +89,16 @@
  @param leaderboardId The Leadeboard ID to use.
  */
 +(PMKPromise*)getLeaderboardWithId:(NSString*)leaderboardId;
+
+/**
+ Get the metadata including leaderboard enteries for given leaderboard.
+ 
+ @param leaderboardId The Leadeboard ID to use.
+ @param limit Number of entries to return. Default is 50.
+ @param offset Entries to start from with the leaderboard list. Default is 0.
+ @param withScoretags Include Scoretags in the leaderboard entries.
+ */
++(PMKPromise*)getLeaderboardWithId:(NSString*)leaderboardId limit:(NSNumber*)limit offset:(NSNumber*)offset includingScoretags:(BOOL)withScoretags;
 
 /**
  Perform an anonymous login
@@ -167,6 +184,29 @@
  if possible, data will be migrated from the given account to the new one.
  */
 +(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andLink:(HLSessionClient*)session;
+
+/**
+ Creates a new Heroic Labs account with the supplied info.
+ @param email Email to login to Heroic Labs.
+ @param password Password of the account.
+ @param passwordConfirmation Password of the account.
+ @param name Name of the gamer.
+ @param nickname Nickname of the gamer. Can be nil.
+ */
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andNickname:(NSString*) nickname;
+
+/**
+ Creates a new Heroic Labs account with the supplied info.
+ @param email Email to login to Heroic Labs.
+ @param password Password of the account.
+ @param passwordConfirmation Password of the account.
+ @param name Name of the gamer.
+ @param nickname Nickname of the gamer. Can be nil.
+ @param session A session pointing to an existing account, on
+ successful login the profile will be bound to this same account
+ if possible, data will be migrated from the given account to the new one.
+ */
++(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation andName:(NSString*)name andNickname:(NSString*)nickname andLink:(HLSessionClient*)session;
 
 /**
  Sends a password reset email to the gamer with a token to reset the password.
