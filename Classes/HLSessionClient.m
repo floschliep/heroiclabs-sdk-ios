@@ -282,9 +282,18 @@
 
 -(PMKPromise*)createMatchFor:(NSNumber*)requiredGamers
 {
+    return [self createMatchFor:requiredGamers withFilters:nil];
+}
+
+-(PMKPromise*)createMatchFor:(NSNumber*)requiredGamers withFilters:(NSArray*)matchFilters;
+{
+    id entity = @{@"players": requiredGamers};
+    if (matchFilters != nil) {
+        entity = @{@"players": requiredGamers, @"filters": matchFilters};
+    }
     return [self sendApiRequest:@"/v0/gamer/match/"
                      withMethod:POST
-                     withEntity:@{@"players": requiredGamers}
+                     withEntity:entity
                withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
                    resolver([[HLMatch alloc] initWithDictionary:data]);
                }];

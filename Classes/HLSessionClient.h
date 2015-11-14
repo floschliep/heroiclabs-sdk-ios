@@ -182,6 +182,15 @@
 -(PMKPromise*)createMatchFor:(NSNumber*)requiredGamers;
 
 /**
+ Request a new match with players of the same match type. 
+ If there are not enough waiting gamers, the current gamer will be added to the queue instead.
+ 
+ @param requiredGamers The minimal required number of gamers needed to create a new match
+ @param matchFilters String array to filter on matches to create or join. Exact strings matching only. Up to 8 filters. Recommended to use values such as "[team,rank=7]" for team-based matches with players with ranks equal to 7.
+ */
+-(PMKPromise*)createMatchFor:(NSNumber*)requiredGamers withFilters:(NSArray*)matchFilters;
+
+/**
  End match. This will only work if it's the current gamer's turn.
  @param matchId The match identifier
  */

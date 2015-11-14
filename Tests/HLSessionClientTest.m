@@ -194,9 +194,10 @@ id sharedStorageKey = @"HeroicSharedKey";
 }
 
 - (void)testMatch_1_Create {
+    id matchFilters = @[@"device=ios", @"player=tag"];
     [HLClient loginAnonymouslyWith:anonId].then(^(id anonSession) {
-        [anonSession createMatchFor:[NSNumber numberWithInt:2]].then(^(id data) {
-            [session createMatchFor:[NSNumber numberWithInt:2]].then(^(HLMatch* newMatch) {
+        [anonSession createMatchFor:[NSNumber numberWithInt:2] withFilters:matchFilters].then(^(id data) {
+            [session createMatchFor:[NSNumber numberWithInt:2] withFilters:matchFilters].then(^(HLMatch* newMatch) {
                 match = newMatch;
             }).catch(errorHandler).finally(^() {
                 [expectation fulfill];
