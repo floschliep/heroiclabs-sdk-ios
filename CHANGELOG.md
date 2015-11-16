@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.3.1
+
+* Add support for multiplayer match filters
+
 ### v0.3.0
 
 * Add support for Mailboxes
