@@ -107,6 +107,22 @@
 +(PMKPromise*)loginAnonymouslyWith:(NSString*)deviceId;
 
 /**
+ Perform Login with a Heroic Labs Account.
+ @param email Email to login to Heroic Labs.
+ @param password Password of the account.
+ */
++(PMKPromise*)loginWithEmail:(NSString*)email andPassword:(NSString*)password;
+
+/**
+ Creates a new Heroic Labs account with the supplied info.
+ @param email Email to login to Heroic Labs.
+ @param password Password of the account.
+ @param session A session pointing to an existing account, on
+ successful login the profile will be bound to this same account.
+ */
++(PMKPromise*)loginWithEmail:(NSString*)email andPassword:(NSString*)password andLink:(HLSessionClient*)session DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use explicit link method");
+
+/**
  Perform OAuth passthrough login for Facebook.
  @param accessToken The Facebook access token to send to Heroic Labs.
  */
@@ -117,11 +133,9 @@
  @param accessToken The Facebook access token to send to Heroic Labs.
  @param session A session pointing to an existing account, on
  successful login the new social profile will be
- bound to this same account if possible, data will
- be migrated from the given account to the new one
- otherwise.
+ bound to this same account.
  */
-+(PMKPromise*)loginWithFacebook:(NSString*)accessToken andLink:(HLSessionClient*)session;
++(PMKPromise*)loginWithFacebook:(NSString*)accessToken andLink:(HLSessionClient*)session DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use explicit link method");;
 
 /**
  Perform OAuth passthrough login for Google.
@@ -134,27 +148,18 @@
  @param accessToken The Google access token to send to Heroic Labs.
  @param session A session pointing to an existing account, on
  successful login the new social profile will be
- bound to this same account if possible, data will
- be migrated from the given account to the new one
+ bound to this same account.
  */
-+(PMKPromise*)loginWithGoogle:(NSString*)accessToken andLink:(HLSessionClient*)session;
++(PMKPromise*)loginWithGoogle:(NSString*)accessToken andLink:(HLSessionClient*)session DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use explicit link method");
 
 /**
- Perform Login with a Heroic Labs Account.
- @param email Email to login to Heroic Labs.
- @param password Password of the account.
- */
-+(PMKPromise*)loginWithEmail:(NSString*)email andPassword:(NSString*)password;
-
-/**
- Creates a new Heroic Labs account with the supplied info.
- @param email Email to login to Heroic Labs.
- @param password Password of the account.
+ Perform OAuth passthrough login for Tango. You need prior authentication with Tango.
+ @param accessToken The Tango access token to send to Heroic Labs.
  @param session A session pointing to an existing account, on
- successful login the profile will be bound to this same account
- if possible, data will be migrated from the given account to the new one.
+ successful login the new social profile will be
+ bound to this same account.
  */
-+(PMKPromise*)loginWithEmail:(NSString*)email andPassword:(NSString*)password andLink:(HLSessionClient*)session;
++(PMKPromise*)loginWithTango:(NSString*)accessToken;
 
 /**
  Creates a new Heroic Labs account with the supplied info.
@@ -213,5 +218,143 @@
  @param email Email used to login to Heroic Labs.
  */
 +(PMKPromise*)sendLoginReset:(NSString*)email;
+
+/**
+ Links the givens session with an anonymous Id, resulting in the ability of future logins to the same account from multiple anonymous Ids
+ @param session Current session to link to.
+ @param anonymousId New Id to associate to the given session
+ */
++(PMKPromise*)linkSession:(HLSessionClient*)session withAnonymousId:(NSString*)anonymousId;
+
+/**
+ Links the givens session with an Facebook Account, resulting in the ability of future logins to the same account from multiple Facebook Accounts
+ @param session Current session to link to.
+ @param accessToken Facebook Account to associate to the given session.
+ */
++(PMKPromise*)linkSession:(HLSessionClient*)session withFacebookProfile:(NSString*)accessToken;
+
+/**
+ Links the givens session with an Google Account, resulting in the ability of future logins to the same account from multiple Google Accounts
+ @param session Current session to link to.
+ @param accessToken Google Account to associate to the given session.
+ */
++(PMKPromise*)linkSession:(HLSessionClient*)session withGoogleAccount:(NSString*)accessToken;
+
+/**
+ Links the givens session with an Tango Account, resulting in the ability of future logins to the same account from multiple Tango Accounts
+ @param session Current session to link to.
+ @param accessToken Tango Account to associate to the given session.
+ */
++(PMKPromise*)linkSession:(HLSessionClient*)session withTangoAccount:(NSString*)accessToken;
+
+/**
+ Unlink the givens session from an existing Anonymous ID.
+ @param session Current session to link to.
+ @param anonymousId Anonymous ID to unlink from this account.
+ */
++(PMKPromise*)unlinkSession:(HLSessionClient*)session fromAnonymousId:(NSString*)anonymousId;
+
+/**
+ Unlink the givens session from an existing Email Address.
+ @param session Current session to link to.
+ @param emailAddress Email Address to unlink from this account.
+ */
++(PMKPromise*)unlinkSession:(HLSessionClient*)session fromEmail:(NSString*)emailAddress;
+
+/**
+ Unlink the givens session from an existing Facebook Account.
+ @param session Current session to link to.
+ @param facebookProfileId Facebook Account to unlink from this account.
+ */
++(PMKPromise*)unlinkSession:(HLSessionClient*)session fromFacebookProfile:(NSString*)facebookProfileId;
+
+/**
+ Unlink the givens session from an existing Google Account.
+ @param session Current session to link to.
+ @param googleAccountId Google Account to unlink from this account.
+ */
++(PMKPromise*)unlinkSession:(HLSessionClient*)session fromGoogleAccount:(NSString*)googleAccountId;
+
+/**
+ Unlink the givens session from an existing Tango Account.
+ @param session Current session to link to.
+ @param tangoAccountId Tango Account to unlink from this account.
+ */
++(PMKPromise*)unlinkSession:(HLSessionClient*)session fromTangoAccount:(NSString*)tangoAccountId;
+
+/**
+ Checks to see if the givens Anonymous ID exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param anonymousId Anonymous ID to check.
+ */
++(PMKPromise*)checkAnonymousId:(NSString*)anonymousId;
+
+/**
+ Checks to see if the givens Email Address exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param emailAddress Email Address to check.
+ */
++(PMKPromise*)checkEmail:(NSString*)emailAddress;
+
+/**
+ Checks to see if the givens Facebook Profile exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param facebookProfileId Facebook Profile to check.
+ */
++(PMKPromise*)checkFacebookProfileId:(NSString*)facebookProfileId;
+
+/**
+ Checks to see if the givens Google Account exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param googleAccountId Google Account to check.
+ */
++(PMKPromise*)checkGoogleAccountId:(NSString*)googleAccountId;
+
+/**
+ Checks to see if the givens Tango Account exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param tangoId Tango Account to check.
+ */
++(PMKPromise*)checkTangoId:(NSString*)tangoId;
+
+/**
+ Checks to see if the givens Anonymous ID exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param anonymousId Anonymous ID to check.
+ @param session Session to additionally check against.
+ */
++(PMKPromise*)checkAnonymousId:(NSString*)anonymousId withSession:(HLSessionClient*) session;
+
+/**
+ Checks to see if the givens Email Address exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param emailAddress Email Address to check.
+ @param session Session to additionally check against.
+ */
++(PMKPromise*)checkEmail:(NSString*)emailAddress withSession:(HLSessionClient*) session;
+
+/**
+ Checks to see if the givens Facebook Profile exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param facebookProfileId Facebook Profile to check.
+ @param session Session to additionally check against.
+ */
++(PMKPromise*)checkFacebookProfileId:(NSString*)facebookProfileId withSession:(HLSessionClient*) session;
+
+/**
+ Checks to see if the givens Google Account exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param googleAccountId Google Account to check.
+ @param session Session to additionally check against.
+ */
++(PMKPromise*)checkGoogleAccountId:(NSString*)googleAccountId withSession:(HLSessionClient*) session;
+
+/**
+ Checks to see if the givens Tango Account exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param tangoId Tango Account to check.
+ @param session Session to additionally check against.
+ */
++(PMKPromise*)checkTangoId:(NSString*)tangoId withSession:(HLSessionClient*) session;
 
 @end

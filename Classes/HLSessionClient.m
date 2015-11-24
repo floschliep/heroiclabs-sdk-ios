@@ -80,12 +80,15 @@
 
 - (PMKPromise*)getGamerProfile
 {
-    return [self sendApiRequest:@"/v0/gamer/"
-                     withMethod:GET
-                     withEntity:nil
-               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
-                   resolver([[HLGamer alloc] initWithDictionary:data]);
-               }];
+    return [HLHttpClient sendAccountsRequestTo:@"/v0/gamer/"
+                                    withMethod:GET
+                                        apiKey:apiKey
+                                         token:token
+                                        entity:nil
+                                  retryHandler:retryHandler
+                                  successBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                                      resolver([[HLGamer alloc] initWithDictionary:data]);
+                                  }];
 }
 
 -(PMKPromise*)updateGamerProfile:(NSString*)nickname

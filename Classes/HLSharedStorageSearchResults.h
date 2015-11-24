@@ -20,6 +20,19 @@
 /**
  Represents shared storage data
  */
+@interface HLSharedStorageObject : NSObject <HLJSONSerialisableProtocol>
+
+/** Public portion of search result. */
+@property(readonly) NSDictionary* publicData;
+
+/** Protected portion of search result. */
+@property(readonly) NSDictionary* protectedData;
+
+@end
+
+/**
+ Represents shared storage results
+ */
 @interface HLSharedStorageSearchResults : NSObject <HLJSONSerialisableProtocol>
 
 /** The number of shared storage data returned as part of this response. */
@@ -29,16 +42,6 @@
 @property(readonly) NSNumber* totalCount;
 
 /** Retrieved search results of type HLSharedStorageObject */
-@property(readonly) NSArray* results;
-
-@end
-
-@interface HLSharedStorageObject : NSObject <HLJSONSerialisableProtocol>
-
-/** Public portion of search result. */
-@property(readonly) NSDictionary* publicData;
-
-/** Protected portion of search result. */
-@property(readonly) NSDictionary* protectedData;
+@property(readonly) NSArray<HLSharedStorageObject*>* results;
 
 @end

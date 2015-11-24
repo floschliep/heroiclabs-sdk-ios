@@ -39,7 +39,7 @@
 @property(readonly) NSString* turn;
 
 /** Nickname of all the gamers in the current match */
-@property(readonly) NSArray* gamers;
+@property(readonly) NSArray<NSString*>* gamers;
 
 /** When the match was created */
 @property(readonly) NSNumber* createdAt;

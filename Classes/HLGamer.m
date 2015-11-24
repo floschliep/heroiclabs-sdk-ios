@@ -16,21 +16,61 @@
 
 #import "HLGamer.h"
 
+@implementation HLGamerProfile
+- (id)initWithDictionary:(NSDictionary*) dictionary
+{
+    self = [super init];
+    if (self) {
+        _profileId = [dictionary objectForKey:@"id"];
+        _createdAt = [dictionary objectForKey:@"created_at"];
+        id type = [dictionary objectForKey:@"type"];
+        _type = _UNKNOWN;
+        if ([@"anonymous" isEqualToString:type]) {
+            _type = ANONYMOUS;
+        } else if ([@"email" isEqualToString:type]) {
+            _type = EMAIL;
+        } else if ([@"facebook" isEqualToString:type]) {
+            _type = FACEBOOK;
+        } else if ([@"google" isEqualToString:type]) {
+            _type = GOOGLE;
+        } else if ([@"tango" isEqualToString:type]) {
+            _type = TANGO;
+        }
+    }
+    return self;
+}
+@end
+
 @implementation HLGamer
 - (id)initWithDictionary:(NSDictionary*) dictionary
 {
     self = [super init];
     if (self) {
         _nickname = [dictionary objectForKey:@"nickname"];
+        _gamerId = [dictionary objectForKey:@"gamer_id"];
         _name = [dictionary objectForKey:@"name"];
         _timezone = [dictionary objectForKey:@"timezone"];
         _location = [dictionary objectForKey:@"location"];
+        _gender = [dictionary objectForKey:@"gender"];
+        _email = [dictionary objectForKey:@"email"];
         _createdAt = [dictionary objectForKey:@"created_at"];
+        _updatedAt = [dictionary objectForKey:@"updated_at"];
         
         if (_timezone == nil)
             _timezone = @"";
         if (_location == nil)
             _location = @"";
+        if (_name == nil)
+            _name = @"";
+        if (_gender == nil)
+            _gender = @"";
+        
+        NSMutableArray* profiles = [[NSMutableArray<HLGamerProfile*> alloc] init];
+        NSArray* dics = [dictionary objectForKey:@"profiles"];
+        for(NSDictionary* profile in dics) {
+            [profiles addObject:[[HLGamerProfile alloc] initWithDictionary:profile]];
+        }
+        _profiles = [[NSArray<HLGamerProfile*> alloc] initWithArray:profiles];
     }
     return self;
 }

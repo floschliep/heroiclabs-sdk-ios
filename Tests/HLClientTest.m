@@ -43,6 +43,9 @@ id leaderboardId = @"5141dd1c31354741967e77f409ce755e";
 id achievementId = @"ec6764eadd274b9298887de9f5da0a5e";
 id execScriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 
+id tempEmailSession = nil;
+id tempAnonId = nil;
+
 + (void)setUp {
     [Expecta setAsynchronousTestTimeout:10];
     NSString *path = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"local-config.plist"];
@@ -86,6 +89,15 @@ id execScriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
         expect(data).toNot.beNil();
         return data;
     }).then(testBlock).catch(errorBlock).finally(^() {
+        [expectation fulfill];
+    });
+    [self waitForExpectationsWithTimeout:30 handler:nil];
+}
+
+- (void)checkPromise:(PMKPromise*)promise
+      withErrorBlock:(void(^)(NSError *error))errorBlock
+{
+    promise.catch(errorBlock).finally(^() {
         [expectation fulfill];
     });
     [self waitForExpectationsWithTimeout:30 handler:nil];
@@ -166,22 +178,66 @@ id execScriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
     }) withErrorBlock:errorHandler];
 }
 
-- (void)testCreateHeroicLabsProfileWithoutSession {
+- (void)testAccount_1_CreateEmail {
     NSString * timestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
     id email = [NSMutableString stringWithString:@"iosdev+"];
     [email appendString:timestamp];
     [email appendString:@"@heroiclabs.com"];
     
+    tempAnonId = [NSString stringWithFormat:@"%@+%@",deviceId,timestamp];
+    
     [self checkPromise:[HLClient createAccountWithEmail:email andPassword:heroicPassword andConfirm:heroicPassword andName:heroicName] withBlock:(^(HLSessionClient* session) {
         expect([session getGamerToken]).toNot.beNil;
+        tempEmailSession = session;
     }) withErrorBlock:errorHandler];
+}
+
+- (void)testAccount_2_Link {
+    [self checkPromise:[HLClient linkSession:tempEmailSession withAnonymousId:tempAnonId] withErrorBlock:errorHandler];
+}
+
+- (void)testAccount_3_Check {
+    [HLClient checkAnonymousId:tempAnonId withSession:tempEmailSession].then(^(BOOL exists, BOOL currentGamer) {
+        expect(exists).to.beTruthy();
+        expect(currentGamer).to.beTruthy();
+    }).catch(errorHandler).finally(^() {
+        [expectation fulfill];
+    });
+    [self waitForExpectationsWithTimeout:30 handler:nil];
+}
+
+- (void)testAccount_4_Profiles {
+    [self checkPromise:[tempEmailSession getGamerProfile] withBlock:(^(HLGamer* data) {
+        expect([[data profiles] count]).to.equal(2);
+    }) withErrorBlock:errorHandler];
+
+}
+
+- (void)testAccount_5_Unlink {
+    [self checkPromise:[HLClient unlinkSession:tempEmailSession fromAnonymousId:tempAnonId] withErrorBlock:errorHandler];
+}
+
+- (void)testAccount_6_Check {
+    [HLClient checkAnonymousId:tempAnonId withSession:tempEmailSession].then(^(id exists, id currentGamer) {
+        expect(exists).to.beFalsy();
+        expect(currentGamer).to.beFalsy();
+    }).catch(errorHandler).finally(^() {
+        [expectation fulfill];
+    });
+    [self waitForExpectationsWithTimeout:30 handler:nil];
 }
 
 - (void)testLoginOrCreateHeroicLabsProfileWithSession {
     [HLClient loginAnonymouslyWith:deviceId].then(^(HLSessionClient* anonymousSession) {
-        [HLClient loginWithEmail:heroicEmail andPassword:heroicPassword andLink:anonymousSession].then(^(HLSessionClient* newSession) {
+        [HLClient loginWithEmail:heroicEmail andPassword:heroicPassword].then(^(HLSessionClient* newSession) {
             expect([newSession getGamerToken]).toNot.beNil;
-            [expectation fulfill];
+            
+            [HLClient linkSession:newSession withAnonymousId:deviceId].then(^{
+                [expectation fulfill];
+            }).catch(^(NSError* error) {
+                [self checkError:error];
+                [expectation fulfill];
+            });
         }).catch(^(NSError* error) {
             NSLog(@"Error Login in Heroic Labs Gamer: %@", [self convertErrorToString: error]);
             NSLog(@"Trying to create a new user");

@@ -97,7 +97,7 @@ typedef NS_ENUM(NSInteger, HLLeaderboardType)
 @property(readwrite) NSString* displayHint;
 
 /** Leaderboard tags */
-@property(readwrite) NSArray* tags;
+@property(readwrite) NSArray<NSString*>* tags;
 
 /** Leaderboard score limit */
 @property(readwrite) NSNumber* scoreLimit;
@@ -114,9 +114,7 @@ typedef NS_ENUM(NSInteger, HLLeaderboardType)
 /**
  * The top ranked gamers on this board, up to 50. Already sorted according
  * to the leaderboard sort settings.
- *
- * @warning array containing HLLeaderboardEntry objects
  */
-@property(readwrite) NSArray* entries;
+@property(readwrite) NSArray<HLLeaderboardEntry*>* entries;
 
 @end

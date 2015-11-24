@@ -26,7 +26,7 @@
 @property(readonly) NSString* messageId;
 
 /** Tags associated with this message */
-@property(readonly) NSArray* tags;
+@property(readonly) NSArray<NSString*>* tags;
 
 /** Subject of the message */
 @property(readonly) NSString* subject;

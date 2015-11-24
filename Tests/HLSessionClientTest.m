@@ -128,12 +128,15 @@ id sharedStorageKey = @"HeroicSharedKey";
     [self checkPromise:[session updateGamerProfile:gamerNickname] withErrorBlock:errorHandler];
 }
 
-- (void)testGamerProfile {
+- (void)testGamer {
     [self checkPromise:[session getGamerProfile] withBlock:(^(HLGamer* data) {
         gamer = data;
         expect([data name]).to.match(gamerName);
         expect([data nickname]).to.match(gamerNickname);
         expect([data createdAt]).to.beGreaterThan(0);
+        expect([data updatedAt]).to.beGreaterThan(0);
+        expect([data gamerId]).toNot.beNil();
+        expect([[data profiles] count]).to.beGreaterThan(0);
     }) withErrorBlock:errorHandler];
 }
 
@@ -190,7 +193,7 @@ id sharedStorageKey = @"HeroicSharedKey";
     }).catch(errorHandler).finally(^() {
         [expectation fulfill];
     });
-    [self waitForExpectationsWithTimeout:300 handler:nil];
+    [self waitForExpectationsWithTimeout:30 handler:nil];
 }
 
 - (void)testMatch_1_Create {
@@ -367,7 +370,7 @@ id sharedStorageKey = @"HeroicSharedKey";
         expect([sharedData totalCount]).to.equal(1);
         expect([sharedData count]).to.equal(1);
         expect([[sharedData results] count]).to.equal(1);
-        expect([[sharedData results][0] publicData]).to.beSupersetOf(data);
+        expect([[sharedData results][0] publicData]).to.equal(data);
     }) withErrorBlock:errorHandler];
 }
 
