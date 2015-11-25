@@ -31,7 +31,7 @@
 #import "HLMatchTurn.h"
 #import "HLPurchaseVerification.h"
 
-static NSString *const HEROICLABS_VERSION=@"0.3.1";
+static NSString *const HEROICLABS_VERSION=@"0.3.2";
 static NSString *const AFN_VERSION=@"AFN3.0.0-beta.1";
 
 static NSString *const USER_AGENT_NAME=@"heroiclabs-ios-sdk";
