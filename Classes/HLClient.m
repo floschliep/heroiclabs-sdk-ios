@@ -182,7 +182,7 @@ void (^successLoginBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
     }
     
     NSDictionary* entity = @{@"type" : provider, @"access_token": accessToken};
-    return [HLHttpClient sendAccountsRequestTo:@"v0/gamer/login/oauth2"
+    return [HLHttpClient sendAccountsRequestTo:@"/v0/gamer/login/oauth2/"
                                     withMethod:POST
                                         apiKey:apiKey
                                          token:token
