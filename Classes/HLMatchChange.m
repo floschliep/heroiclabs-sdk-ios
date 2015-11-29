@@ -14,20 +14,21 @@
  limitations under the License.
  */
 
-#import "HLMatchTurn.h"
+#import "HLMatchChange.h"
 
-@implementation HLMatchTurn
+@implementation HLMatchChange
 
 - (id)initWithDictionary:(NSDictionary*) dictionary
 {
     self = [super init];
     if (self) {
-        _type = [dictionary valueForKey:@"type"];
-        _turnNumber = [dictionary valueForKey:@"turn_number"];
-        _gamer = [dictionary valueForKey:@"gamer"];
-        _gamerId = [dictionary valueForKey:@"gamer_id"];
-        _data = [dictionary valueForKey:@"data"];
-        _createdAt = [dictionary valueForKey:@"created_at"];
+        _match = [[HLMatch alloc] initWithDictionary:dictionary];
+        
+        id result = [[NSMutableArray alloc] init];
+        for (id turn in [dictionary objectForKey:@"turns"]) {
+            [result addObject:[[HLMatchTurn alloc] initWithDictionary:turn]];
+        }
+        _changedTurns = [NSArray arrayWithArray:result];
     }
     return self;
 }

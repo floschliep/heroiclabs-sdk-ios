@@ -32,17 +32,29 @@
 /** Match ID */
 @property(readonly) NSString* matchId;
 
+/** Match Filters */
+@property(readonly) NSArray<NSString*>* filters;
+
 /** Current turn number */
 @property(readonly) NSNumber* turnCount;
 
 /** Name of gamer for the given turn */
-@property(readonly) NSString* turn;
+@property(readonly) NSString* turn DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use turnGamerId");
+
+/** Gamer ID for the given turn */
+@property(readonly) NSString* turnGamerId;
 
 /** Nickname of all the gamers in the current match */
-@property(readonly) NSArray<NSString*>* gamers;
+@property(readonly) NSArray<NSString*>* gamers DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use activeGamers");
+
+/** Map of Gamer Nickname to Gamer IDs */
+@property(readonly) NSDictionary* activeGamers;
 
 /** When the match was created */
 @property(readonly) NSNumber* createdAt;
+
+/** When the match was last updatedAt */
+@property(readonly) NSNumber* updatedAt;
 
 /** Checks to see if the match is still ongoing or has ended. */
 @property(readonly) BOOL active;

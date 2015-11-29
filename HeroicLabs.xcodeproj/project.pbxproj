@@ -21,6 +21,7 @@
 		CD34E7DE1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD34E7DD1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m */; };
 		CD34E7DF1A50AFC600A253E0 /* NSURLRequest+HLURLRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD34E7DC1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.h */; };
 		CD34E7E01A50AFE500A253E0 /* HLNoRequestRetryHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD34E7D91A50992D00A253E0 /* HLNoRequestRetryHandler.h */; };
+		CD3AB11D1C0BA44E0081FCC6 /* HLMatchChange.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDC81D691C0BA19400FB642C /* HLMatchChange.h */; };
 		CD3ECA791B123E1C0020DD1F /* HLSessionClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */; };
 		CD3ECA7B1B123E360020DD1F /* HLSessionClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */; };
 		CD52662F1BCE898C00C23093 /* local-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD52662E1BCE898C00C23093 /* local-config.plist */; };
@@ -43,6 +44,7 @@
 		CDAB30051BE006D4009077BE /* HLPurchaseVerification.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDDD98731B4CA2EF00CD56E6 /* HLPurchaseVerification.h */; };
 		CDAB30061BE006D6009077BE /* HLMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD6063141BC81619007D4F70 /* HLMessage.h */; };
 		CDAB30071BE006D9009077BE /* HLSharedStorageSearchResults.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDAB2FFF1BDFCCFA009077BE /* HLSharedStorageSearchResults.h */; };
+		CDC81D6C1C0BA41A00FB642C /* HLMatchChange.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */; };
 		CDCFE6F31AED2133006A20CB /* HLHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFE6F21AED2133006A20CB /* HLHttpClient.m */; };
 		CDCFE6F41AEDA430006A20CB /* HLHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDCFE6F11AED211C006A20CB /* HLHttpClient.h */; };
 		CDDD98751B4CA2FB00CD56E6 /* HLPurchaseVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDD98741B4CA2FB00CD56E6 /* HLPurchaseVerification.m */; };
@@ -84,6 +86,7 @@
 				CDCFE6F41AEDA430006A20CB /* HLHttpClient.h in Copy Files */,
 				CD3ECA7B1B123E360020DD1F /* HLSessionClient.h in Copy Files */,
 				CDAB30021BE00630009077BE /* HLMatch.h in Copy Files */,
+				CD3AB11D1C0BA44E0081FCC6 /* HLMatchChange.h in Copy Files */,
 				CDAB30031BE006B7009077BE /* HLPing.h in Copy Files */,
 				CD34E7DF1A50AFC600A253E0 /* NSURLRequest+HLURLRequest.h in Copy Files */,
 				CD33F2231A50282D00275061 /* HLRequestRetryHandlerProtocol.h in Copy Files */,
@@ -146,6 +149,8 @@
 		CDAB2FFF1BDFCCFA009077BE /* HLSharedStorageSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSharedStorageSearchResults.h; sourceTree = "<group>"; };
 		CDAB30001BDFCE07009077BE /* HLSharedStorageSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSharedStorageSearchResults.m; sourceTree = "<group>"; };
 		CDC0F6A6196FD80800670565 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		CDC81D691C0BA19400FB642C /* HLMatchChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatchChange.h; sourceTree = "<group>"; };
+		CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatchChange.m; sourceTree = "<group>"; };
 		CDCE13BE1B9F408B000FAC7F /* Pods-heroiclabs-sdk.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.debug.xcconfig"; sourceTree = "<group>"; };
 		CDCE13BF1B9F408B000FAC7F /* Pods-heroiclabs-sdk.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.release.xcconfig"; sourceTree = "<group>"; };
 		CDCFE6F11AED211C006A20CB /* HLHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLHttpClient.h; sourceTree = "<group>"; };
@@ -260,6 +265,8 @@
 				CDA951031B1F67F70058955C /* HLMatch.m */,
 				CDA951051B1F68030058955C /* HLMatchTurn.h */,
 				CDA951061B1F68130058955C /* HLMatchTurn.m */,
+				CDC81D691C0BA19400FB642C /* HLMatchChange.h */,
+				CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */,
 				CDDD98731B4CA2EF00CD56E6 /* HLPurchaseVerification.h */,
 				CDDD98741B4CA2FB00CD56E6 /* HLPurchaseVerification.m */,
 				CD6063141BC81619007D4F70 /* HLMessage.h */,
@@ -494,6 +501,7 @@
 				8A018FB41A2F7DEF007EF85E /* HLServer.m in Sources */,
 				CD6063171BC81638007D4F70 /* HLMessage.m in Sources */,
 				CDA951041B1F67F70058955C /* HLMatch.m in Sources */,
+				CDC81D6C1C0BA41A00FB642C /* HLMatchChange.m in Sources */,
 				CD8828AD199107A4009E8D10 /* HLGamer.m in Sources */,
 				CD6EAB041BA23A3D00DC7E96 /* HLPing.m in Sources */,
 				CDCFE6F31AED2133006A20CB /* HLHttpClient.m in Sources */,

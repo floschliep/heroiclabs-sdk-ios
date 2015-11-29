@@ -43,6 +43,7 @@ id gamerName = @"";
 id gamerNickname = @"";
 id storageKey = @"HeroicKey";
 id storageData;
+id matchFilters;
 id gameAchievementId = @"ec6764eadd274b9298887de9f5da0a5e";
 id gameLeaderboardId = @"5141dd1c31354741967e77f409ce755e";
 id matchTurnData = @"MatchTurnData";
@@ -63,6 +64,7 @@ id sharedStorageKey = @"HeroicSharedKey";
     gamerName = [config valueForKey:@"name"];
     gamerNickname = [config valueForKey:@"nickname"];
     storageData = @{@"key": @"value"};
+    matchFilters = @[@"device=ios", @"player=tag"];
     [HLClient setApiKey:hlapikey];
     [HLClient loginWithEmail:gamerEmail andPassword:gamerPassword].then(^(id newSession) {
         session = newSession;
@@ -197,7 +199,6 @@ id sharedStorageKey = @"HeroicSharedKey";
 }
 
 - (void)testMatch_1_Create {
-    id matchFilters = @[@"device=ios", @"player=tag"];
     [HLClient loginAnonymouslyWith:anonId].then(^(id anonSession) {
         [anonSession createMatchFor:[NSNumber numberWithInt:2] withFilters:matchFilters].then(^(id data) {
             [session createMatchFor:[NSNumber numberWithInt:2] withFilters:matchFilters].then(^(HLMatch* newMatch) {
@@ -222,36 +223,55 @@ id sharedStorageKey = @"HeroicSharedKey";
 
 - (void)testMatch_3_Get {
     [self checkPromise:[session getMatchWithId:[match matchId]] withBlock:(^(HLMatch* data) {
-        expect([match whoami]).to.match(gamerNickname);
-        expect([match turn]).to.match(gamerNickname);
-        expect([match matchId]).to.match([match matchId]);
-        expect([[match gamers] count]).to.equal(2);
-        expect([match createdAt]).to.beGreaterThan(0);
-        expect([match active]).to.beTruthy();
+        [self checkMatch:data];
     }) withErrorBlock:errorHandler];
 }
 
 - (void)testMatch_4_SubmitTurn {
     [self checkPromise:[session submitTurn:[NSNumber numberWithInt:0]
                                   withData:matchTurnData
-                               toNextGamer:[gamer nickname]
+                             toNextGamerId:[gamer gamerId]
                             forMatchWithId:[match matchId]]
         withErrorBlock:errorHandler];
 }
 
-- (void)testMatch_5_ListTurns {
+- (void)testMatch_5_Changes {
+    [self checkPromise:[session getChangedMatchesSince:[match updatedAt]] withBlock:^(NSArray<HLMatchChange*>* data) {
+        [self checkMatch:[data[0] match]];
+        [self checkTurns:[data[0] changedTurns]];
+    } withErrorBlock:errorHandler];
+}
+
+- (void)testMatch_6_ListTurns {
     [self checkPromise:[session getDataForTurn:[NSNumber numberWithInteger:0] withMatchId:[match matchId]] withBlock:(^(NSArray* data) {
-        expect([data count]).to.beGreaterThan(0);
-        HLMatchTurn* turn = data[0];
-        expect([turn type]).to.match(@"data");
-        expect([turn turnNumber]).to.equal(1);
-        expect([turn gamer]).to.match(gamerNickname);
-        expect([turn data]).to.match(matchTurnData);
-        expect([turn createdAt]).to.beGreaterThan(0);
+        [self checkTurns:data];
     }) withErrorBlock:errorHandler];
 }
 
-- (void)testMatch_6_End {
+- (void)checkMatch:(HLMatch*)match {
+    expect([match whoami]).to.match(gamerNickname);
+    expect([match turn]).to.match(gamerNickname);
+    expect([match turnGamerId]).to.match([gamer gamerId]);
+    expect([[match gamers] count]).to.equal(2);
+    expect([[match activeGamers] count]).to.equal(2);
+    expect([match createdAt]).to.beGreaterThan(0);
+    expect([match updatedAt]).to.beGreaterThan(0);
+    expect([match active]).to.beTruthy();
+    expect([match filters]).to.equal(matchFilters);
+}
+
+- (void)checkTurns:(NSArray<HLMatchTurn*>*)data {
+    expect([data count]).to.beGreaterThan(0);
+    HLMatchTurn* turn = data[0];
+    expect([turn type]).to.match(@"data");
+    expect([turn turnNumber]).to.equal(1);
+    expect([turn gamer]).to.match(gamerNickname);
+    expect([turn gamerId]).to.match([gamer gamerId]);
+    expect([turn data]).to.match(matchTurnData);
+    expect([turn createdAt]).to.beGreaterThan(0);
+}
+
+- (void)testMatch_7_End {
     [self checkPromise:[session endMatchWithId:[match matchId]] withErrorBlock:errorHandler];
 }
 

@@ -244,6 +244,23 @@
                    resolver([NSArray arrayWithArray:result]);
                }];
 }
+
+-(PMKPromise*)getChangedMatchesSince:(NSNumber*)timestamp
+{
+    id query = [[NSString stringWithFormat:@"since=%@",timestamp] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/matches/?%@", query];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   id result = [[NSMutableArray alloc] init];
+                   for (id matchChanges in [data objectForKey:@"matches"]) {
+                       [result addObject:[[HLMatchChange alloc] initWithDictionary:matchChanges]];
+                   }
+                   resolver([NSArray arrayWithArray:result]);
+               }];
+}
+
 -(PMKPromise*)getMatchWithId:(NSString*) matchId
 {
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/match/%@",matchId];
@@ -254,6 +271,7 @@
                    resolver([[HLMatch alloc] initWithDictionary:data]);
                }];
 }
+
 -(PMKPromise*)getDataForTurn:(NSNumber*)turnNumber withMatchId:(NSString*) matchId
 {
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/match/%@/turn/%@", matchId, [turnNumber stringValue]];
@@ -268,6 +286,7 @@
                    resolver([NSArray arrayWithArray:result]);
                }];
 }
+
 -(PMKPromise*)submitTurn:(NSNumber*)turn
                 withData:(NSString*)data
              toNextGamer:(NSString*)nextGamerNickname
@@ -276,6 +295,21 @@
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/match/%@/turn/", matchId];
     id submission = @{@"last_turn": turn,
                       @"next_gamer": nextGamerNickname,
+                      @"data": data};
+    
+    return [self sendApiRequest:endpoint
+                     withMethod:POST
+                     withEntity:submission];
+}
+
+-(PMKPromise*)submitTurn:(NSNumber*)turn
+                withData:(NSString*)data
+           toNextGamerId:(NSString*)nextGamerId
+          forMatchWithId:(NSString*)matchId
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/match/%@/turn/", matchId];
+    id submission = @{@"last_turn": turn,
+                      @"next_gamer_id": nextGamerId,
                       @"data": data};
     
     return [self sendApiRequest:endpoint

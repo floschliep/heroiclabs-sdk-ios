@@ -14,21 +14,18 @@
  limitations under the License.
  */
 
+#import <Foundation/Foundation.h>
+#import "HLJSONSerialisableProtocol.h"
+#import "HLMatch.h"
 #import "HLMatchTurn.h"
 
-@implementation HLMatchTurn
+/**
+ Represents changes in a match
+ */
+@interface HLMatchChange : NSObject <HLJSONSerialisableProtocol>
+/** Updated Match */
+@property(readonly) HLMatch* match;
 
-- (id)initWithDictionary:(NSDictionary*) dictionary
-{
-    self = [super init];
-    if (self) {
-        _type = [dictionary valueForKey:@"type"];
-        _turnNumber = [dictionary valueForKey:@"turn_number"];
-        _gamer = [dictionary valueForKey:@"gamer"];
-        _gamerId = [dictionary valueForKey:@"gamer_id"];
-        _data = [dictionary valueForKey:@"data"];
-        _createdAt = [dictionary valueForKey:@"created_at"];
-    }
-    return self;
-}
+/** Array of turn data since the requested timestamp. */
+@property(readonly) NSArray<HLMatchTurn*>* changedTurns;
 @end

@@ -22,13 +22,17 @@
 {
     self = [super init];
     if (self) {
-        _whoami = [dictionary valueForKey:@"whoami"];
         _matchId = [dictionary valueForKey:@"match_id"];
-        _turnCount = [dictionary valueForKey:@"turn_count"];
-        _turn = [dictionary valueForKey:@"turn"];
+        _filters = [dictionary valueForKey:@"filters"];
         _createdAt = [dictionary valueForKey:@"created_at"];
-        _active = [[dictionary valueForKey:@"active"] boolValue];
+        _updatedAt = [dictionary valueForKey:@"updated_at"];
         _gamers = [dictionary valueForKey:@"gamers"];
+        _activeGamers = [dictionary valueForKey:@"active_gamers"];
+        _active = [[dictionary valueForKey:@"active"] boolValue];
+        _turn = [dictionary valueForKey:@"turn"];
+        _turnGamerId = [dictionary valueForKey:@"turn_gamer_id"];
+        _turnCount = [dictionary valueForKey:@"turn_count"];
+        _whoami = [dictionary valueForKey:@"whoami"];
     }
     return self;
 }

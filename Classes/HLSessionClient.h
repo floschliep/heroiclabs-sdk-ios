@@ -25,6 +25,7 @@
 #import "HLLeaderboard.h"
 #import "HLLeaderboardRank.h"
 #import "HLMatch.h"
+#import "HLMatchChange.h"
 #import "HLMatchTurn.h"
 #import "HLPurchaseVerification.h"
 #import "HLMessage.h"
@@ -153,6 +154,12 @@
 -(PMKPromise*)getMatches;
 
 /**
+ Retrieve a list of matches and turn data since the given timestamp.
+ @param timestamp Unix timestamp. This should be the latest 'updatedAt' timestamp in all your matches.
+ */
+-(PMKPromise*)getChangedMatchesSince:(NSNumber*)timestamp;
+
+/**
  Retrieve a particular match's status and metadata.
  @param matchId The match identifier
  */
@@ -173,7 +180,17 @@
  @param turn Last seen turn number - this is used as a basic consistency check
  @param nextGamerNickname Which gamer the next turn belongs to
  */
--(PMKPromise*)submitTurn:(NSNumber*)turn withData:(NSString*)data toNextGamer:(NSString*)nextGamerNickname forMatchWithId:(NSString*)matchId;
+-(PMKPromise*)submitTurn:(NSNumber*)turn withData:(NSString*)data toNextGamer:(NSString*)nextGamerNickname forMatchWithId:(NSString*)matchId DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use submit turn with gamer id");
+
+/**
+ Submit turn data to the specified match.
+ 
+ @param matchId The match identifier
+ @param data Turn data to submit
+ @param turn Last seen turn number - this is used as a basic consistency check
+ @param nextGamerId Which gamer the next turn belongs to
+ */
+-(PMKPromise*)submitTurn:(NSNumber*)turn withData:(NSString*)data toNextGamerId:(NSString*)nextGamerId forMatchWithId:(NSString*)matchId;
 
 /**
  Request a new match. If there are not enough waiting gamers, the current gamer will be added to the queue instead.

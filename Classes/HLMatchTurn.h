@@ -31,6 +31,9 @@
 /** Name of gamer for this turn */
 @property(readonly) NSString* gamer;
 
+/** Gamer ID for this turn */
+@property(readonly) NSString* gamerId;
+
 /** Data stored for this turn */
 @property(readonly) NSString* data;
 
