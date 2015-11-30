@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### v0.5.0
+
+* Support for multi-match status update
+* Additional match and match turn fields
+* Deprecation of gamer nickname for matches
+
 ### v0.4.0
 
 * Support for account linking/unlinking/checking
