@@ -45,6 +45,7 @@
 		CDAB30061BE006D6009077BE /* HLMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD6063141BC81619007D4F70 /* HLMessage.h */; };
 		CDAB30071BE006D9009077BE /* HLSharedStorageSearchResults.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDAB2FFF1BDFCCFA009077BE /* HLSharedStorageSearchResults.h */; };
 		CDC81D6C1C0BA41A00FB642C /* HLMatchChange.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */; };
+		CDCE9B4D1C0F6ED600C4009A /* HLMultiplayerSampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCE9B4C1C0F6ED600C4009A /* HLMultiplayerSampleTest.m */; };
 		CDCFE6F31AED2133006A20CB /* HLHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFE6F21AED2133006A20CB /* HLHttpClient.m */; };
 		CDCFE6F41AEDA430006A20CB /* HLHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDCFE6F11AED211C006A20CB /* HLHttpClient.h */; };
 		CDDD98751B4CA2FB00CD56E6 /* HLPurchaseVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDD98741B4CA2FB00CD56E6 /* HLPurchaseVerification.m */; };
@@ -153,6 +154,7 @@
 		CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatchChange.m; sourceTree = "<group>"; };
 		CDCE13BE1B9F408B000FAC7F /* Pods-heroiclabs-sdk.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.debug.xcconfig"; sourceTree = "<group>"; };
 		CDCE13BF1B9F408B000FAC7F /* Pods-heroiclabs-sdk.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.release.xcconfig"; sourceTree = "<group>"; };
+		CDCE9B4C1C0F6ED600C4009A /* HLMultiplayerSampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMultiplayerSampleTest.m; sourceTree = "<group>"; };
 		CDCFE6F11AED211C006A20CB /* HLHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLHttpClient.h; sourceTree = "<group>"; };
 		CDCFE6F21AED2133006A20CB /* HLHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLHttpClient.m; sourceTree = "<group>"; };
 		CDDD98731B4CA2EF00CD56E6 /* HLPurchaseVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPurchaseVerification.h; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				CD6EAB001BA0FC6000DC7E96 /* HLClientTest.m */,
 				CDEEBF141B9F3CF500A57588 /* HLSessionClientTest.m */,
 				CDAB2FFD1BDF9DED009077BE /* HLPushNotificationTest.m */,
+				CDCE9B4C1C0F6ED600C4009A /* HLMultiplayerSampleTest.m */,
 				CDEEBF121B9F3CF500A57588 /* Supporting Files */,
 				CD52662E1BCE898C00C23093 /* local-config.plist */,
 			);
@@ -524,6 +527,7 @@
 			files = (
 				CD6EAB011BA0FC6000DC7E96 /* HLClientTest.m in Sources */,
 				CDAB2FFE1BDF9E3D009077BE /* HLPushNotificationTest.m in Sources */,
+				CDCE9B4D1C0F6ED600C4009A /* HLMultiplayerSampleTest.m in Sources */,
 				CDEEBF151B9F3CF500A57588 /* HLSessionClientTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
