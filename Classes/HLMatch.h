@@ -48,7 +48,7 @@
 @property(readonly) NSArray<NSString*>* gamers DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use activeGamers");
 
 /** Map of Gamer Nickname to Gamer IDs */
-@property(readonly) NSDictionary* activeGamers;
+@property(readonly) NSArray<NSDictionary*>* activeGamers;
 
 /** When the match was created */
 @property(readonly) NSNumber* createdAt;
