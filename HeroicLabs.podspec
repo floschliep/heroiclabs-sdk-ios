@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.version                     = "0.5.0"
-  s.source                      = { :git => "https://github.com/heroiclabs/heroiclabs-sdk-ios.git", :tag => "0.5.0"}
+  s.version                     = "0.5.1"
+  s.source                      = { :git => "https://github.com/heroiclabs/heroiclabs-sdk-ios.git", :tag => "0.5.1"}
   s.name                        = "HeroicLabs"
   s.summary                     = "Heroic Labs SDK for iOS"
   s.description                 = "Heroic Labs is a backend for games."

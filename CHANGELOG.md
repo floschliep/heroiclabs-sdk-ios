@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.5.1
+
+* Fix bug where ActiveGamers should have been an array of dictionary objects.
+
 ### v0.5.0
 
 * Support for multi-match status update
