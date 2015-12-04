@@ -31,7 +31,7 @@
 #import "HLMatchTurn.h"
 #import "HLPurchaseVerification.h"
 
-static NSString *const HEROICLABS_VERSION=@"0.5.1";
+static NSString *const HEROICLABS_VERSION=@"0.5.2";
 static NSString *const AFN_VERSION=@"AFN3.0.0-beta.2";
 
 static NSString *const USER_AGENT_NAME=@"heroiclabs-ios-sdk";
@@ -173,20 +173,20 @@ static NSURL *baseURL;
         httpSuccess(task, nil);
     };
     void (^httpFailure)(NSURLSessionDataTask *task, NSError *error) = ^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-        NSURLRequest *request = [task originalRequest];
+//        NSURLRequest *request = [task originalRequest];
         NSHTTPURLResponse *response = (NSHTTPURLResponse *) [task response];
         
-        if ([response statusCode] == 500) {
-            [retryHandler requestFailed:request];
-            if ([retryHandler shouldRetryRequest:request]) {
-                [HLHttpClient sendRequestTo:finalUrl withEndpoint:endpoint withMethod:method withEntity:entity withNetworkManager:networkManager withRetryHandler:retryHandler withSuccessBlock:successCallback withResolver:resolver];
-            } else {
-                resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
-            }
-        } else {
-            [retryHandler requestSucceed:request];
+//        if ([response statusCode] == 500) {
+//            [retryHandler requestFailed:request];
+//            if ([retryHandler shouldRetryRequest:request]) {
+//                [HLHttpClient sendRequestTo:finalUrl withEndpoint:endpoint withMethod:method withEntity:entity withNetworkManager:networkManager withRetryHandler:retryHandler withSuccessBlock:successCallback withResolver:resolver];
+//            } else {
+//                resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
+//            }
+//        } else {
+//            [retryHandler requestSucceed:request];
             resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
-        }
+//        }
     };
     
     switch (method) {

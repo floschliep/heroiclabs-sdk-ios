@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.5.2
+
+* Temporarily removed retry logic.
+
 ### v0.5.1
 
 * Fix bug where ActiveGamers should have been an array of dictionary objects.

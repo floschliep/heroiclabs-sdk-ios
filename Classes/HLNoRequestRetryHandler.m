@@ -15,12 +15,17 @@
  */
 
 #import "HLNoRequestRetryHandler.h"
+#import "NSURLRequest+HLURLRequest.h"
 
 @implementation HLNoRequestRetryHandler
 -(BOOL)shouldRetryRequest:(NSURLRequest*)request
 {
     return NO;
 }
--(void)requestSucceed:(NSURLRequest*)request{}
--(void)requestFailed:(NSURLRequest*)request{}
+-(void)requestSucceed:(NSURLRequest*)request{
+    [request incrementRetryAttempCount];
+}
+-(void)requestFailed:(NSURLRequest*)request{
+    [request incrementRetryAttempCount];    
+}
 @end

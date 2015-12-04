@@ -46,6 +46,10 @@
     return NO;
 }
 
--(void)requestSucceed:(NSURLRequest*)request {}
--(void)requestFailed:(NSURLRequest*)request {}
+-(void)requestSucceed:(NSURLRequest*)request {
+    [request incrementRetryAttempCount];
+}
+-(void)requestFailed:(NSURLRequest*)request {
+    [request incrementRetryAttempCount];
+}
 @end
