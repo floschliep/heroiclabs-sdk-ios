@@ -197,7 +197,7 @@ id tempAnonId = nil;
 }
 
 - (void)testAccount_3_Check {
-    [HLClient checkAnonymousId:tempAnonId withSession:tempEmailSession].then(^(BOOL exists, BOOL currentGamer) {
+    [HLClient checkAnonymousId:tempAnonId withSession:tempEmailSession].then(^(Boolean exists, Boolean currentGamer) {
         expect(exists).to.beTruthy();
         expect(currentGamer).to.beTruthy();
     }).catch(errorHandler).finally(^() {

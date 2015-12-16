@@ -166,6 +166,9 @@ static NSURL *baseURL;
         if (successCallback == nil) { //used mainly for 204s
             resolver(JSON);
         } else {
+            if (statusCode == nil) {
+                statusCode = @(204);
+            }
             successCallback(statusCode, JSON, resolver);
         }
     };
