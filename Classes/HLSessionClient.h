@@ -193,6 +193,19 @@
 -(PMKPromise*)submitTurn:(NSNumber*)turn withData:(NSString*)data toNextGamerId:(NSString*)nextGamerId forMatchWithId:(NSString*)matchId;
 
 /**
+ Request a new match with the given players. The current gamer is part of the match and will be set as the first turn taker.
+ @param gamers Gamer IDs of other players.
+ */
+-(PMKPromise*)createMatchWithGamers:(NSArray<NSString*>*)gamers;
+
+/**
+ Request a new match with the given players. The current gamer is part of the match and will be set as the first turn taker.
+ @param gamers Gamer IDs of other players.
+ @param matchFilters String array to filter on matches to create or join. Exact strings matching only. Up to 8 filters.
+ */
+-(PMKPromise*)createMatchWithGamers:(NSArray<NSString*>*)gamers filters:(NSArray*)matchFilters;
+
+/**
  Request a new match. If there are not enough waiting gamers, the current gamer will be added to the queue instead.
  @param requiredGamers The minimal required number of gamers needed to create a new match
  */

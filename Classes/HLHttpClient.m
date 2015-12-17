@@ -31,8 +31,8 @@
 #import "HLMatchTurn.h"
 #import "HLPurchaseVerification.h"
 
-static NSString *const HEROICLABS_VERSION=@"0.5.2";
-static NSString *const AFN_VERSION=@"AFN3.0.0-beta.2";
+static NSString *const HEROICLABS_VERSION=@"0.6.0";
+static NSString *const AFN_VERSION=@"AFN3.0";
 
 static NSString *const USER_AGENT_NAME=@"heroiclabs-ios-sdk";
 static NSString *USER_AGENT = nil;
@@ -157,8 +157,6 @@ static NSURL *baseURL;
       withSuccessBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
           withResolver:(PMKResolver)resolver
 {
-
-    
     void (^httpSuccess)(NSURLSessionDataTask *task, id responseObject) = ^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull JSON) {
         [retryHandler requestSucceed:[task originalRequest]];
         NSHTTPURLResponse *response = (NSHTTPURLResponse *) [task response];
@@ -197,7 +195,7 @@ static NSURL *baseURL;
             [networkManager HEAD:finalUrl parameters:entity success:httpHeadSuccess failure:httpFailure];
             break;
         case GET:
-            [networkManager GET:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
+            [networkManager GET:finalUrl parameters:entity progress:nil success:httpSuccess failure:httpFailure];
             break;
         case DELETE:
             [networkManager DELETE:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
@@ -206,7 +204,7 @@ static NSURL *baseURL;
             [networkManager PUT:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
             break;
         case POST:
-            [networkManager POST:finalUrl parameters:entity success:httpSuccess failure:httpFailure];
+            [networkManager POST:finalUrl parameters:entity progress:nil success:httpSuccess failure:httpFailure];
             break;
         case PATCH:
             [networkManager PATCH:finalUrl parameters:entity success:httpSuccess failure:httpFailure];

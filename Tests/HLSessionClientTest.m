@@ -198,36 +198,52 @@ id sharedStorageKey = @"HeroicSharedKey";
     [self waitForExpectationsWithTimeout:30 handler:nil];
 }
 
-- (void)testMatch_1_Create {
+- (void)testMatch_1_CreateWithFilters {
     [HLClient loginAnonymouslyWith:anonId].then(^(id anonSession) {
-        [anonSession createMatchFor:[NSNumber numberWithInt:2] withFilters:matchFilters].then(^(id data) {
-            [session createMatchFor:[NSNumber numberWithInt:2] withFilters:matchFilters].then(^(HLMatch* newMatch) {
-                match = newMatch;
-            }).catch(errorHandler).finally(^() {
-                [expectation fulfill];
-            });
-        });
+        return [anonSession createMatchFor:[NSNumber numberWithInt:2] withFilters:matchFilters];
+    }).then(^(HLMatch* data) {
+        return [session createMatchFor:[NSNumber numberWithInt:2] withFilters:matchFilters];
+    }).then(^(HLMatch* match) {
+        expect(match).to.beNil;
+        expect([match filters]).to.equal(matchFilters);
     }).catch(^(NSError* error) {
         [self checkError:error];
+    }).finally(^{
         [expectation fulfill];
     });
     
     [self waitForExpectationsWithTimeout:30 handler:nil];
 }
 
-- (void)testMatch_2_List {
+- (void)testMatch_2_CreateWithGamers {
+    [HLClient loginAnonymouslyWith:anonId].then(^(id anonSession) {
+        return [anonSession getGamerProfile];
+    }).then(^(HLGamer* gamer) {
+        return [session createMatchWithGamers:@[[gamer gamerId]]];
+    }).then(^(HLMatch* newMatch) {
+        match = newMatch;
+    }).catch(^(NSError* error) {
+        [self checkError:error];
+    }).finally(^{
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:30 handler:nil];
+}
+
+- (void)testMatch_3_List {
     [self checkPromise:[session getMatches] withBlock:(^(NSArray* data) {
         expect([data count]).to.beGreaterThan(0);
     }) withErrorBlock:errorHandler];
 }
 
-- (void)testMatch_3_Get {
+- (void)testMatch_4_Get {
     [self checkPromise:[session getMatchWithId:[match matchId]] withBlock:(^(HLMatch* data) {
         [self checkMatch:data];
     }) withErrorBlock:errorHandler];
 }
 
-- (void)testMatch_4_SubmitTurn {
+- (void)testMatch_5_SubmitTurn {
     [self checkPromise:[session submitTurn:[NSNumber numberWithInt:0]
                                   withData:matchTurnData
                              toNextGamerId:[gamer gamerId]
@@ -235,14 +251,14 @@ id sharedStorageKey = @"HeroicSharedKey";
         withErrorBlock:errorHandler];
 }
 
-- (void)testMatch_5_Changes {
+- (void)testMatch_6_Changes {
     [self checkPromise:[session getChangedMatchesSince:[match updatedAt]] withBlock:^(NSArray<HLMatchChange*>* data) {
         [self checkMatch:[data[0] match]];
         [self checkTurns:[data[0] changedTurns]];
     } withErrorBlock:errorHandler];
 }
 
-- (void)testMatch_6_ListTurns {
+- (void)testMatch_7_ListTurns {
     [self checkPromise:[session getDataForTurn:[NSNumber numberWithInteger:0] withMatchId:[match matchId]] withBlock:(^(NSArray* data) {
         [self checkTurns:data];
     }) withErrorBlock:errorHandler];
@@ -257,7 +273,6 @@ id sharedStorageKey = @"HeroicSharedKey";
     expect([match createdAt]).to.beGreaterThan(0);
     expect([match updatedAt]).to.beGreaterThan(0);
     expect([match active]).to.beTruthy();
-    expect([match filters]).to.equal(matchFilters);
 }
 
 - (void)checkTurns:(NSArray<HLMatchTurn*>*)data {
@@ -271,7 +286,7 @@ id sharedStorageKey = @"HeroicSharedKey";
     expect([turn createdAt]).to.beGreaterThan(0);
 }
 
-- (void)testMatch_7_End {
+- (void)testMatch_8_End {
     [self checkPromise:[session endMatchWithId:[match matchId]] withErrorBlock:errorHandler];
 }
 

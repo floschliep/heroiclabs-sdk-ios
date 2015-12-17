@@ -317,6 +317,25 @@
                      withEntity:submission];
 }
 
+-(PMKPromise*)createMatchWithGamers:(NSArray<NSString*>*)gamers
+{
+    return [self createMatchWithGamers:gamers filters:nil];
+}
+
+-(PMKPromise*)createMatchWithGamers:(NSArray<NSString*>*)gamers filters:(NSArray*)matchFilters
+{
+    id entity = @{@"gamers": gamers};
+    if (matchFilters != nil) {
+        entity = @{@"gamers": gamers, @"filters": matchFilters};
+    }
+    return [self sendApiRequest:@"/v0/gamer/match/"
+                     withMethod:PUT
+                     withEntity:entity
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver([[HLMatch alloc] initWithDictionary:data]);
+               }];
+}
+
 -(PMKPromise*)createMatchFor:(NSNumber*)requiredGamers
 {
     return [self createMatchFor:requiredGamers withFilters:nil];

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+### v0.6.0
+
+* Support for direct matchmaking with gamer IDs.
+* Update to AFNetworking 3.0.x
+
 ### v0.5.2
 
 * Temporarily removed retry logic.
