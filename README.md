@@ -1,97 +1,61 @@
-Heroic Labs iOS SDK Usage
-=========================
-Heroic Labs SDK for iOS.
+Heroic Labs iOS SDK
+===================
+The iOS SDK for the Heroic Labs service.
 
-### About
-[Heroic Labs](https://heroiclabs.com/) is a scalable, reliable, and fast gaming service for game developers.
+[SDK Guide](https://heroiclabs.com/docs/guide/ios/) | [SDK Reference](http://cocoadocs.org/docsets/HeroicLabs/0.6.0/)
 
-The service provides the features and functionality provided by game servers today. Our goal is to enable game developers to focus on being as creative as possible and building great games. By leveraging the Heroic Labs service you can easily add social login, gamer profiles, cloud game storage, and many other features.
+---
 
-For the full list of features check out our [main documentation](https://heroiclabs.com/docs/).
+Heroic Labs is AWS for game developers. Easily add social, multiplayer, and competitive features to any kind of game. The platform handles all server infrastructure required to power games built for desktop, mobile, browser, or web. The goal is to help game studios build beautiful social and multiplayer games which work at massive scale.
 
-### Setup
+For a full list of the API have a look at the [features](https://heroiclabs.com/features).
+
+### Install
 The client SDK is available on [CocoaPods](http://cocoadocs.org/docsets/HeroicLabs/)
 
 It is fully compatible with iOS 7, OS X 10.9, tvOS 9.0 and watchOS 2.0.
 
-### Using [CocoaPods](http://cocoapods.org/)
+Simply add this to your `Podfile`:
 
 ```cocoapods
 pod 'HeroicLabs'
 ```
 
-### Getting Started
+Once the SDK is installed, import `<HeroicLabs/HLClient.h>` into your Objective-C code and Copy and paste this code in your file:
 
-To interact with the Heroic Labs SDK, first you need to get an ApiKey. Get yours through our [Dashboard](http://dashboard.heroiclabs.com).
+```objc
+[HLClient setApiKey:@"1fb234d5678948199cb858ab0905f657"];
 
-The SDK is asynchronous as it uses AFNetworking to make network calls. This means that you 'ask' for some information and some time later you'll get a callback with the desired data.
-
-To interact with the SDK you need to instantiate a `HLClient` class and use that across your game. To instantiate:
-
-```Objective-C
-// MyGameHelper.m
-#import <HLClient.h>
-
-static NSString *const MYGAME_API_KEY = @"your-api-key";
-
-+ (void)initialize {
-    [HLClient setApiKey:MYGAME_API_KEY];
-}
-// other methods ...
+[HLClient ping].then(^ {
+    NSLog(@"Ping was successful.");
+}).catch(^(NSError* error) {
+    NSLog(@"Could not connect to the API %@", [error description]);
+});
 ```
 
-#### Logging in
+The API key shown above __must be replaced__ with one of your own from the [Developer Dashboard](https://dashboard.heroiclabs.com/). Run your game. A request will be sent to the Game API which will verify your API key is valid and the service is reachable.
 
-```Objective-C
-// MyGameHelper.m
-@implementation MyGameHelper
-{
-    HLSessionClient* session;
-}
+### SDK Guide
 
+You can find the full guide for the iOS SDK [online](https://heroiclabs.com/docs/guide/ios/).
 
-// let's imagine that this is the method invoked when the gamer taps on 'Sign in' in your game.
-- (void)onLoginClick
-{
-    // Get or create a unique device ID
-    UIDevice *device = [UIDevice currentDevice];
-    NSString  *currentDeviceId = [[device identifierForVendor]UUIDString];
-    // if you'd like to log the gamer in seamlessly...
-    [HLClient loginAnonymouslyWith:currentDeviceId].then(^(HLSessionClient* newSession) {
-        NSLog(@"Successfully logged in!");
-        session = newSession;
-    }).catch(^(NSError *error) {
-        NSLog(@"Error: %@", error);
-    });
-}
-// other methods ...
-```
+### Contribute
 
-#### Heroic Labs Push
+To develop on the codebase you'll need:
 
-Heroic Labs Push is extremely simple to setup. Setup your game as you would to use APN and add the following line in the method override below:
+* [Xcode](https://developer.apple.com/xcode) The Xcode Editor.
+* [Cocoapods](http://cocoapods.org) Objective-C/Swift Dependency Manager
 
-```Objective-C
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token
-{
-    HLSessionClient* session = ...;
-    [session subscribePushWithDeviceToken:token].then(^(id data) {
-        NSLog(@"Successfully setup push!");
-    })
-    .catch(^(NSError *error) {
-        NSLog(@"Error: %@", error);
-    });;
-}
+#### Setup
 
-```
+1. Open terminal, navigate to the root folder of the project and execute `pod install`.
+2. Open Xcode and choose to open an existing project - choose `HeroicLabs.xcworkspace` file.
+3. Once open, set the active scheme to `heroiclabs-sdk`.
+4. Click on the `Product` menu bar, and then `Build`.
 
-#### More Documentation
+All contributions to the documentation and the codebase are very welcome and feel free to open issues on the tracker wherever the documentation needs enhancements.
 
-For more examples and more information on features in the Heroic Labs service have a look at our [main documentation](https://heroiclabs.com/docs/?ios).
-
-#### Note
-
-The iOS SDK is still in _flux_, we're looking for [feedback](mailto:hello@heroiclabs.com) from developers to make sure we're designing what you need to build incredible games. Please do get in touch and let us know what we can improve.
+Pull requests are always welcome! `:)`
 
 #### Test
 
@@ -103,14 +67,8 @@ To run the SDK tests, execute the following command:
 xcodebuild test -workspace HeroicLabs.xcworkspace -scheme heroiclabs-sdk-tests -destination "name=iPhone 4s"
 ```
 
-or to see a pretty output
+or to see a pretty output:
 
 ```
 xcodebuild test -workspace HeroicLabs.xcworkspace -scheme heroiclabs-sdk-tests -destination "name=iPhone 4s" | xcpretty -c
 ```
-
-### Contribute
-
-All contributions to the documentation and the codebase are very welcome and feel free to open issues on the tracker wherever the documentation needs improving.
-
-Lastly, pull requests are always welcome! `:)`
