@@ -1,6 +1,11 @@
 Changelog
 =========
 
+### v0.6.1
+
+* Fix for badly URL encoded characters.
+* Add support for WhoamIGamerId field.
+
 ### v0.6.0
 
 * Support for direct matchmaking with gamer IDs.
