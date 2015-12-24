@@ -33,6 +33,7 @@
         _turnGamerId = [dictionary valueForKey:@"turn_gamer_id"];
         _turnCount = [dictionary valueForKey:@"turn_count"];
         _whoami = [dictionary valueForKey:@"whoami"];
+        _whoamiGamerId = [dictionary valueForKey:@"whoami_gamer_id"];
     }
     return self;
 }

@@ -125,7 +125,7 @@ static NSURL *baseURL;
 {
     NSMutableString *fullUrl = [[NSMutableString alloc] initWithString:url];
     [fullUrl appendString:endpoint];
-    NSString* finalUrl = [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* finalUrl = [fullUrl stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
     
     NSMutableString *authorization = [[NSMutableString alloc] initWithString:apiKey];
     [authorization appendString:@":"];

@@ -27,7 +27,10 @@
  If the current gamer's nickname is changed after the match is setup,
  the old nickname is still used hence the use of this 'whoami' field.
  */
-@property(readonly) NSString* whoami;
+@property(readonly) NSString* whoami DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use whoamiGamerId");
+
+/** Gamer ID of the current player in this match. This is provided for convenience. */
+@property(readonly) NSString* whoamiGamerId;
 
 /** Match ID */
 @property(readonly) NSString* matchId;
@@ -41,7 +44,7 @@
 /** Name of gamer for the given turn */
 @property(readonly) NSString* turn DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use turnGamerId");
 
-/** Gamer ID for the given turn */
+/** Gamer ID for the turn to be taken */
 @property(readonly) NSString* turnGamerId;
 
 /** Nickname of all the gamers in the current match */

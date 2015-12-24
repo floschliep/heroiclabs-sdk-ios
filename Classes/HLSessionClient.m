@@ -500,7 +500,7 @@
         [optionalParams appendFormat:@"sort=%@", sortKey];
     }
     
-    id query = [[NSString stringWithFormat:@"query=%@&limit=%@&offset=%@&%@", luceneQuery, limit, offset, optionalParams] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
+    id query = [NSString stringWithFormat:@"query=%@&limit=%@&offset=%@&%@", luceneQuery, limit, offset, optionalParams];
 
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/?%@", query];
     return [self sendApiRequest:endpoint
