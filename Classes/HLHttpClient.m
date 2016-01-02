@@ -39,10 +39,14 @@ static NSString *USER_AGENT = nil;
 
 @implementation HLHttpClient
 
-static NSURL *baseURL;
+static NSString *ACCOUNTS_URL;
+static NSString *API_URL;
 
 + (void)initialize
 {
+    ACCOUNTS_URL = HEROICLABS_ACCOUNTS_URL;
+    API_URL = HEROICLABS_API_URL;
+    
     UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
     NSString* secretAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     NSMutableString *USER_AGENT_MUTABLE = [[NSMutableString alloc] initWithString:USER_AGENT_NAME];
@@ -58,8 +62,15 @@ static NSURL *baseURL;
     [USER_AGENT_MUTABLE appendString:secretAgent];
     [USER_AGENT_MUTABLE appendString:@")"];
     USER_AGENT = [[NSString alloc] initWithString:USER_AGENT_MUTABLE];
-    
-    baseURL = [NSURL URLWithString:HEROICLABS_API_URL];
+}
+
++ (void)setAccountsUrl:(NSString*)url
+{
+    ACCOUNTS_URL = url;
+}
++ (void)setApiUrl:(NSString*)url
+{
+    API_URL = url;
 }
 
 + (PMKPromise*)sendAccountsRequestTo:(NSString*)endpoint
@@ -70,7 +81,7 @@ static NSURL *baseURL;
                         retryHandler:(id<HLRequestRetryHandlerProtocol>)handler
                         successBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
 {
-    return [HLHttpClient sendRequestTo:HEROICLABS_ACCOUNTS_URL
+    return [HLHttpClient sendRequestTo:ACCOUNTS_URL
                           withEndpoint:endpoint
                             withMethod:method
                             withApiKey:apiKey
@@ -104,7 +115,7 @@ static NSURL *baseURL;
                    retryHandler:(id<HLRequestRetryHandlerProtocol>)handler
                    successBlock:(void(^)(NSNumber* statusCode, id data, PMKResolver resolver))successCallback
 {
-    return [HLHttpClient sendRequestTo:HEROICLABS_API_URL
+    return [HLHttpClient sendRequestTo:API_URL
                           withEndpoint:endpoint
                             withMethod:method
                             withApiKey:apiKey
@@ -140,7 +151,7 @@ static NSURL *baseURL;
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
 
-    AFHTTPSessionManager *networkManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    AFHTTPSessionManager *networkManager = [[AFHTTPSessionManager alloc] initWithBaseURL:nil];
     networkManager.requestSerializer = requestSerializer;
     
     return [PMKPromise promiseWithResolver:^(PMKResolver resolver) {

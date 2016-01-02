@@ -47,6 +47,9 @@ id tempEmailSession = nil;
 id tempAnonId = nil;
 
 + (void)setUp {
+//    [HLHttpClient setAccountsUrl:@""];
+//    [HLHttpClient setApiUrl:@""];
+
     [Expecta setAsynchronousTestTimeout:10];
     NSString *path = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"local-config.plist"];
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:path];

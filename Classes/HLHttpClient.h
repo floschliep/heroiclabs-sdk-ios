@@ -37,6 +37,9 @@ typedef NS_ENUM(NSInteger, HLRequestMethod)
 
 @interface HLHttpClient : NSObject
 
++ (void)setAccountsUrl:(NSString*)url;
++ (void)setApiUrl:(NSString*)url;
+
 + (PMKPromise*)sendAccountsRequestTo:(NSString*)endpoint
                           withMethod:(enum HLRequestMethod)method
                               apiKey:(NSString*)apikeyToUse
