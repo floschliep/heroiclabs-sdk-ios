@@ -44,7 +44,7 @@ You can find the full guide for the iOS SDK [online](https://heroiclabs.com/docs
 To develop on the codebase you'll need:
 
 * [Xcode](https://developer.apple.com/xcode) The Xcode Editor.
-* [Cocoapods](http://cocoapods.org) Objective-C/Swift Dependency Manager
+* [CocoaPods](http://cocoapods.org) Objective-C/Swift Dependency Manager
 
 #### Setup
 
