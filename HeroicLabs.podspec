@@ -7,7 +7,9 @@ Pod::Spec.new do |s|
   s.homepage                    = "https://heroiclabs.com"
   s.authors                     = { "Heroic Labs" => "support@heroiclabs.com"}
   s.social_media_url            = "http://twitter.com/heroicdev"
-  s.platforms                   = { :ios => "7.0" }
+  s.ios.deployment_target       = '7.0'
+  s.watchos.deployment_target   = '2.0'
+  s.tvos.deployment_target      = '9.0'
   s.license                     = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
   s.source_files                = "Classes/*.{h,m}"
   s.public_header_files         = "Classes/*.h"

@@ -1,5 +1,5 @@
 /*
- Copyright 2014-2015 Heroic Labs
+ Copyright 2015-2016 Heroic Labs
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 #import <PromiseKit/Promise.h>
 
 #import "HLHttpClient.h"
+#import "HLgzipRequestSerializer.h"
 #import "HLRequestRetryHandlerProtocol.h"
 #import "HLSessionClient.h"
 #import "HLPing.h"
@@ -31,7 +32,7 @@
 #import "HLMatchTurn.h"
 #import "HLPurchaseVerification.h"
 
-static NSString *const HEROICLABS_VERSION=@"0.6.1";
+static NSString *const HEROICLABS_VERSION=@"0.7.0";
 static NSString *const AFN_VERSION=@"AFN3.0";
 
 static NSString *const USER_AGENT_NAME=@"heroiclabs-ios-sdk";
@@ -47,8 +48,6 @@ static NSString *API_URL;
     ACCOUNTS_URL = HEROICLABS_ACCOUNTS_URL;
     API_URL = HEROICLABS_API_URL;
     
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    NSString* secretAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     NSMutableString *USER_AGENT_MUTABLE = [[NSMutableString alloc] initWithString:USER_AGENT_NAME];
     [USER_AGENT_MUTABLE appendString:@"/"];
     [USER_AGENT_MUTABLE appendString:HEROICLABS_VERSION];
@@ -58,8 +57,6 @@ static NSString *API_URL;
     [USER_AGENT_MUTABLE appendString:[[UIDevice currentDevice] systemVersion]];
     [USER_AGENT_MUTABLE appendString:@"; "];
     [USER_AGENT_MUTABLE appendString:AFN_VERSION];
-    [USER_AGENT_MUTABLE appendString:@"; "];
-    [USER_AGENT_MUTABLE appendString:secretAgent];
     [USER_AGENT_MUTABLE appendString:@")"];
     USER_AGENT = [[NSString alloc] initWithString:USER_AGENT_MUTABLE];
 }
@@ -148,11 +145,12 @@ static NSString *API_URL;
     AFJSONRequestSerializer* requestSerializer = [[AFJSONRequestSerializer alloc] init];
     [requestSerializer setValue:base64EncodedAuth forHTTPHeaderField:@"Authorization"];
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [requestSerializer setValue:USER_AGENT forHTTPHeaderField:@"User-Agent"];
 
     AFHTTPSessionManager *networkManager = [[AFHTTPSessionManager alloc] initWithBaseURL:nil];
-    networkManager.requestSerializer = requestSerializer;
+    networkManager.requestSerializer = [HLgzipRequestSerializer serializerWithSerializer:requestSerializer];
     
     return [PMKPromise promiseWithResolver:^(PMKResolver resolver) {
         [HLHttpClient sendRequestTo:finalUrl withEndpoint:endpoint withMethod:method withEntity:entity withNetworkManager:networkManager withRetryHandler:retryHandler withSuccessBlock:successCallback withResolver:resolver];
@@ -185,20 +183,8 @@ static NSString *API_URL;
         httpSuccess(task, nil);
     };
     void (^httpFailure)(NSURLSessionDataTask *task, NSError *error) = ^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-//        NSURLRequest *request = [task originalRequest];
         NSHTTPURLResponse *response = (NSHTTPURLResponse *) [task response];
-        
-//        if ([response statusCode] == 500) {
-//            [retryHandler requestFailed:request];
-//            if ([retryHandler shouldRetryRequest:request]) {
-//                [HLHttpClient sendRequestTo:finalUrl withEndpoint:endpoint withMethod:method withEntity:entity withNetworkManager:networkManager withRetryHandler:retryHandler withSuccessBlock:successCallback withResolver:resolver];
-//            } else {
-//                resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
-//            }
-//        } else {
-//            [retryHandler requestSucceed:request];
-            resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
-//        }
+        resolver([HLHttpClient createNewHttpError:error andStatusCode:[response statusCode]]);
     };
     
     switch (method) {

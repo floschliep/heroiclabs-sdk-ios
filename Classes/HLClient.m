@@ -1,5 +1,5 @@
 /*
- Copyright 2014-2015 Heroic Labs
+ Copyright 2015-2016 Heroic Labs
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -185,6 +185,10 @@ void (^successCheckBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLClient sendAccountRequest:@"login" withProvider:@"tango" entity:@{@"access_token": accessToken} session:nil successBlock:successLoginBlock];
 }
++(PMKPromise*)loginWithGameCenter:(HLGameCenterCredentials*)credentials
+{
+    return [HLClient sendAccountRequest:@"login" withProvider:@"gamecenter" entity:[credentials toDictionary] session:nil successBlock:successLoginBlock];
+}
 
 +(PMKPromise*)createAccountWithEmail:(NSString*)email andPassword:(NSString*)password andConfirm:(NSString*)passwordConfirmation
 {
@@ -264,6 +268,10 @@ void (^successCheckBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLClient sendAccountRequest:@"link" withProvider:@"tango" entity:@{@"access_token": accessToken} session:session successBlock:nil];
 }
++(PMKPromise*)linkSession:(HLSessionClient*)session withGameCenterPlayerId:(HLGameCenterCredentials*)credentials
+{
+    return [HLClient sendAccountRequest:@"link" withProvider:@"gamecenter" entity:[credentials toDictionary] session:session successBlock:nil];
+}
 
 +(PMKPromise*)unlinkSession:(HLSessionClient*)session fromAnonymousId:(NSString*)anonymousId
 {
@@ -283,7 +291,11 @@ void (^successCheckBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 }
 +(PMKPromise*)unlinkSession:(HLSessionClient*)session fromTangoAccount:(NSString*)tangoAccountId
 {
-    return [HLClient sendAccountRequest:@"unlink" withProvider:@"google" entity:@{@"id": tangoAccountId} session:session successBlock:nil];
+    return [HLClient sendAccountRequest:@"unlink" withProvider:@"tango" entity:@{@"id": tangoAccountId} session:session successBlock:nil];
+}
++(PMKPromise*)unlinkSession:(HLSessionClient*)session fromGameCenter:(NSString*)gameCenterPlayerId
+{
+    return [HLClient sendAccountRequest:@"unlink" withProvider:@"gamecenter" entity:@{@"player_id": gameCenterPlayerId} session:session successBlock:nil];
 }
 
 +(PMKPromise*)checkAnonymousId:(NSString*)anonymousId
@@ -306,6 +318,10 @@ void (^successCheckBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 {
     return [HLClient sendAccountRequest:@"check" withProvider:@"tango" entity:@{@"access_token": tangoId} session:nil successBlock:successCheckBlock];
 }
++(PMKPromise*)checkGameCenterId:(NSString*)playerId
+{
+    return [HLClient sendAccountRequest:@"check" withProvider:@"gamecenter" entity:@{@"id": playerId} session:nil successBlock:successCheckBlock];
+}
 
 +(PMKPromise*)checkAnonymousId:(NSString*)anonymousId withSession:(HLSessionClient*) session
 {
@@ -326,6 +342,10 @@ void (^successCheckBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
 +(PMKPromise*)checkTangoId:(NSString*)tangoId withSession:(HLSessionClient*) session
 {
     return [HLClient sendAccountRequest:@"check" withProvider:@"tango" entity:@{@"access_token": tangoId} session:session successBlock:successCheckBlock];
+}
++(PMKPromise*)checkGameCenterId:(HLGameCenterCredentials*)credentials withSession:(HLSessionClient*) session
+{
+    return [HLClient sendAccountRequest:@"check" withProvider:@"gamecenter" entity:[credentials toDictionary] session:session successBlock:successCheckBlock];
 }
 
 

@@ -14,6 +14,10 @@
 		8A018FB71A2F7E8A007EF85E /* HLGame.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD0742F41969FDF1003F0BE8 /* HLGame.h */; };
 		CD0742F01969FDF1003F0BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0742EF1969FDF1003F0BE8 /* Foundation.framework */; };
 		CD0742F71969FDF1003F0BE8 /* HLGame.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0742F61969FDF1003F0BE8 /* HLGame.m */; };
+		CD2C7A011C7D2B700036E06F /* HLgzipRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2C7A001C7D2B700036E06F /* HLgzipRequestSerializer.m */; };
+		CD2C7A061C7D2E190036E06F /* NSData+GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2C7A051C7D2E190036E06F /* NSData+GZIP.m */; };
+		CD2C7A071C7D34D30036E06F /* NSData+GZIP.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD2C7A041C7D2E010036E06F /* NSData+GZIP.h */; };
+		CD2C7A081C7D34D70036E06F /* HLgzipRequestSerializer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD2C79FF1C7D2B330036E06F /* HLgzipRequestSerializer.h */; };
 		CD33F2201A5027F400275061 /* HLDefaultRequestRetryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD33F21F1A5027F400275061 /* HLDefaultRequestRetryHandler.m */; };
 		CD33F2221A50282800275061 /* HLDefaultRequestRetryHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD33F2211A50280000275061 /* HLDefaultRequestRetryHandler.h */; };
 		CD33F2231A50282D00275061 /* HLRequestRetryHandlerProtocol.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD33F21E1A50208600275061 /* HLRequestRetryHandlerProtocol.h */; };
@@ -24,6 +28,8 @@
 		CD3AB11D1C0BA44E0081FCC6 /* HLMatchChange.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDC81D691C0BA19400FB642C /* HLMatchChange.h */; };
 		CD3ECA791B123E1C0020DD1F /* HLSessionClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */; };
 		CD3ECA7B1B123E360020DD1F /* HLSessionClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */; };
+		CD40500F1C7DF25400AABCF2 /* HLGameCenterCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */; };
+		CD4050101C7DF26300AABCF2 /* HLGameCenterCredentials.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */; };
 		CD52662F1BCE898C00C23093 /* local-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD52662E1BCE898C00C23093 /* local-config.plist */; };
 		CD5266311BCE89AE00C23093 /* iosmailboxtest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD5266301BCE89AE00C23093 /* iosmailboxtest.js */; };
 		CD6063171BC81638007D4F70 /* HLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6063161BC81638007D4F70 /* HLMessage.m */; };
@@ -92,12 +98,15 @@
 				CD34E7DF1A50AFC600A253E0 /* NSURLRequest+HLURLRequest.h in Copy Files */,
 				CD33F2231A50282D00275061 /* HLRequestRetryHandlerProtocol.h in Copy Files */,
 				CDAB30051BE006D4009077BE /* HLPurchaseVerification.h in Copy Files */,
-				CD34E7E01A50AFE500A253E0 /* HLNoRequestRetryHandler.h in Copy Files */,
 				CD33F2221A50282800275061 /* HLDefaultRequestRetryHandler.h in Copy Files */,
 				CDAB30071BE006D9009077BE /* HLSharedStorageSearchResults.h in Copy Files */,
 				CDFA816A1983A3990017F277 /* HLJSONSerialisableProtocol.h in Copy Files */,
 				CDAB30061BE006D6009077BE /* HLMessage.h in Copy Files */,
 				CDAB30041BE006CB009077BE /* HLMatchTurn.h in Copy Files */,
+				CD34E7E01A50AFE500A253E0 /* HLNoRequestRetryHandler.h in Copy Files */,
+				CD2C7A081C7D34D70036E06F /* HLgzipRequestSerializer.h in Copy Files */,
+				CD4050101C7DF26300AABCF2 /* HLGameCenterCredentials.h in Copy Files */,
+				CD2C7A071C7D34D30036E06F /* NSData+GZIP.h in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +130,11 @@
 		CD0742F61969FDF1003F0BE8 /* HLGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLGame.m; sourceTree = "<group>"; };
 		CD0742FD1969FDF1003F0BE8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CD1D2AB11979190A009D1D4D /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "../GUGameUpSDKDemo/Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		CD2C79FF1C7D2B330036E06F /* HLgzipRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLgzipRequestSerializer.h; sourceTree = "<group>"; };
+		CD2C7A001C7D2B700036E06F /* HLgzipRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLgzipRequestSerializer.m; sourceTree = "<group>"; };
+		CD2C7A021C7D2D4C0036E06F /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
+		CD2C7A041C7D2E010036E06F /* NSData+GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GZIP.h"; sourceTree = "<group>"; };
+		CD2C7A051C7D2E190036E06F /* NSData+GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+GZIP.m"; sourceTree = "<group>"; };
 		CD33F21E1A50208600275061 /* HLRequestRetryHandlerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLRequestRetryHandlerProtocol.h; sourceTree = "<group>"; };
 		CD33F21F1A5027F400275061 /* HLDefaultRequestRetryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLDefaultRequestRetryHandler.m; sourceTree = "<group>"; };
 		CD33F2211A50280000275061 /* HLDefaultRequestRetryHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLDefaultRequestRetryHandler.h; sourceTree = "<group>"; };
@@ -128,8 +142,10 @@
 		CD34E7DA1A50995200A253E0 /* HLNoRequestRetryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLNoRequestRetryHandler.m; sourceTree = "<group>"; };
 		CD34E7DC1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+HLURLRequest.h"; sourceTree = "<group>"; };
 		CD34E7DD1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+HLURLRequest.m"; sourceTree = "<group>"; };
-		CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HLSessionClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLSessionClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HLSessionClient.m; sourceTree = "<group>"; };
+		CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLSessionClient.h; sourceTree = "<group>"; };
+		CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLGameCenterCredentials.h; sourceTree = "<group>"; };
+		CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGameCenterCredentials.m; sourceTree = "<group>"; };
 		CD52662E1BCE898C00C23093 /* local-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "local-config.plist"; sourceTree = "<group>"; };
 		CD5266301BCE89AE00C23093 /* iosmailboxtest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosmailboxtest.js; sourceTree = "<group>"; };
 		CD6063141BC81619007D4F70 /* HLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMessage.h; sourceTree = "<group>"; };
@@ -139,8 +155,8 @@
 		CD6EAB031BA23A3D00DC7E96 /* HLPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPing.m; sourceTree = "<group>"; };
 		CD77CF85197F1B13006ACC0D /* HLGamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLGamer.h; sourceTree = "<group>"; };
 		CD77CF86197F1B13006ACC0D /* HLGamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGamer.m; sourceTree = "<group>"; };
-		CD8828B01991083D009E8D10 /* HLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		CD8828B11991083D009E8D10 /* HLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HLClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CD8828B01991083D009E8D10 /* HLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLClient.h; sourceTree = "<group>"; };
+		CD8828B11991083D009E8D10 /* HLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HLClient.m; sourceTree = "<group>"; };
 		CD97C1101BC03D5B009ABCDB /* iosunittest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosunittest.js; sourceTree = "<group>"; };
 		CDA951021B1F67E90058955C /* HLMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatch.h; sourceTree = "<group>"; };
 		CDA951031B1F67F70058955C /* HLMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatch.m; sourceTree = "<group>"; };
@@ -227,6 +243,7 @@
 		CD0742EE1969FDF1003F0BE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD2C7A021C7D2D4C0036E06F /* libz.1.dylib */,
 				CDEEBF1C1B9F3EA300A57588 /* libPods.a */,
 				CD1D2AB11979190A009D1D4D /* libPods.a */,
 				CDFDAB7D19701CD2000826E3 /* UIKit.framework */,
@@ -247,6 +264,8 @@
 				CDCFE6F21AED2133006A20CB /* HLHttpClient.m */,
 				CD8828B01991083D009E8D10 /* HLClient.h */,
 				CD8828B11991083D009E8D10 /* HLClient.m */,
+				CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */,
+				CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */,
 				CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */,
 				CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */,
 				CD6EAB021BA23A3D00DC7E96 /* HLPing.h */,
@@ -283,6 +302,10 @@
 				CD33F21F1A5027F400275061 /* HLDefaultRequestRetryHandler.m */,
 				CD34E7D91A50992D00A253E0 /* HLNoRequestRetryHandler.h */,
 				CD34E7DA1A50995200A253E0 /* HLNoRequestRetryHandler.m */,
+				CD2C79FF1C7D2B330036E06F /* HLgzipRequestSerializer.h */,
+				CD2C7A001C7D2B700036E06F /* HLgzipRequestSerializer.m */,
+				CD2C7A041C7D2E010036E06F /* NSData+GZIP.h */,
+				CD2C7A051C7D2E190036E06F /* NSData+GZIP.m */,
 				CD0742F21969FDF1003F0BE8 /* Supporting Files */,
 			);
 			path = Classes;
@@ -518,6 +541,9 @@
 				CD34E7DB1A50995200A253E0 /* HLNoRequestRetryHandler.m in Sources */,
 				CDECE7B01A54461A000ADDEF /* HLLeaderboard.m in Sources */,
 				CDECE7B51A5446A1000ADDEF /* HLLeaderboardRank.m in Sources */,
+				CD2C7A011C7D2B700036E06F /* HLgzipRequestSerializer.m in Sources */,
+				CD2C7A061C7D2E190036E06F /* NSData+GZIP.m in Sources */,
+				CD40500F1C7DF25400AABCF2 /* HLGameCenterCredentials.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
