@@ -1,5 +1,5 @@
 /*
- Copyright 2014-2015 Heroic Labs
+ Copyright 2015-2016 Heroic Labs
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ id matchTurnData = @"MatchTurnData";
 id productId = @"some.purchased.product.id";
 id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
-id sharedStorageKey = @"HeroicSharedKey";
+id sharedStorageKey = @"iOSHeroicSharedKey";
 
 + (void)setUp {
     [Expecta setAsynchronousTestTimeout:10];
@@ -383,30 +383,34 @@ id sharedStorageKey = @"HeroicSharedKey";
 }
 
 - (void)test_SharedStorage_1_Put {
-    id data = @{@"sharedKey": @"sharedValue"};
+    id data = @{@"iossharedKey": @"iossharedValueUpdated"};
     [self checkPromise:[session storeSharedData:data withKey:sharedStorageKey] withErrorBlock:errorHandler];
 }
 
 - (void)test_SharedStorage_2_PartialUpdate {
-    id data = @{@"sharedKey": @"sharedValueUpdated"};
+    id data = @{@"iossharedKey": @"iossharedValueUpdated"};
     [self checkPromise:[session partialUpdateSharedData:data withKey:sharedStorageKey] withErrorBlock:errorHandler];
 }
 
 - (void)test_SharedStorage_3_Get {
-    id data = @{@"sharedKey": @"sharedValueUpdated"};
+    id data = @{@"iossharedKey": @"iossharedValueUpdated"};
     [self checkPromise:[session getSharedDataWithKey:sharedStorageKey] withBlock:(^(HLSharedStorageObject* sharedData){
         expect([sharedData publicData]).to.beSupersetOf(data);
     }) withErrorBlock:errorHandler];
 }
 
 - (void)test_SharedStorage_4_Search {
-    id data = @{@"sharedKey": @"sharedValueUpdated"};
-    [self checkPromise:[session searchSharedStorageWithQuery:@"*" andFilter:nil sort:nil limit:@10 offset:@0] withBlock:(^(HLSharedStorageSearchResults* sharedData){
+    id data = @{@"iossharedKey": @"iossharedValueUpdated"};
+    [self checkPromise:[session searchSharedStorageWithQuery:@"*" andFilter:sharedStorageKey sort:nil limit:@10 offset:@0] withBlock:(^(HLSharedStorageSearchResults* sharedData){
         expect([sharedData totalCount]).to.equal(1);
         expect([sharedData count]).to.equal(1);
         expect([[sharedData results] count]).to.equal(1);
         expect([[sharedData results][0] publicData]).to.equal(data);
     }) withErrorBlock:errorHandler];
+}
+
+- (void)test_SharedStorage_5_Delete {
+    [self checkPromise:[session deleteStoredDataWithKey:sharedStorageKey] withErrorBlock:errorHandler];
 }
 
 @end

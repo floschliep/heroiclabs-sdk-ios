@@ -1,5 +1,5 @@
 /*
- Copyright 2014-2015 Heroic Labs
+ Copyright 2015-2016 Heroic Labs
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@
 #import "HLAchievement.h"
 #import "HLLeaderboard.h"
 #import "HLLeaderboardRank.h"
+#import "HLGameCenterCredentials.h"
 
 /**
  Represents interface for interacting with the Heroic Labs service
@@ -155,11 +156,14 @@
 /**
  Perform OAuth passthrough login for Tango. You need prior authentication with Tango.
  @param accessToken The Tango access token to send to Heroic Labs.
- @param session A session pointing to an existing account, on
- successful login the new social profile will be
- bound to this same account.
  */
 +(PMKPromise*)loginWithTango:(NSString*)accessToken;
+
+/**
+ Perform login using GameCenter PlayerID. You need prior authentication with GameCenter.
+ @param credentials The GameCenter Credentials to send to Heroic Labs.
+ */
++(PMKPromise*)loginWithGameCenter:(HLGameCenterCredentials*)credentials;
 
 /**
  Creates a new Heroic Labs account with the supplied info.
@@ -220,105 +224,126 @@
 +(PMKPromise*)sendLoginReset:(NSString*)email;
 
 /**
- Links the givens session with an anonymous Id, resulting in the ability of future logins to the same account from multiple anonymous Ids
+ Links the given session with an anonymous Id, resulting in the ability of future logins to the same account from multiple anonymous Ids
  @param session Current session to link to.
  @param anonymousId New Id to associate to the given session
  */
 +(PMKPromise*)linkSession:(HLSessionClient*)session withAnonymousId:(NSString*)anonymousId;
 
 /**
- Links the givens session with an Facebook Account, resulting in the ability of future logins to the same account from multiple Facebook Accounts
+ Links the given session with an Facebook Account, resulting in the ability of future logins to the same account from multiple Facebook Accounts
  @param session Current session to link to.
  @param accessToken Facebook Account to associate to the given session.
  */
 +(PMKPromise*)linkSession:(HLSessionClient*)session withFacebookProfile:(NSString*)accessToken;
 
 /**
- Links the givens session with an Google Account, resulting in the ability of future logins to the same account from multiple Google Accounts
+ Links the given session with an Google Account, resulting in the ability of future logins to the same account from multiple Google Accounts
  @param session Current session to link to.
  @param accessToken Google Account to associate to the given session.
  */
 +(PMKPromise*)linkSession:(HLSessionClient*)session withGoogleAccount:(NSString*)accessToken;
 
 /**
- Links the givens session with an Tango Account, resulting in the ability of future logins to the same account from multiple Tango Accounts
+ Links the given session with an Tango Account, resulting in the ability of future logins to the same account from multiple Tango Accounts
  @param session Current session to link to.
  @param accessToken Tango Account to associate to the given session.
  */
 +(PMKPromise*)linkSession:(HLSessionClient*)session withTangoAccount:(NSString*)accessToken;
 
 /**
- Unlink the givens session from an existing Anonymous ID.
+ Links the given session with a GameCenter Account, resulting in the ability of future logins to the same account from multiple GameCenter Accounts
  @param session Current session to link to.
+ @param credentials GameCenter Player Credentials to associate to the given session.
+ */
++(PMKPromise*)linkSession:(HLSessionClient*)session withGameCenterPlayerId:(HLGameCenterCredentials*)credentials;
+
+/**
+ Unlink the given session from an existing Anonymous ID.
+ @param session Current session to unlink from.
  @param anonymousId Anonymous ID to unlink from this account.
  */
 +(PMKPromise*)unlinkSession:(HLSessionClient*)session fromAnonymousId:(NSString*)anonymousId;
 
 /**
- Unlink the givens session from an existing Email Address.
- @param session Current session to link to.
+ Unlink the given session from an existing Email Address.
+ @param session Current session to unlink from.
  @param emailAddress Email Address to unlink from this account.
  */
 +(PMKPromise*)unlinkSession:(HLSessionClient*)session fromEmail:(NSString*)emailAddress;
 
 /**
- Unlink the givens session from an existing Facebook Account.
- @param session Current session to link to.
+ Unlink the given session from an existing Facebook Account.
+ @param session Current session to unlink from.
  @param facebookProfileId Facebook Account to unlink from this account.
  */
 +(PMKPromise*)unlinkSession:(HLSessionClient*)session fromFacebookProfile:(NSString*)facebookProfileId;
 
 /**
- Unlink the givens session from an existing Google Account.
- @param session Current session to link to.
+ Unlink the given session from an existing GameCenter Account.
+ @param session Current session to unlink from.
  @param googleAccountId Google Account to unlink from this account.
  */
 +(PMKPromise*)unlinkSession:(HLSessionClient*)session fromGoogleAccount:(NSString*)googleAccountId;
 
 /**
- Unlink the givens session from an existing Tango Account.
- @param session Current session to link to.
+ Unlink the given session from an existing Tango Account.
+ @param session Current session to unlink from.
  @param tangoAccountId Tango Account to unlink from this account.
  */
 +(PMKPromise*)unlinkSession:(HLSessionClient*)session fromTangoAccount:(NSString*)tangoAccountId;
 
 /**
- Checks to see if the givens Anonymous ID exists in the Heroic Labs platform.
+ Unlink the given session from an existing Google Account.
+ @param session Current session to link to.
+ @param gameCenterPlayerId GameCenter Player ID to unlink from this account.
+ */
++(PMKPromise*)unlinkSession:(HLSessionClient*)session fromGameCenter:(NSString*)gameCenterPlayerId;
+
+/**
+ Checks to see if the given Anonymous ID exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param anonymousId Anonymous ID to check.
  */
 +(PMKPromise*)checkAnonymousId:(NSString*)anonymousId;
 
 /**
- Checks to see if the givens Email Address exists in the Heroic Labs platform.
+ Checks to see if the given Email Address exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param emailAddress Email Address to check.
  */
 +(PMKPromise*)checkEmail:(NSString*)emailAddress;
 
 /**
- Checks to see if the givens Facebook Profile exists in the Heroic Labs platform.
+ Checks to see if the given Facebook Profile exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param facebookProfileId Facebook Profile to check.
  */
 +(PMKPromise*)checkFacebookProfileId:(NSString*)facebookProfileId;
 
 /**
- Checks to see if the givens Google Account exists in the Heroic Labs platform.
+ Checks to see if the given Google Account exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param googleAccountId Google Account to check.
  */
 +(PMKPromise*)checkGoogleAccountId:(NSString*)googleAccountId;
 
 /**
- Checks to see if the givens Tango Account exists in the Heroic Labs platform.
+ Checks to see if the given Tango Account exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param tangoId Tango Account to check.
  */
 +(PMKPromise*)checkTangoId:(NSString*)tangoId;
 
 /**
- Checks to see if the givens Anonymous ID exists in the Heroic Labs platform.
+ Checks to see if the given GameCenter Player ID exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param playerId GameCenter Player ID to check.
+ */
++(PMKPromise*)checkGameCenterId:(NSString*)playerId;
+
+/**
+ Checks to see if the given Anonymous ID exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param anonymousId Anonymous ID to check.
  @param session Session to additionally check against.
@@ -326,7 +351,7 @@
 +(PMKPromise*)checkAnonymousId:(NSString*)anonymousId withSession:(HLSessionClient*) session;
 
 /**
- Checks to see if the givens Email Address exists in the Heroic Labs platform.
+ Checks to see if the given Email Address exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param emailAddress Email Address to check.
  @param session Session to additionally check against.
@@ -334,7 +359,7 @@
 +(PMKPromise*)checkEmail:(NSString*)emailAddress withSession:(HLSessionClient*) session;
 
 /**
- Checks to see if the givens Facebook Profile exists in the Heroic Labs platform.
+ Checks to see if the given Facebook Profile exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param facebookProfileId Facebook Profile to check.
  @param session Session to additionally check against.
@@ -342,7 +367,7 @@
 +(PMKPromise*)checkFacebookProfileId:(NSString*)facebookProfileId withSession:(HLSessionClient*) session;
 
 /**
- Checks to see if the givens Google Account exists in the Heroic Labs platform.
+ Checks to see if the given Google Account exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param googleAccountId Google Account to check.
  @param session Session to additionally check against.
@@ -350,11 +375,19 @@
 +(PMKPromise*)checkGoogleAccountId:(NSString*)googleAccountId withSession:(HLSessionClient*) session;
 
 /**
- Checks to see if the givens Tango Account exists in the Heroic Labs platform.
+ Checks to see if the given Tango Account exists in the Heroic Labs platform.
  Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
  @param tangoId Tango Account to check.
  @param session Session to additionally check against.
  */
 +(PMKPromise*)checkTangoId:(NSString*)tangoId withSession:(HLSessionClient*) session;
+
+/**
+ Checks to see if the given GameCenter Player ID exists in the Heroic Labs platform.
+ Return either 'nil', if it doesn't exist, or the current associated gamer account ID.
+ @param credentials GameCenter Credentials to check.
+ @param session Session to additionally check against.
+ */
++(PMKPromise*)checkGameCenterId:(HLGameCenterCredentials*)credentials withSession:(HLSessionClient*) session;
 
 @end

@@ -1,5 +1,5 @@
 /*
- Copyright 2014-2015 Heroic Labs
+ Copyright 2015-2016 Heroic Labs
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -501,6 +501,8 @@
     }
     
     id query = [NSString stringWithFormat:@"query=%@&limit=%@&offset=%@&%@", luceneQuery, limit, offset, optionalParams];
+    
+    NSLog(@"query: %@", query);
 
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/?%@", query];
     return [self sendApiRequest:endpoint
