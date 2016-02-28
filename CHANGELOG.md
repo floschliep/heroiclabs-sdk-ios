@@ -1,6 +1,14 @@
 Changelog
 =========
 
+### v0.7.0
+
+* Add Game Center integration.
+* GZip outgoing requests. Incoming requests were already transparently gzipped.
+* Add WatchOS and tvOS back into Podspec.
+* Removal of UIWebView dependency to get UserAgent.
+* Updated Copyright info.
+
 ### v0.6.1
 
 * Fix for badly URL encoded characters.
