@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.7.1
+
+* Change HLgzipRequestSerializer to use AFNetworking frameworks.
+
 ### v0.7.0
 
 * Add Game Center integration.
