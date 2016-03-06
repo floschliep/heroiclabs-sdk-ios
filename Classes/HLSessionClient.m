@@ -476,17 +476,17 @@
     return [self searchSharedStorageWithQuery:luceneQuery andFilter:key sort:nil limit:@10 offset:@0];
 }
 
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey
 {
     return [self searchSharedStorageWithQuery:luceneQuery andFilter:key sort:sortKey limit:@10 offset:@0];
 }
 
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey limit:(NSNumber*)limit
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey limit:(NSNumber*)limit
 {
     return [self searchSharedStorageWithQuery:luceneQuery andFilter:key sort:sortKey limit:limit offset:@0];
 }
 
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset
 {
     
     id optionalParams = [NSMutableString stringWithString:@""];

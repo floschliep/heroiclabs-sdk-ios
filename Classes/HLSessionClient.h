@@ -308,7 +308,7 @@
  @param key Key name to restrict searches to. Only results among those keys will be returned. Can be null.
  @param sortKey Lucene-like sort clauses used to order search results. Can be null.
  */
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey;
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey;
 
 /**
  Get data in Shared Storage matching the query.
@@ -318,7 +318,7 @@
  @param sortKey Lucene-like sort clauses used to order search results. Can be null.
  @param limit Maximum number of results to return.
  */
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey limit:(NSNumber*)limit;
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey limit:(NSNumber*)limit;
 
 /**
  Get data in Shared Storage matching the query. Use this to paginate the results.
@@ -329,7 +329,7 @@
  @param limit Maximum number of results to return.
  @param offset Starting position of the result.
  */
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSNumber*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset;
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset;
 
 /**
  Get data in SharedStorage matching the given key.
