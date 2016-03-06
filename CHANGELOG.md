@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.7.2
+
+* Fix typo in Shared Storage Search sort type.
+
 ### v0.7.1
 
 * Change HLgzipRequestSerializer to use AFNetworking frameworks.
