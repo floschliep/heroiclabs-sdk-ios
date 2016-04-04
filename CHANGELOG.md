@@ -1,6 +1,12 @@
 Changelog
 =========
 
+### v0.8.0
+
+* Upgrade AFNetworking to 3.1.x.
+* Update PromiseKit to 1.7.0.
+* Add support for tvOS.
+
 ### v0.7.2
 
 * Fix typo in Shared Storage Search sort type.
