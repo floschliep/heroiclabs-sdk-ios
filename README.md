@@ -13,7 +13,7 @@ For a full list of the API have a look at the [features](https://heroiclabs.com/
 ### Install
 The client SDK is available on [CocoaPods](http://cocoadocs.org/docsets/HeroicLabs/)
 
-It is fully compatible with iOS 7, OS X 10.9, tvOS 9.0 and watchOS 2.0.
+It is fully compatible with iOS 7, tvOS 9.0.
 
 Simply add this to your `Podfile`:
 
