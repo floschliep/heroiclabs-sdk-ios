@@ -341,6 +341,7 @@
 /**
  Get data in SharedStorage matching the given key.
  
+ @param data dictionary key-value pairs.
  @param key Data in shared storage in the given key. Alphanumeric characters only.
  */
 - (PMKPromise*)storeSharedData:(NSDictionary*)data withKey:(NSString*)key;
@@ -355,4 +356,10 @@
  */
 - (PMKPromise*)partialUpdateSharedData:(NSDictionary*)data withKey:(NSString*)key;
 
+/**
+ Delete data in the Public region of SharedStorage matching the given key.
+ 
+ @param key Data in shared storage in the given key. Alphanumeric characters only.
+ */
+- (PMKPromise*)deleteSharedDataWithKey:(NSString*)key;
 @end

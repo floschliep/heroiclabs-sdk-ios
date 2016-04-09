@@ -546,4 +546,15 @@
                }];
 }
 
+- (PMKPromise*)deleteSharedDataWithKey:(NSString*)key
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/%@/public", key];
+    return [self sendApiRequest:endpoint
+                     withMethod:DELETE
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id result, PMKResolver resolver) {
+                   resolver(result);
+               }];
+}
+
 @end
