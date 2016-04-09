@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.8.1
+
+* Add option to delete public shared storage.
+
 ### v0.8.0
 
 * Upgrade AFNetworking to 3.1.x.
