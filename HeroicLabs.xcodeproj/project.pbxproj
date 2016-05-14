@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A60A1E94749958352B52638 /* libPods-heroiclabs-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC2392B76E8792C0E34DFB8 /* libPods-heroiclabs-sdk.a */; };
+		7E8B387FC3DDE512F3B107B5 /* libPods-heroiclabs-sdk-tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AE7FBE56DBDA8FA984592F /* libPods-heroiclabs-sdk-tests.a */; };
 		8A018FB31A2F7DEF007EF85E /* HLAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A018FB01A2F7DEF007EF85E /* HLAchievement.m */; };
 		8A018FB41A2F7DEF007EF85E /* HLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A018FB21A2F7DEF007EF85E /* HLServer.m */; };
 		8A018FB51A2F7E0A007EF85E /* HLServer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8A018FB11A2F7DEF007EF85E /* HLServer.h */; };
@@ -62,8 +64,6 @@
 		CDEEBF151B9F3CF500A57588 /* HLSessionClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEEBF141B9F3CF500A57588 /* HLSessionClientTest.m */; };
 		CDEEBF161B9F3CF500A57588 /* libheroiclabs-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0742EC1969FDF1003F0BE8 /* libheroiclabs-sdk.a */; };
 		CDFA816A1983A3990017F277 /* HLJSONSerialisableProtocol.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8AB0CBDE1982ADEC004E243D /* HLJSONSerialisableProtocol.h */; };
-		DFEC3BF8FA98840EC3E1D2F8 /* libPods-heroiclabs-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F03E3892100234DBD14E889 /* libPods-heroiclabs-sdk.a */; };
-		EDB0FC6915EEFDF055979ED2 /* libPods-heroiclabs-sdk-tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5BD1AECC5DBDAC334286C5 /* libPods-heroiclabs-sdk-tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,15 +114,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		56C8ADCB9970F0D8505FFEBB /* Pods-heroiclabs-sdk-tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk-tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests.release.xcconfig"; sourceTree = "<group>"; };
-		5C5BD1AECC5DBDAC334286C5 /* libPods-heroiclabs-sdk-tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-heroiclabs-sdk-tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F03E3892100234DBD14E889 /* libPods-heroiclabs-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-heroiclabs-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13D9C560893C6BEFDA4D1A92 /* Pods-heroiclabs-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.release.xcconfig"; sourceTree = "<group>"; };
+		1FC932BB8E9AC11BE8D1E1A1 /* Pods-heroiclabs-sdk-tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk-tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests.release.xcconfig"; sourceTree = "<group>"; };
+		6FC2392B76E8792C0E34DFB8 /* libPods-heroiclabs-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-heroiclabs-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		75AE7FBE56DBDA8FA984592F /* libPods-heroiclabs-sdk-tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-heroiclabs-sdk-tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A018FAF1A2F7DEF007EF85E /* HLAchievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLAchievement.h; sourceTree = "<group>"; };
 		8A018FB01A2F7DEF007EF85E /* HLAchievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLAchievement.m; sourceTree = "<group>"; };
 		8A018FB11A2F7DEF007EF85E /* HLServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLServer.h; sourceTree = "<group>"; };
 		8A018FB21A2F7DEF007EF85E /* HLServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLServer.m; sourceTree = "<group>"; };
 		8AB0CBDE1982ADEC004E243D /* HLJSONSerialisableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLJSONSerialisableProtocol.h; sourceTree = "<group>"; };
-		B82EB2549BF8B271FE30F16C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		966D54AA34E9E6CA41EC75D3 /* Pods-heroiclabs-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.debug.xcconfig"; sourceTree = "<group>"; };
 		CD0742EC1969FDF1003F0BE8 /* libheroiclabs-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libheroiclabs-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0742EF1969FDF1003F0BE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD0742F31969FDF1003F0BE8 /* HeroicLabs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeroicLabs-Prefix.pch"; sourceTree = "<group>"; };
@@ -168,8 +169,6 @@
 		CDC0F6A6196FD80800670565 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		CDC81D691C0BA19400FB642C /* HLMatchChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatchChange.h; sourceTree = "<group>"; };
 		CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatchChange.m; sourceTree = "<group>"; };
-		CDCE13BE1B9F408B000FAC7F /* Pods-heroiclabs-sdk.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.debug.xcconfig"; sourceTree = "<group>"; };
-		CDCE13BF1B9F408B000FAC7F /* Pods-heroiclabs-sdk.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.release.xcconfig"; sourceTree = "<group>"; };
 		CDCE9B4C1C0F6ED600C4009A /* HLMultiplayerSampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMultiplayerSampleTest.m; sourceTree = "<group>"; };
 		CDCFE6F11AED211C006A20CB /* HLHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLHttpClient.h; sourceTree = "<group>"; };
 		CDCFE6F21AED2133006A20CB /* HLHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLHttpClient.m; sourceTree = "<group>"; };
@@ -184,7 +183,7 @@
 		CDEEBF141B9F3CF500A57588 /* HLSessionClientTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLSessionClientTest.m; sourceTree = "<group>"; };
 		CDEEBF1C1B9F3EA300A57588 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		CDFDAB7D19701CD2000826E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		EAD22C9979C0C14EA0683449 /* Pods-heroiclabs-sdk-tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk-tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8D9F1E027613DBE73841BAA /* Pods-heroiclabs-sdk-tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk-tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0742F01969FDF1003F0BE8 /* Foundation.framework in Frameworks */,
-				DFEC3BF8FA98840EC3E1D2F8 /* libPods-heroiclabs-sdk.a in Frameworks */,
+				1A60A1E94749958352B52638 /* libPods-heroiclabs-sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,20 +201,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDEEBF161B9F3CF500A57588 /* libheroiclabs-sdk.a in Frameworks */,
-				EDB0FC6915EEFDF055979ED2 /* libPods-heroiclabs-sdk-tests.a in Frameworks */,
+				7E8B387FC3DDE512F3B107B5 /* libPods-heroiclabs-sdk-tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA1A1406EFA94FCAD9B66AF8 /* Pods */ = {
+		BB6DC5F665798112BAE17647 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CDCE13BE1B9F408B000FAC7F /* Pods-heroiclabs-sdk.debug.xcconfig */,
-				CDCE13BF1B9F408B000FAC7F /* Pods-heroiclabs-sdk.release.xcconfig */,
-				EAD22C9979C0C14EA0683449 /* Pods-heroiclabs-sdk-tests.debug.xcconfig */,
-				56C8ADCB9970F0D8505FFEBB /* Pods-heroiclabs-sdk-tests.release.xcconfig */,
+				966D54AA34E9E6CA41EC75D3 /* Pods-heroiclabs-sdk.debug.xcconfig */,
+				13D9C560893C6BEFDA4D1A92 /* Pods-heroiclabs-sdk.release.xcconfig */,
+				F8D9F1E027613DBE73841BAA /* Pods-heroiclabs-sdk-tests.debug.xcconfig */,
+				1FC932BB8E9AC11BE8D1E1A1 /* Pods-heroiclabs-sdk-tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -227,7 +226,7 @@
 				CD0742F11969FDF1003F0BE8 /* Classes */,
 				CD0742EE1969FDF1003F0BE8 /* Frameworks */,
 				CD0742ED1969FDF1003F0BE8 /* Products */,
-				BA1A1406EFA94FCAD9B66AF8 /* Pods */,
+				BB6DC5F665798112BAE17647 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -250,9 +249,8 @@
 				CD0742EF1969FDF1003F0BE8 /* Foundation.framework */,
 				CD0742FD1969FDF1003F0BE8 /* XCTest.framework */,
 				CDC0F6A6196FD80800670565 /* CoreFoundation.framework */,
-				7F03E3892100234DBD14E889 /* libPods-heroiclabs-sdk.a */,
-				5C5BD1AECC5DBDAC334286C5 /* libPods-heroiclabs-sdk-tests.a */,
-				B82EB2549BF8B271FE30F16C /* libPods.a */,
+				6FC2392B76E8792C0E34DFB8 /* libPods-heroiclabs-sdk.a */,
+				75AE7FBE56DBDA8FA984592F /* libPods-heroiclabs-sdk-tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -349,12 +347,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD07430F1969FDF1003F0BE8 /* Build configuration list for PBXNativeTarget "heroiclabs-sdk" */;
 			buildPhases = (
-				A59B04A1119246F88551031A /* Check Pods Manifest.lock */,
+				FE1386E1D3940169E83CC877 /* 📦 Check Pods Manifest.lock */,
 				CD0742E81969FDF1003F0BE8 /* Sources */,
 				CD0742E91969FDF1003F0BE8 /* Frameworks */,
 				CD0742EA1969FDF1003F0BE8 /* Copy Files */,
-				B70E9FB2E913495891555B7B /* Copy Pods Resources */,
 				CD8828A91990FEA6009E8D10 /* Resources */,
+				E3994CF7D6E0B62C42DC8A24 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -369,12 +367,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDEEBF191B9F3CF500A57588 /* Build configuration list for PBXNativeTarget "heroiclabs-sdk-tests" */;
 			buildPhases = (
-				4D99E197D3E29BEE9AC854A3 /* Check Pods Manifest.lock */,
+				5268C078DD46EF57F704CB02 /* 📦 Check Pods Manifest.lock */,
 				CDEEBF0C1B9F3CF500A57588 /* Sources */,
 				CDEEBF0D1B9F3CF500A57588 /* Frameworks */,
 				CDEEBF0E1B9F3CF500A57588 /* Resources */,
-				F5CE2724BF7CE2229B5DAAB2 /* Copy Pods Resources */,
-				3DFE5D26EC22DA12B5D37F0D /* Embed Pods Frameworks */,
+				4B0400E14016A8EF7AD8580A /* 📦 Embed Pods Frameworks */,
+				CBAD036224CB130957147312 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -440,14 +438,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3DFE5D26EC22DA12B5D37F0D /* Embed Pods Frameworks */ = {
+		4B0400E14016A8EF7AD8580A /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,14 +453,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4D99E197D3E29BEE9AC854A3 /* Check Pods Manifest.lock */ = {
+		5268C078DD46EF57F704CB02 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,29 +468,29 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A59B04A1119246F88551031A /* Check Pods Manifest.lock */ = {
+		CBAD036224CB130957147312 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B70E9FB2E913495891555B7B /* Copy Pods Resources */ = {
+		E3994CF7D6E0B62C42DC8A24 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,19 +498,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F5CE2724BF7CE2229B5DAAB2 /* Copy Pods Resources */ = {
+		FE1386E1D3940169E83CC877 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -645,7 +643,7 @@
 		};
 		CD0743101969FDF1003F0BE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDCE13BE1B9F408B000FAC7F /* Pods-heroiclabs-sdk.debug.xcconfig */;
+			baseConfigurationReference = 966D54AA34E9E6CA41EC75D3 /* Pods-heroiclabs-sdk.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = "/tmp/heroiclabs-sdk.dst";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -657,7 +655,7 @@
 		};
 		CD0743111969FDF1003F0BE8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDCE13BF1B9F408B000FAC7F /* Pods-heroiclabs-sdk.release.xcconfig */;
+			baseConfigurationReference = 13D9C560893C6BEFDA4D1A92 /* Pods-heroiclabs-sdk.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = "/tmp/heroiclabs-sdk.dst";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -669,7 +667,7 @@
 		};
 		CDEEBF1A1B9F3CF500A57588 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAD22C9979C0C14EA0683449 /* Pods-heroiclabs-sdk-tests.debug.xcconfig */;
+			baseConfigurationReference = F8D9F1E027613DBE73841BAA /* Pods-heroiclabs-sdk-tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -692,7 +690,7 @@
 		};
 		CDEEBF1B1B9F3CF500A57588 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56C8ADCB9970F0D8505FFEBB /* Pods-heroiclabs-sdk-tests.release.xcconfig */;
+			baseConfigurationReference = 1FC932BB8E9AC11BE8D1E1A1 /* Pods-heroiclabs-sdk-tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
