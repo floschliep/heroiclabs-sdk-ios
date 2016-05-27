@@ -34,7 +34,7 @@
         _lastRankAt = [dictionary objectForKey:@"last_rank_at"];
         _bestRank = [dictionary objectForKey:@"best_rank"];
         _bestRankAt = [dictionary objectForKey:@"best_rank_at"];
-        
+        _totalRanks = [dictionary objectForKey:@"total_ranks"];
     }
     return self;
 }

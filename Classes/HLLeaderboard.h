@@ -108,6 +108,9 @@ typedef NS_ENUM(NSInteger, HLLeaderboardType)
 /** The current offset of the leaderboard entries. */
 @property(readwrite) NSNumber* offset;
 
+/** The total number of leaderboard entries. */
+@property(readwrite) NSNumber* total;
+
 /** Leaderboard Reset configuration. */
 @property(readwrite) HLLeaderboardReset* reset;
 

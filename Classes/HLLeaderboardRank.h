@@ -62,6 +62,9 @@
 /** When the highest rank was recorded. */
 @property(readonly) NSNumber* bestRankAt;
 
+/** The Total number of leaderboard ranks. Useful for displaying 'Ranking of TotalRanks'. */
+@property(readonly) NSNumber* totalRanks;
+
 /**
  * @return true if this is the first time the current gamer appears on this
  *         leaderboard, false otherwise.

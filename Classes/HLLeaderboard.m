@@ -86,6 +86,8 @@
                 _displayHint = [dictionary objectForKey:key];
             } else if ([@"leaderboard_reset" isEqualToString:key]) {
                 _reset = [[HLLeaderboardReset alloc] initWithDictionary:[dictionary objectForKey:key]];
+            } else if ([@"total" isEqualToString:key]) {
+                _total = [dictionary objectForKey:key];
             } else if ([@"scoretags" isEqualToString:key]) {
                 _scoreTags = [dictionary objectForKey:key];
             } else if ([@"entries" isEqualToString:key]) {
