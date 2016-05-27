@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.8.2
+
+* Add support for total leaderboard ranks.
+
 ### v0.8.1
 
 * Add option to delete public shared storage.
