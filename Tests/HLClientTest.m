@@ -123,7 +123,7 @@ id tempAnonId = nil;
 
 - (void)testGameDetails {
     [self checkPromise:[HLClient getGameDetails] withBlock:(^(HLGame* data) {
-        expect([data name]).to.match(@"Integration Test Game");
+        expect([data name]).to.match(@"integration-test-game");
         expect([data desc]).to.match(@"Test Game for Integration Test Suites");
         expect([data createdAt]).to.equal(1442057489062);
         expect([data updatedAt]).to.beGreaterThanOrEqualTo(1442057489062);
