@@ -30,6 +30,7 @@
 #import "HLPurchaseVerification.h"
 #import "HLMessage.h"
 #import "HLSharedStorageSearchResults.h"
+#import "HLDatastoreObject.h"
 
 /**
  Represents interface for interacting with the Heroic Labs service with a gamer token
@@ -70,7 +71,7 @@
  
  @param storageKey The key to attempt to read data from.
  */
--(PMKPromise*)getStoredDataWithKey:(NSString*)storageKey;
+-(PMKPromise*)getStoredDataWithKey:(NSString*)storageKey DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Perform a key-value storage write operation, storing data as JSON. Data
@@ -82,13 +83,13 @@
  @param value The object to serialise and store.
  @param storageKey The key to store the given data under.
  */
--(PMKPromise*)storeData:(NSDictionary*)value withKey:(NSString*)storageKey;
+-(PMKPromise*)storeData:(NSDictionary*)value withKey:(NSString*)storageKey DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Perform a key-value storage delete operation.
  @param key The key to delete data from.
  */
--(PMKPromise*)deleteStoredDataWithKey:(NSString*)storageKey;
+-(PMKPromise*)deleteStoredDataWithKey:(NSString*)storageKey DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Get a list of achievements available for the game, including any gamer
@@ -291,7 +292,7 @@
  
  @param luceneQuery Lucene-like query used to match.
  */
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery;
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Get data in Shared Storage matching the query.
@@ -299,7 +300,7 @@
  @param luceneQuery Lucene-like query used to match.
  @param key Key name to restrict searches to. Only results among those keys will be returned. Can be null.
  */
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key;
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Get data in Shared Storage matching the query.
@@ -308,7 +309,7 @@
  @param key Key name to restrict searches to. Only results among those keys will be returned. Can be null.
  @param sortKey Lucene-like sort clauses used to order search results. Can be null.
  */
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey;
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Get data in Shared Storage matching the query.
@@ -318,7 +319,7 @@
  @param sortKey Lucene-like sort clauses used to order search results. Can be null.
  @param limit Maximum number of results to return.
  */
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey limit:(NSNumber*)limit;
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey limit:(NSNumber*)limit DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Get data in Shared Storage matching the query. Use this to paginate the results.
@@ -329,14 +330,14 @@
  @param limit Maximum number of results to return.
  @param offset Starting position of the result.
  */
-- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset;
+- (PMKPromise*)searchSharedStorageWithQuery:(NSString*)luceneQuery andFilter:(NSString*)key sort:(NSString*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Get data in SharedStorage matching the given key.
  
  @param key Data in shared storage in the given key. Alphanumeric characters only.
  */
-- (PMKPromise*)getSharedDataWithKey:(NSString*)key;
+- (PMKPromise*)getSharedDataWithKey:(NSString*)key DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Get data in SharedStorage matching the given key.
@@ -344,7 +345,7 @@
  @param data dictionary key-value pairs.
  @param key Data in shared storage in the given key. Alphanumeric characters only.
  */
-- (PMKPromise*)storeSharedData:(NSDictionary*)data withKey:(NSString*)key;
+- (PMKPromise*)storeSharedData:(NSDictionary*)data withKey:(NSString*)key DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Partially update data in SharedStorage for the given key.
@@ -354,12 +355,118 @@
  
  @param key Data in shared storage in the given key. Alphanumeric characters only.
  */
-- (PMKPromise*)partialUpdateSharedData:(NSDictionary*)data withKey:(NSString*)key;
+- (PMKPromise*)partialUpdateSharedData:(NSDictionary*)data withKey:(NSString*)key DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
 
 /**
  Delete data in the Public region of SharedStorage matching the given key.
  
  @param key Data in shared storage in the given key. Alphanumeric characters only.
  */
-- (PMKPromise*)deleteSharedDataWithKey:(NSString*)key;
+- (PMKPromise*)deleteSharedDataWithKey:(NSString*)key DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use Datastore instead");
+
+/**
+ Get data in Datastore matching the query.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ @param table Table name to search.
+ */
+- (PMKPromise*)datastoreSearchWithQuery:(NSString*)luceneQuery inTable:(NSString*)table;
+
+/**
+ Get data in Datastore matching the query.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ @param sortKey Lucene-like sort clauses used to order search results. Can be null.
+ @param table Table name to search.
+ */
+- (PMKPromise*)datastoreSearchWithQuery:(NSString*)luceneQuery sort:(NSString*)sortKey inTable:(NSString*)table;
+
+/**
+ Get data in Datastore matching the query.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ @param sortKey Lucene-like sort clauses used to order search results. Can be null.
+ @param limit Maximum number of results to return.
+ @param table Table name to search.
+ */
+- (PMKPromise*)datastoreSearchWithQuery:(NSString*)luceneQuery sort:(NSString*)sortKey limit:(NSNumber*)limit inTable:(NSString*)table;
+
+/**
+ Get data in Datastore matching the query. Use this to paginate the results.
+ 
+ @param luceneQuery Lucene-like query used to match.
+ @param sortKey Lucene-like sort clauses used to order search results. Can be null.
+ @param limit Maximum number of results to return.
+ @param offset Starting position of the result.
+ @param table Table name to search.
+ */
+- (PMKPromise*)datastoreSearchWithQuery:(NSString*)luceneQuery sort:(NSString*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset inTable:(NSString*)table;
+
+/**
+ Retrieve a specific key from the given Datastore table, where the key has no owner set.
+ 
+ @param key Data in Datastore in the given key. Alphanumeric characters only.
+ @param table Table name to retrieve data from.
+ */
+- (PMKPromise*)datastoreGetKey:(NSString*)key inTable:(NSString*)table;
+
+/**
+ Get data in a table matching the given key.
+ 
+ @param key Data in Datastore in the given key. Alphanumeric characters only.
+ @param owner The owner to retrieve the key for. Must be a Gamer ID, or the value “me” representing the current user.
+ @param table Table name to retrieve data from.
+ */
+- (PMKPromise*)datastoreGetKey:(NSString*)key fromOwner:(NSString*)owner inTable:(NSString*)table;
+
+/**
+ Get data in Datastore matching the given key.
+ 
+ @param data dictionary key-value pairs.
+ @param key Data in Datastore in the given key. Alphanumeric characters only.
+ @param table Table name to insert data into.
+ */
+- (PMKPromise*)datastorePutData:(NSDictionary*)data withKey:(NSString*)key inTable:(NSString*)table;
+
+/**
+ Get data in Datastore matching the given key.
+ 
+ @param data dictionary key-value pairs.
+ @param key Data in Datastore in the given key. Alphanumeric characters only.
+ @param permission Set permissions for this key.
+ @param table Table name to insert data into.
+ */
+- (PMKPromise*)datastorePutData:(NSDictionary*)data withKey:(NSString*)key withPermission:(enum HLDatastorePermission)permission inTable:(NSString*)table;
+
+/**
+ Partially update data in Datastore for the given key.
+ - If data doesn't exist, it will be added
+ - If data exists, then the matching portion will be overwritten
+ - If data exists, but new data is 'null' then the matching portion will be erased.
+ 
+ @param key Data in Datastore in the given key. Alphanumeric characters only.
+ @param table Table name to insert data into.
+ */
+- (PMKPromise*)datastoreUpdateData:(NSDictionary*)data withKey:(NSString*)key inTable:(NSString*)table;
+
+/**
+ Partially update data in Datastore for the given key.
+ - If data doesn't exist, it will be added
+ - If data exists, then the matching portion will be overwritten
+ - If data exists, but new data is 'null' then the matching portion will be erased.
+ 
+ @param key Data in Datastore in the given key. Alphanumeric characters only.
+ @param permission Set permissions for this key.
+ @param table Table name to insert data into.
+ */
+- (PMKPromise*)datastoreUpdateData:(NSDictionary*)data withKey:(NSString*)key withPermission:(enum HLDatastorePermission)permission inTable:(NSString*)table;
+
+/**
+ Delete data in the Public region of Datastore matching the given key.
+ 
+ @param key Data in Datastore in the given key. Alphanumeric characters only.
+ @param table Table name to delete data from.
+ */
+- (PMKPromise*)datastoreDeleteKey:(NSString*)key inTable:(NSString*)table;
+
 @end

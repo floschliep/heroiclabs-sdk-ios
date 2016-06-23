@@ -32,6 +32,8 @@
 		CD3ECA7B1B123E360020DD1F /* HLSessionClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */; };
 		CD40500F1C7DF25400AABCF2 /* HLGameCenterCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */; };
 		CD4050101C7DF26300AABCF2 /* HLGameCenterCredentials.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */; };
+		CD4C6A561D1C9E5300B2AD10 /* HLDatastoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4C6A551D1C9E5300B2AD10 /* HLDatastoreObject.m */; };
+		CD4C6A571D1CAD5A00B2AD10 /* HLDatastoreObject.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD4C6A541D1C9E2600B2AD10 /* HLDatastoreObject.h */; };
 		CD52662F1BCE898C00C23093 /* local-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD52662E1BCE898C00C23093 /* local-config.plist */; };
 		CD5266311BCE89AE00C23093 /* iosmailboxtest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD5266301BCE89AE00C23093 /* iosmailboxtest.js */; };
 		CD6063171BC81638007D4F70 /* HLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6063161BC81638007D4F70 /* HLMessage.m */; };
@@ -94,6 +96,7 @@
 				CD3ECA7B1B123E360020DD1F /* HLSessionClient.h in Copy Files */,
 				CDAB30021BE00630009077BE /* HLMatch.h in Copy Files */,
 				CD3AB11D1C0BA44E0081FCC6 /* HLMatchChange.h in Copy Files */,
+				CD4C6A571D1CAD5A00B2AD10 /* HLDatastoreObject.h in Copy Files */,
 				CDAB30031BE006B7009077BE /* HLPing.h in Copy Files */,
 				CD34E7DF1A50AFC600A253E0 /* NSURLRequest+HLURLRequest.h in Copy Files */,
 				CD33F2231A50282D00275061 /* HLRequestRetryHandlerProtocol.h in Copy Files */,
@@ -147,6 +150,8 @@
 		CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLSessionClient.h; sourceTree = "<group>"; };
 		CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLGameCenterCredentials.h; sourceTree = "<group>"; };
 		CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGameCenterCredentials.m; sourceTree = "<group>"; };
+		CD4C6A541D1C9E2600B2AD10 /* HLDatastoreObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLDatastoreObject.h; sourceTree = "<group>"; };
+		CD4C6A551D1C9E5300B2AD10 /* HLDatastoreObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLDatastoreObject.m; sourceTree = "<group>"; };
 		CD52662E1BCE898C00C23093 /* local-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "local-config.plist"; sourceTree = "<group>"; };
 		CD5266301BCE89AE00C23093 /* iosmailboxtest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosmailboxtest.js; sourceTree = "<group>"; };
 		CD6063141BC81619007D4F70 /* HLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMessage.h; sourceTree = "<group>"; };
@@ -262,10 +267,10 @@
 				CDCFE6F21AED2133006A20CB /* HLHttpClient.m */,
 				CD8828B01991083D009E8D10 /* HLClient.h */,
 				CD8828B11991083D009E8D10 /* HLClient.m */,
-				CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */,
-				CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */,
 				CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */,
 				CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */,
+				CD4C6A541D1C9E2600B2AD10 /* HLDatastoreObject.h */,
+				CD4C6A551D1C9E5300B2AD10 /* HLDatastoreObject.m */,
 				CD6EAB021BA23A3D00DC7E96 /* HLPing.h */,
 				CD6EAB031BA23A3D00DC7E96 /* HLPing.m */,
 				8A018FB11A2F7DEF007EF85E /* HLServer.h */,
@@ -292,6 +297,8 @@
 				CD6063161BC81638007D4F70 /* HLMessage.m */,
 				CDAB2FFF1BDFCCFA009077BE /* HLSharedStorageSearchResults.h */,
 				CDAB30001BDFCE07009077BE /* HLSharedStorageSearchResults.m */,
+				CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */,
+				CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */,
 				CD34E7DC1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.h */,
 				CD34E7DD1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m */,
 				8AB0CBDE1982ADEC004E243D /* HLJSONSerialisableProtocol.h */,
@@ -520,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD4C6A561D1C9E5300B2AD10 /* HLDatastoreObject.m in Sources */,
 				8A018FB31A2F7DEF007EF85E /* HLAchievement.m in Sources */,
 				CD8828B21991083D009E8D10 /* HLClient.m in Sources */,
 				8A018FB41A2F7DEF007EF85E /* HLServer.m in Sources */,

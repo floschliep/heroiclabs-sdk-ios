@@ -51,6 +51,8 @@ id productId = @"some.purchased.product.id";
 id scriptId = @"28b7cb10af864361b48bc437ff2fc6b9";
 id mailboxScriptId = @"496de446a41048c287e3329b60c43edf";
 id sharedStorageKey = @"iOSHeroicSharedKey";
+id datastoreTable = @"ios";
+id datastoreKey = @"iOSHeroicKey";
 
 + (void)setUp {
     [Expecta setAsynchronousTestTimeout:10];
@@ -411,6 +413,38 @@ id sharedStorageKey = @"iOSHeroicSharedKey";
 
 - (void)test_SharedStorage_5_Delete {
     [self checkPromise:[session deleteStoredDataWithKey:sharedStorageKey] withErrorBlock:errorHandler];
+}
+
+- (void)test_Datastore_1_Put {
+    id data = @{@"ioskey": @"iosvalue"};
+    [self checkPromise:[session datastorePutData:data withKey:datastoreKey inTable:datastoreTable] withErrorBlock:errorHandler];
+}
+
+- (void)test_Datastore_2_PartialUpdate {
+    id data = @{@"ioskey": @"iosvalueUpdated"};
+    [self checkPromise:[session datastoreUpdateData:data withKey:datastoreKey withPermission:READ_WRITE inTable:datastoreTable] withErrorBlock:errorHandler];
+}
+
+- (void)test_Datastore_3_Get {
+    id data = @{@"ioskey": @"iosvalueUpdated"};
+    [self checkPromise:[session datastoreGetKey:datastoreKey fromOwner:@"me" inTable:datastoreTable] withBlock:(^(HLDatastoreObject* datastoreObject){
+        expect([datastoreObject data]).to.beSupersetOf(data);
+        expect([[datastoreObject metadata] permission]).to.equal(READ_WRITE);
+    }) withErrorBlock:errorHandler];
+}
+
+- (void)test_Datastore_4_Search {
+    id data = @{@"ioskey": @"iosvalueUpdated"};
+    [self checkPromise:[session datastoreSearchWithQuery:@"*" sort:nil limit:@10 offset:@0 inTable:datastoreTable] withBlock:(^(HLDatastoreSearchResult* datastoreSearchResult){
+        expect([datastoreSearchResult totalCount]).to.equal(1);
+        expect([datastoreSearchResult count]).to.equal(1);
+        expect([[datastoreSearchResult results] count]).to.equal(1);
+        expect([[datastoreSearchResult results][0] data]).to.equal(data);
+    }) withErrorBlock:errorHandler];
+}
+
+- (void)test_Datastore_5_Delete {
+    [self checkPromise:[session datastoreDeleteKey:datastoreKey inTable:datastoreTable] withErrorBlock:errorHandler];
 }
 
 @end

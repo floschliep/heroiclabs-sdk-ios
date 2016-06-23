@@ -501,8 +501,6 @@
     }
     
     id query = [NSString stringWithFormat:@"query=%@&limit=%@&offset=%@&%@", luceneQuery, limit, offset, optionalParams];
-    
-    NSLog(@"query: %@", query);
 
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/?%@", query];
     return [self sendApiRequest:endpoint
@@ -549,6 +547,139 @@
 - (PMKPromise*)deleteSharedDataWithKey:(NSString*)key
 {
     id endpoint = [NSString stringWithFormat:@"/v0/gamer/shared/%@/public", key];
+    return [self sendApiRequest:endpoint
+                     withMethod:DELETE
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id result, PMKResolver resolver) {
+                   resolver(result);
+               }];
+}
+
+- (PMKPromise*)datastoreSearchWithQuery:(NSString*)luceneQuery inTable:(NSString*)table
+{
+    return [self datastoreSearchWithQuery:luceneQuery sort:nil limit:@10 offset:@0 inTable:table];
+}
+
+- (PMKPromise*)datastoreSearchWithQuery:(NSString*)luceneQuery sort:(NSString*)sortKey inTable:(NSString*)table
+{
+    return [self datastoreSearchWithQuery:luceneQuery sort:sortKey limit:@10 offset:@0 inTable:table];
+}
+
+- (PMKPromise*)datastoreSearchWithQuery:(NSString*)luceneQuery sort:(NSString*)sortKey limit:(NSNumber*)limit inTable:(NSString*)table
+{
+    return [self datastoreSearchWithQuery:luceneQuery sort:sortKey limit:limit offset:@0 inTable:table];
+}
+
+- (PMKPromise*)datastoreSearchWithQuery:(NSString*)luceneQuery sort:(NSString*)sortKey limit:(NSNumber*)limit offset:(NSNumber*)offset inTable:(NSString*)table
+{
+    id sortParam = [NSMutableString stringWithString:@""];
+    if (sortKey) {
+        [sortParam appendFormat:@"&sort=%@", sortKey];
+    }
+    
+    id query = [NSString stringWithFormat:@"query=%@&limit=%@&offset=%@%@", luceneQuery, limit, offset, sortParam];
+    
+    id endpoint = [NSString stringWithFormat:@"/v0/datastore/%@/?%@", table, query];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver([[HLDatastoreSearchResult alloc] initWithDictionary:data]);
+               }];
+
+}
+
+- (PMKPromise*)datastoreGetKey:(NSString*)key inTable:(NSString*)table
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/datastore/%@/%@", table, key];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver([[HLDatastoreObject alloc] initWithDictionary:data]);
+               }];
+}
+
+- (PMKPromise*)datastoreGetKey:(NSString*)key fromOwner:(NSString*)owner inTable:(NSString*)table
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/datastore/%@/%@/%@", table, key, owner];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver([[HLDatastoreObject alloc] initWithDictionary:data]);
+               }];
+}
+
+- (PMKPromise*)datastorePutData:(NSDictionary*)data withKey:(NSString*)key inTable:(NSString*)table
+{
+    return [self datastorePutData:data withKey:key withPermission:INHERIT inTable:table];
+}
+
+- (PMKPromise*)datastorePutData:(NSDictionary*)data withKey:(NSString*)key withPermission:(enum HLDatastorePermission)permission inTable:(NSString*)table
+{
+    return [self datastoreSave:data withKey:key withPermission:permission inTable:table withMethod:PUT];
+}
+
+- (PMKPromise*)datastoreUpdateData:(NSDictionary*)data withKey:(NSString*)key inTable:(NSString*)table
+{
+    return [self datastoreUpdateData:data withKey:key withPermission:INHERIT inTable:table];
+}
+
+- (PMKPromise*)datastoreUpdateData:(NSDictionary*)data withKey:(NSString*)key withPermission:(enum HLDatastorePermission)permission inTable:(NSString*)table
+{
+    return [self datastoreSave:data withKey:key withPermission:permission inTable:table withMethod:PATCH];
+}
+
+- (PMKPromise*)datastoreSave:(NSDictionary*)data withKey:(NSString*)key withPermission:(enum HLDatastorePermission)permission inTable:(NSString*)table withMethod:(enum HLRequestMethod)method
+{
+    NSMutableDictionary* payload = [[NSMutableDictionary alloc]init];
+    [payload setValue:data forKey:@"data"];
+    if (permission != INHERIT) {
+        NSNumber* zero = [NSNumber numberWithInt:0];
+        NSNumber* one = [NSNumber numberWithInt:1];
+        NSNumber* two = [NSNumber numberWithInt:2];
+        
+        id read = zero;
+        id write = zero;
+        switch (permission) {
+            case READ_ONLY:
+                read = one;
+                break;
+            case WRITE_ONLY:
+                write = one;
+                break;
+            case READ_WRITE:
+                read = one;
+                write = one;
+                break;
+            case PUBLIC_READ:
+                read = two;
+                break;
+            case PUBLIC_READ_OWNER_WRITE:
+                read = two;
+                write = one;
+                break;
+            default:
+                break;
+        }
+        id p = @{@"read":read,@"write":write};
+        [payload setValue:p forKey:@"permissions"];
+    }
+    
+    
+    id endpoint = [NSString stringWithFormat:@"/v0/datastore/%@/%@", table, key];
+    return [self sendApiRequest:endpoint
+                     withMethod:method
+                     withEntity:payload
+               withSuccessBlock:^(NSNumber* statusCode, id result, PMKResolver resolver) {
+                   resolver(result);
+               }];
+}
+
+- (PMKPromise*)datastoreDeleteKey:(NSString*)key inTable:(NSString*)table
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/datastore/%@/%@", table, key];
     return [self sendApiRequest:endpoint
                      withMethod:DELETE
                      withEntity:nil
