@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.9.0
+
+* Add support for Datastore API.
+
 ### v0.8.2
 
 * Add support for total leaderboard ranks.
