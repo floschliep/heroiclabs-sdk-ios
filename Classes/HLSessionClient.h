@@ -255,7 +255,7 @@
  @param scriptId The Script ID to use.
  @param json The Payload to send to the server. Can be nil or NSDictionary or NSString.
  */
-- (PMKPromise*)executeScript:(NSString*)scriptId withPayload:(id)json;
+- (PMKPromise*)executeScript:(NSString*)scriptId withPayload:(id)json DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("use CloudCode Functions");
 
 /**
  Checks and retrieves all messages from the server.
@@ -468,5 +468,22 @@
  @param table Table name to delete data from.
  */
 - (PMKPromise*)datastoreDeleteKey:(NSString*)key inTable:(NSString*)table;
+
+/**
+ Executes a Cloud Code function on the server, with the current player authenticated.
+ 
+ @param function Function to be executed
+ @param module Module name that the function belongs to
+ */
+- (PMKPromise*)executeCloudCodeFunction:(NSString*)function inModule:(NSString*)module;
+
+/**
+ Executes a Cloud Code function on the server, with the current player authenticated.
+ 
+ @param function Function to be executed
+ @param module Module name that the function belongs to
+ @param json The Payload to send to the server. Can be nil or NSDictionary or NSString.
+ */
+- (PMKPromise*)executeCloudCodeFunction:(NSString*)function inModule:(NSString*)module withPayload:(id)json;
 
 @end

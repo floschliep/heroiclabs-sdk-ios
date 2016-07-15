@@ -688,4 +688,26 @@
                }];
 }
 
+- (PMKPromise*)executeCloudCodeFunction:(NSString*)function inModule:(NSString*)module
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/cloudcode/%@/%@", module, function];
+    return [self sendApiRequest:endpoint
+                     withMethod:GET
+                     withEntity:nil
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver(data);
+               }];
+}
+
+- (PMKPromise*)executeCloudCodeFunction:(NSString*)function inModule:(NSString*)module withPayload:(id)json
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/cloudcode/%@/%@", module, function];
+    return [self sendApiRequest:endpoint
+                     withMethod:POST
+                     withEntity:json
+               withSuccessBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                   resolver(data);
+               }];
+}
+
 @end

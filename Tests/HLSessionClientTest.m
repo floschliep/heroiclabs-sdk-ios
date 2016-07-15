@@ -447,4 +447,13 @@ id datastoreKey = @"iOSHeroicKey";
     [self checkPromise:[session datastoreDeleteKey:datastoreKey inTable:datastoreTable] withErrorBlock:errorHandler];
 }
 
+- (void)testCloudCodeFunctionExecution {
+    id function = @"swap";
+    id module = @"test";
+    [self checkPromise:[session executeCloudCodeFunction:function inModule:module withPayload:@{@"a": @1, @"b": @2}] withBlock:(^(id data) {
+        expect([data objectForKey:@"a"]).to.equal(2);
+        expect([data objectForKey:@"b"]).to.equal(1);
+    }) withErrorBlock:errorHandler];
+}
+
 @end

@@ -151,6 +151,28 @@ void (^successCheckBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
                    }];
 }
 
++ (PMKPromise*)executeCloudCodeFunction:(NSString*)function inModule:(NSString*)module
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/cloudcode/%@/%@", module, function];
+    return [HLClient sendApiRequest:endpoint
+                         withMethod:GET
+                             entity:nil
+                       successBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                           resolver(data);
+                       }];
+}
+
++ (PMKPromise*)executeCloudCodeFunction:(NSString*)function inModule:(NSString*)module withPayload:(id)json
+{
+    id endpoint = [NSString stringWithFormat:@"/v0/cloudcode/%@/%@", module, function];
+    return [HLClient sendApiRequest:endpoint
+                         withMethod:POST
+                             entity:json
+                       successBlock:^(NSNumber* statusCode, id data, PMKResolver resolver) {
+                           resolver(data);
+                       }];
+}
+
 +(PMKPromise*)loginAnonymouslyWith:(NSString*)deviceId
 {
     return [HLClient sendAccountRequest:@"login" withProvider:@"anonymous" entity:@{@"id" : deviceId} session:nil successBlock:successLoginBlock];
@@ -383,4 +405,5 @@ void (^successCheckBlock)(NSNumber* statusCode, id data, PMKResolver resolver);
                              retryHandler:retryHandler
                              successBlock:successCallback];
 }
+
 @end
