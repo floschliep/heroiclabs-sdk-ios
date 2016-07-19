@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### v0.10.0
+
+* Add support for Cloud Code 2.0.
+
 ### v0.9.0
 
 * Add support for Datastore API.
