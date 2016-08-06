@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.version                     = "0.10.0"
-  s.source                      = { :git => "https://github.com/heroiclabs/heroiclabs-sdk-ios.git", :tag => "0.10.0"}
+  s.version                     = "0.11.0"
+  s.source                      = { :git => "https://github.com/heroiclabs/heroiclabs-sdk-ios.git", :tag => "0.11.0"}
   s.name                        = "HeroicLabs"
   s.summary                     = "Heroic Labs SDK for iOS"
   s.description                 = "Heroic Labs is a backend for games."
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.authors                     = { "Heroic Labs" => "support@heroiclabs.com"}
   s.social_media_url            = "http://twitter.com/heroicdev"
   s.license                     = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
-  s.ios.deployment_target       = '7.0'
+  s.ios.deployment_target       = '8.0'
   s.tvos.deployment_target      = '9.0'
   s.source_files                = "Classes/*.{h,m}"
   s.public_header_files         = "Classes/*.h"

@@ -2,7 +2,7 @@ Heroic Labs iOS SDK
 ===================
 The iOS SDK for the Heroic Labs service.
 
-[SDK Guide](https://heroiclabs.com/docs/guide/ios/) | [SDK Reference](http://cocoadocs.org/docsets/HeroicLabs/0.11.0/)
+[SDK Guide](https://heroiclabs.com/docs/guide/ios/) | [SDK Reference](http://cocoadocs.org/docsets/HeroicLabs)
 
 ---
 

@@ -1,6 +1,14 @@
 Changelog
 =========
 
+### v0.11.0
+
+* *BREAKING CHANGE* Drop support for iOS 7.
+* iOS 8+ Support.
+* Remove Cocoapods internal project usage. SDK will still be available on Cocoapods.
+* Add support for Carthage. Move internal project dependency to Carthage. 
+* Add support for Frameworks.  
+
 ### v0.10.0
 
 * Add support for Cloud Code 2.0.
