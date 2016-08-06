@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:GUGameUpSDK.xcodeproj">
+      location = "self:/Users/mo/Desktop/HeroicLabs/heroiclabs-sdk-ios/HeroicLabs.xcodeproj">
    </FileRef>
 </Workspace>

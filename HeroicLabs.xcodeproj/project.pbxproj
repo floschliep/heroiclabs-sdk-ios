@@ -3,582 +3,474 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 47;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A60A1E94749958352B52638 /* libPods-heroiclabs-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC2392B76E8792C0E34DFB8 /* libPods-heroiclabs-sdk.a */; };
-		7E8B387FC3DDE512F3B107B5 /* libPods-heroiclabs-sdk-tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AE7FBE56DBDA8FA984592F /* libPods-heroiclabs-sdk-tests.a */; };
-		8A018FB31A2F7DEF007EF85E /* HLAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A018FB01A2F7DEF007EF85E /* HLAchievement.m */; };
-		8A018FB41A2F7DEF007EF85E /* HLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A018FB21A2F7DEF007EF85E /* HLServer.m */; };
-		8A018FB51A2F7E0A007EF85E /* HLServer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8A018FB11A2F7DEF007EF85E /* HLServer.h */; };
-		8A018FB61A2F7E0E007EF85E /* HLAchievement.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8A018FAF1A2F7DEF007EF85E /* HLAchievement.h */; };
-		8A018FB71A2F7E8A007EF85E /* HLGame.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD0742F41969FDF1003F0BE8 /* HLGame.h */; };
-		CD0742F01969FDF1003F0BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0742EF1969FDF1003F0BE8 /* Foundation.framework */; };
-		CD0742F71969FDF1003F0BE8 /* HLGame.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0742F61969FDF1003F0BE8 /* HLGame.m */; };
-		CD2C7A011C7D2B700036E06F /* HLgzipRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2C7A001C7D2B700036E06F /* HLgzipRequestSerializer.m */; };
-		CD2C7A061C7D2E190036E06F /* NSData+GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2C7A051C7D2E190036E06F /* NSData+GZIP.m */; };
-		CD2C7A071C7D34D30036E06F /* NSData+GZIP.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD2C7A041C7D2E010036E06F /* NSData+GZIP.h */; };
-		CD2C7A081C7D34D70036E06F /* HLgzipRequestSerializer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD2C79FF1C7D2B330036E06F /* HLgzipRequestSerializer.h */; };
-		CD33F2201A5027F400275061 /* HLDefaultRequestRetryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD33F21F1A5027F400275061 /* HLDefaultRequestRetryHandler.m */; };
-		CD33F2221A50282800275061 /* HLDefaultRequestRetryHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD33F2211A50280000275061 /* HLDefaultRequestRetryHandler.h */; };
-		CD33F2231A50282D00275061 /* HLRequestRetryHandlerProtocol.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD33F21E1A50208600275061 /* HLRequestRetryHandlerProtocol.h */; };
-		CD34E7DB1A50995200A253E0 /* HLNoRequestRetryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD34E7DA1A50995200A253E0 /* HLNoRequestRetryHandler.m */; };
-		CD34E7DE1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD34E7DD1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m */; };
-		CD34E7DF1A50AFC600A253E0 /* NSURLRequest+HLURLRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD34E7DC1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.h */; };
-		CD34E7E01A50AFE500A253E0 /* HLNoRequestRetryHandler.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD34E7D91A50992D00A253E0 /* HLNoRequestRetryHandler.h */; };
-		CD3AB11D1C0BA44E0081FCC6 /* HLMatchChange.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDC81D691C0BA19400FB642C /* HLMatchChange.h */; };
-		CD3ECA791B123E1C0020DD1F /* HLSessionClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */; };
-		CD3ECA7B1B123E360020DD1F /* HLSessionClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */; };
-		CD40500F1C7DF25400AABCF2 /* HLGameCenterCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */; };
-		CD4050101C7DF26300AABCF2 /* HLGameCenterCredentials.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */; };
-		CD4C6A561D1C9E5300B2AD10 /* HLDatastoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4C6A551D1C9E5300B2AD10 /* HLDatastoreObject.m */; };
-		CD4C6A571D1CAD5A00B2AD10 /* HLDatastoreObject.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD4C6A541D1C9E2600B2AD10 /* HLDatastoreObject.h */; };
-		CD52662F1BCE898C00C23093 /* local-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD52662E1BCE898C00C23093 /* local-config.plist */; };
-		CD5266311BCE89AE00C23093 /* iosmailboxtest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD5266301BCE89AE00C23093 /* iosmailboxtest.js */; };
-		CD6063171BC81638007D4F70 /* HLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6063161BC81638007D4F70 /* HLMessage.m */; };
-		CD6EAB011BA0FC6000DC7E96 /* HLClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6EAB001BA0FC6000DC7E96 /* HLClientTest.m */; };
-		CD6EAB041BA23A3D00DC7E96 /* HLPing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6EAB031BA23A3D00DC7E96 /* HLPing.m */; };
-		CD8828AD199107A4009E8D10 /* HLGamer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD77CF86197F1B13006ACC0D /* HLGamer.m */; };
-		CD8828AF19910818009E8D10 /* HLGamer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD77CF85197F1B13006ACC0D /* HLGamer.h */; };
-		CD8828B21991083D009E8D10 /* HLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8828B11991083D009E8D10 /* HLClient.m */; };
-		CD8828B319910860009E8D10 /* HLClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD8828B01991083D009E8D10 /* HLClient.h */; };
-		CD97C1111BC03D5B009ABCDB /* iosunittest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD97C1101BC03D5B009ABCDB /* iosunittest.js */; };
-		CDA951041B1F67F70058955C /* HLMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA951031B1F67F70058955C /* HLMatch.m */; };
-		CDA951071B1F68130058955C /* HLMatchTurn.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA951061B1F68130058955C /* HLMatchTurn.m */; };
-		CDAB2FFE1BDF9E3D009077BE /* HLPushNotificationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB2FFD1BDF9DED009077BE /* HLPushNotificationTest.m */; };
-		CDAB30011BDFCE07009077BE /* HLSharedStorageSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAB30001BDFCE07009077BE /* HLSharedStorageSearchResults.m */; };
-		CDAB30021BE00630009077BE /* HLMatch.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDA951021B1F67E90058955C /* HLMatch.h */; };
-		CDAB30031BE006B7009077BE /* HLPing.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD6EAB021BA23A3D00DC7E96 /* HLPing.h */; };
-		CDAB30041BE006CB009077BE /* HLMatchTurn.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDA951051B1F68030058955C /* HLMatchTurn.h */; };
-		CDAB30051BE006D4009077BE /* HLPurchaseVerification.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDDD98731B4CA2EF00CD56E6 /* HLPurchaseVerification.h */; };
-		CDAB30061BE006D6009077BE /* HLMessage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CD6063141BC81619007D4F70 /* HLMessage.h */; };
-		CDAB30071BE006D9009077BE /* HLSharedStorageSearchResults.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDAB2FFF1BDFCCFA009077BE /* HLSharedStorageSearchResults.h */; };
-		CDC81D6C1C0BA41A00FB642C /* HLMatchChange.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */; };
-		CDCE9B4D1C0F6ED600C4009A /* HLMultiplayerSampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCE9B4C1C0F6ED600C4009A /* HLMultiplayerSampleTest.m */; };
-		CDCFE6F31AED2133006A20CB /* HLHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFE6F21AED2133006A20CB /* HLHttpClient.m */; };
-		CDCFE6F41AEDA430006A20CB /* HLHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDCFE6F11AED211C006A20CB /* HLHttpClient.h */; };
-		CDDD98751B4CA2FB00CD56E6 /* HLPurchaseVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDD98741B4CA2FB00CD56E6 /* HLPurchaseVerification.m */; };
-		CDECE7B01A54461A000ADDEF /* HLLeaderboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CDECE7AF1A54461A000ADDEF /* HLLeaderboard.m */; };
-		CDECE7B51A5446A1000ADDEF /* HLLeaderboardRank.m in Sources */ = {isa = PBXBuildFile; fileRef = CDECE7B41A5446A1000ADDEF /* HLLeaderboardRank.m */; };
-		CDECE7BB1A546440000ADDEF /* HLLeaderboard.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDECE7B11A544622000ADDEF /* HLLeaderboard.h */; };
-		CDECE7BD1A546446000ADDEF /* HLLeaderboardRank.h in Copy Files */ = {isa = PBXBuildFile; fileRef = CDECE7B61A5446A9000ADDEF /* HLLeaderboardRank.h */; };
-		CDEEBF151B9F3CF500A57588 /* HLSessionClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEEBF141B9F3CF500A57588 /* HLSessionClientTest.m */; };
-		CDEEBF161B9F3CF500A57588 /* libheroiclabs-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0742EC1969FDF1003F0BE8 /* libheroiclabs-sdk.a */; };
-		CDFA816A1983A3990017F277 /* HLJSONSerialisableProtocol.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8AB0CBDE1982ADEC004E243D /* HLJSONSerialisableProtocol.h */; };
+		CD3168D41D5604FF009935F3 /* HeroicLabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3168C91D5604FF009935F3 /* HeroicLabs.framework */; };
+		CD31691A1D5606ED009935F3 /* HeroicLabs-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = CD3168E81D5606ED009935F3 /* HeroicLabs-Prefix.pch */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31691B1D5606ED009935F3 /* HLAchievement.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168E91D5606ED009935F3 /* HLAchievement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31691C1D5606ED009935F3 /* HLAchievement.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168EA1D5606ED009935F3 /* HLAchievement.m */; };
+		CD31691D1D5606ED009935F3 /* HLClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168EB1D5606ED009935F3 /* HLClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31691E1D5606ED009935F3 /* HLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168EC1D5606ED009935F3 /* HLClient.m */; };
+		CD31691F1D5606ED009935F3 /* HLDatastoreObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168ED1D5606ED009935F3 /* HLDatastoreObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169201D5606ED009935F3 /* HLDatastoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168EE1D5606ED009935F3 /* HLDatastoreObject.m */; };
+		CD3169211D5606ED009935F3 /* HLDefaultRequestRetryHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168EF1D5606ED009935F3 /* HLDefaultRequestRetryHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169221D5606ED009935F3 /* HLDefaultRequestRetryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168F01D5606ED009935F3 /* HLDefaultRequestRetryHandler.m */; };
+		CD3169231D5606ED009935F3 /* HLGame.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168F11D5606ED009935F3 /* HLGame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169241D5606ED009935F3 /* HLGame.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168F21D5606ED009935F3 /* HLGame.m */; };
+		CD3169251D5606ED009935F3 /* HLGameCenterCredentials.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168F31D5606ED009935F3 /* HLGameCenterCredentials.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169261D5606ED009935F3 /* HLGameCenterCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168F41D5606ED009935F3 /* HLGameCenterCredentials.m */; };
+		CD3169271D5606ED009935F3 /* HLGamer.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168F51D5606ED009935F3 /* HLGamer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169281D5606ED009935F3 /* HLGamer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168F61D5606ED009935F3 /* HLGamer.m */; };
+		CD3169291D5606ED009935F3 /* HLgzipRequestSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168F71D5606ED009935F3 /* HLgzipRequestSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31692A1D5606ED009935F3 /* HLgzipRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168F81D5606ED009935F3 /* HLgzipRequestSerializer.m */; };
+		CD31692B1D5606ED009935F3 /* HLHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168F91D5606ED009935F3 /* HLHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31692C1D5606ED009935F3 /* HLHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168FA1D5606ED009935F3 /* HLHttpClient.m */; };
+		CD31692D1D5606ED009935F3 /* HLJSONSerialisableProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168FB1D5606ED009935F3 /* HLJSONSerialisableProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31692E1D5606ED009935F3 /* HLLeaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168FC1D5606ED009935F3 /* HLLeaderboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31692F1D5606ED009935F3 /* HLLeaderboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168FD1D5606ED009935F3 /* HLLeaderboard.m */; };
+		CD3169301D5606ED009935F3 /* HLLeaderboardRank.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168FE1D5606ED009935F3 /* HLLeaderboardRank.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169311D5606ED009935F3 /* HLLeaderboardRank.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3168FF1D5606ED009935F3 /* HLLeaderboardRank.m */; };
+		CD3169321D5606ED009935F3 /* HLMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169001D5606ED009935F3 /* HLMatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169331D5606ED009935F3 /* HLMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169011D5606ED009935F3 /* HLMatch.m */; };
+		CD3169341D5606ED009935F3 /* HLMatchChange.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169021D5606ED009935F3 /* HLMatchChange.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169351D5606ED009935F3 /* HLMatchChange.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169031D5606ED009935F3 /* HLMatchChange.m */; };
+		CD3169361D5606ED009935F3 /* HLMatchTurn.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169041D5606ED009935F3 /* HLMatchTurn.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169371D5606ED009935F3 /* HLMatchTurn.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169051D5606ED009935F3 /* HLMatchTurn.m */; };
+		CD3169381D5606ED009935F3 /* HLMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169061D5606ED009935F3 /* HLMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169391D5606ED009935F3 /* HLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169071D5606ED009935F3 /* HLMessage.m */; };
+		CD31693A1D5606ED009935F3 /* HLNoRequestRetryHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169081D5606ED009935F3 /* HLNoRequestRetryHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31693B1D5606ED009935F3 /* HLNoRequestRetryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169091D5606ED009935F3 /* HLNoRequestRetryHandler.m */; };
+		CD31693C1D5606ED009935F3 /* HLPing.h in Headers */ = {isa = PBXBuildFile; fileRef = CD31690A1D5606ED009935F3 /* HLPing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31693D1D5606ED009935F3 /* HLPing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31690B1D5606ED009935F3 /* HLPing.m */; };
+		CD31693E1D5606ED009935F3 /* HLPurchaseVerification.h in Headers */ = {isa = PBXBuildFile; fileRef = CD31690C1D5606ED009935F3 /* HLPurchaseVerification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31693F1D5606ED009935F3 /* HLPurchaseVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31690D1D5606ED009935F3 /* HLPurchaseVerification.m */; };
+		CD3169401D5606ED009935F3 /* HLRequestRetryHandlerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CD31690E1D5606ED009935F3 /* HLRequestRetryHandlerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169411D5606ED009935F3 /* HLServer.h in Headers */ = {isa = PBXBuildFile; fileRef = CD31690F1D5606ED009935F3 /* HLServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169421D5606ED009935F3 /* HLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169101D5606ED009935F3 /* HLServer.m */; };
+		CD3169431D5606ED009935F3 /* HLSessionClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169111D5606ED009935F3 /* HLSessionClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169441D5606ED009935F3 /* HLSessionClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169121D5606ED009935F3 /* HLSessionClient.m */; };
+		CD3169451D5606ED009935F3 /* HLSharedStorageSearchResults.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169131D5606ED009935F3 /* HLSharedStorageSearchResults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169461D5606ED009935F3 /* HLSharedStorageSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169141D5606ED009935F3 /* HLSharedStorageSearchResults.m */; };
+		CD3169481D5606ED009935F3 /* NSData+GZIP.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169161D5606ED009935F3 /* NSData+GZIP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3169491D5606ED009935F3 /* NSData+GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169171D5606ED009935F3 /* NSData+GZIP.m */; };
+		CD31694A1D5606ED009935F3 /* NSURLRequest+HLURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3169181D5606ED009935F3 /* NSURLRequest+HLURLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD31694B1D5606ED009935F3 /* NSURLRequest+HLURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169191D5606ED009935F3 /* NSURLRequest+HLURLRequest.m */; };
+		CD31694F1D560B1F009935F3 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD31694D1D560B1F009935F3 /* AFNetworking.framework */; };
+		CD3169501D560B1F009935F3 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD31694E1D560B1F009935F3 /* PromiseKit.framework */; };
+		CD3169511D560B24009935F3 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD31694D1D560B1F009935F3 /* AFNetworking.framework */; };
+		CD3169521D560B24009935F3 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD31694E1D560B1F009935F3 /* PromiseKit.framework */; };
+		CD3169541D560B24009935F3 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3169531D560B24009935F3 /* Expecta.framework */; };
+		CD31695F1D560F2B009935F3 /* HLClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169571D560F2B009935F3 /* HLClientTest.m */; };
+		CD3169601D560F2B009935F3 /* HLMultiplayerSampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169581D560F2B009935F3 /* HLMultiplayerSampleTest.m */; };
+		CD3169611D560F2B009935F3 /* HLPushNotificationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3169591D560F2B009935F3 /* HLPushNotificationTest.m */; };
+		CD3169621D560F2B009935F3 /* HLSessionClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD31695A1D560F2B009935F3 /* HLSessionClientTest.m */; };
+		CD3169641D560F2B009935F3 /* iosmailboxtest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD31695C1D560F2B009935F3 /* iosmailboxtest.js */; };
+		CD3169651D560F2B009935F3 /* iosunittest.js in Resources */ = {isa = PBXBuildFile; fileRef = CD31695D1D560F2B009935F3 /* iosunittest.js */; };
+		CD3169661D560F2B009935F3 /* local-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD31695E1D560F2B009935F3 /* local-config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CDEEBF171B9F3CF500A57588 /* PBXContainerItemProxy */ = {
+		CD3168D51D5604FF009935F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CD0742E41969FDF1003F0BE8 /* Project object */;
+			containerPortal = CD3168C01D5604FF009935F3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CD0742EB1969FDF1003F0BE8;
-			remoteInfo = "heroiclabs-sdk";
+			remoteGlobalIDString = CD3168C81D5604FF009935F3;
+			remoteInfo = "heroiclabs-sdk-ios";
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		CD0742EA1969FDF1003F0BE8 /* Copy Files */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = include;
-			dstSubfolderSpec = 16;
-			files = (
-				CDECE7BD1A546446000ADDEF /* HLLeaderboardRank.h in Copy Files */,
-				8A018FB61A2F7E0E007EF85E /* HLAchievement.h in Copy Files */,
-				8A018FB51A2F7E0A007EF85E /* HLServer.h in Copy Files */,
-				CD8828B319910860009E8D10 /* HLClient.h in Copy Files */,
-				8A018FB71A2F7E8A007EF85E /* HLGame.h in Copy Files */,
-				CD8828AF19910818009E8D10 /* HLGamer.h in Copy Files */,
-				CDECE7BB1A546440000ADDEF /* HLLeaderboard.h in Copy Files */,
-				CDCFE6F41AEDA430006A20CB /* HLHttpClient.h in Copy Files */,
-				CD3ECA7B1B123E360020DD1F /* HLSessionClient.h in Copy Files */,
-				CDAB30021BE00630009077BE /* HLMatch.h in Copy Files */,
-				CD3AB11D1C0BA44E0081FCC6 /* HLMatchChange.h in Copy Files */,
-				CD4C6A571D1CAD5A00B2AD10 /* HLDatastoreObject.h in Copy Files */,
-				CDAB30031BE006B7009077BE /* HLPing.h in Copy Files */,
-				CD34E7DF1A50AFC600A253E0 /* NSURLRequest+HLURLRequest.h in Copy Files */,
-				CD33F2231A50282D00275061 /* HLRequestRetryHandlerProtocol.h in Copy Files */,
-				CDAB30051BE006D4009077BE /* HLPurchaseVerification.h in Copy Files */,
-				CD33F2221A50282800275061 /* HLDefaultRequestRetryHandler.h in Copy Files */,
-				CDAB30071BE006D9009077BE /* HLSharedStorageSearchResults.h in Copy Files */,
-				CDFA816A1983A3990017F277 /* HLJSONSerialisableProtocol.h in Copy Files */,
-				CDAB30061BE006D6009077BE /* HLMessage.h in Copy Files */,
-				CDAB30041BE006CB009077BE /* HLMatchTurn.h in Copy Files */,
-				CD34E7E01A50AFE500A253E0 /* HLNoRequestRetryHandler.h in Copy Files */,
-				CD2C7A081C7D34D70036E06F /* HLgzipRequestSerializer.h in Copy Files */,
-				CD4050101C7DF26300AABCF2 /* HLGameCenterCredentials.h in Copy Files */,
-				CD2C7A071C7D34D30036E06F /* NSData+GZIP.h in Copy Files */,
-			);
-			name = "Copy Files";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		13D9C560893C6BEFDA4D1A92 /* Pods-heroiclabs-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.release.xcconfig"; sourceTree = "<group>"; };
-		1FC932BB8E9AC11BE8D1E1A1 /* Pods-heroiclabs-sdk-tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk-tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests.release.xcconfig"; sourceTree = "<group>"; };
-		6FC2392B76E8792C0E34DFB8 /* libPods-heroiclabs-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-heroiclabs-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		75AE7FBE56DBDA8FA984592F /* libPods-heroiclabs-sdk-tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-heroiclabs-sdk-tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A018FAF1A2F7DEF007EF85E /* HLAchievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLAchievement.h; sourceTree = "<group>"; };
-		8A018FB01A2F7DEF007EF85E /* HLAchievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLAchievement.m; sourceTree = "<group>"; };
-		8A018FB11A2F7DEF007EF85E /* HLServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLServer.h; sourceTree = "<group>"; };
-		8A018FB21A2F7DEF007EF85E /* HLServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLServer.m; sourceTree = "<group>"; };
-		8AB0CBDE1982ADEC004E243D /* HLJSONSerialisableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLJSONSerialisableProtocol.h; sourceTree = "<group>"; };
-		966D54AA34E9E6CA41EC75D3 /* Pods-heroiclabs-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk.debug.xcconfig"; sourceTree = "<group>"; };
-		CD0742EC1969FDF1003F0BE8 /* libheroiclabs-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libheroiclabs-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD0742EF1969FDF1003F0BE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		CD0742F31969FDF1003F0BE8 /* HeroicLabs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeroicLabs-Prefix.pch"; sourceTree = "<group>"; };
-		CD0742F41969FDF1003F0BE8 /* HLGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLGame.h; sourceTree = "<group>"; };
-		CD0742F61969FDF1003F0BE8 /* HLGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLGame.m; sourceTree = "<group>"; };
-		CD0742FD1969FDF1003F0BE8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		CD1D2AB11979190A009D1D4D /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "../GUGameUpSDKDemo/Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
-		CD2C79FF1C7D2B330036E06F /* HLgzipRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLgzipRequestSerializer.h; sourceTree = "<group>"; };
-		CD2C7A001C7D2B700036E06F /* HLgzipRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLgzipRequestSerializer.m; sourceTree = "<group>"; };
-		CD2C7A021C7D2D4C0036E06F /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
-		CD2C7A041C7D2E010036E06F /* NSData+GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GZIP.h"; sourceTree = "<group>"; };
-		CD2C7A051C7D2E190036E06F /* NSData+GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+GZIP.m"; sourceTree = "<group>"; };
-		CD33F21E1A50208600275061 /* HLRequestRetryHandlerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLRequestRetryHandlerProtocol.h; sourceTree = "<group>"; };
-		CD33F21F1A5027F400275061 /* HLDefaultRequestRetryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLDefaultRequestRetryHandler.m; sourceTree = "<group>"; };
-		CD33F2211A50280000275061 /* HLDefaultRequestRetryHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLDefaultRequestRetryHandler.h; sourceTree = "<group>"; };
-		CD34E7D91A50992D00A253E0 /* HLNoRequestRetryHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLNoRequestRetryHandler.h; sourceTree = "<group>"; };
-		CD34E7DA1A50995200A253E0 /* HLNoRequestRetryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLNoRequestRetryHandler.m; sourceTree = "<group>"; };
-		CD34E7DC1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+HLURLRequest.h"; sourceTree = "<group>"; };
-		CD34E7DD1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+HLURLRequest.m"; sourceTree = "<group>"; };
-		CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HLSessionClient.m; sourceTree = "<group>"; };
-		CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLSessionClient.h; sourceTree = "<group>"; };
-		CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLGameCenterCredentials.h; sourceTree = "<group>"; };
-		CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGameCenterCredentials.m; sourceTree = "<group>"; };
-		CD4C6A541D1C9E2600B2AD10 /* HLDatastoreObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLDatastoreObject.h; sourceTree = "<group>"; };
-		CD4C6A551D1C9E5300B2AD10 /* HLDatastoreObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLDatastoreObject.m; sourceTree = "<group>"; };
-		CD52662E1BCE898C00C23093 /* local-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "local-config.plist"; sourceTree = "<group>"; };
-		CD5266301BCE89AE00C23093 /* iosmailboxtest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosmailboxtest.js; sourceTree = "<group>"; };
-		CD6063141BC81619007D4F70 /* HLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMessage.h; sourceTree = "<group>"; };
-		CD6063161BC81638007D4F70 /* HLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMessage.m; sourceTree = "<group>"; };
-		CD6EAB001BA0FC6000DC7E96 /* HLClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLClientTest.m; sourceTree = "<group>"; };
-		CD6EAB021BA23A3D00DC7E96 /* HLPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPing.h; sourceTree = "<group>"; };
-		CD6EAB031BA23A3D00DC7E96 /* HLPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPing.m; sourceTree = "<group>"; };
-		CD77CF85197F1B13006ACC0D /* HLGamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLGamer.h; sourceTree = "<group>"; };
-		CD77CF86197F1B13006ACC0D /* HLGamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGamer.m; sourceTree = "<group>"; };
-		CD8828B01991083D009E8D10 /* HLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HLClient.h; sourceTree = "<group>"; };
-		CD8828B11991083D009E8D10 /* HLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HLClient.m; sourceTree = "<group>"; };
-		CD97C1101BC03D5B009ABCDB /* iosunittest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosunittest.js; sourceTree = "<group>"; };
-		CDA951021B1F67E90058955C /* HLMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatch.h; sourceTree = "<group>"; };
-		CDA951031B1F67F70058955C /* HLMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatch.m; sourceTree = "<group>"; };
-		CDA951051B1F68030058955C /* HLMatchTurn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatchTurn.h; sourceTree = "<group>"; };
-		CDA951061B1F68130058955C /* HLMatchTurn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatchTurn.m; sourceTree = "<group>"; };
-		CDAB2FFD1BDF9DED009077BE /* HLPushNotificationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLPushNotificationTest.m; sourceTree = "<group>"; };
-		CDAB2FFF1BDFCCFA009077BE /* HLSharedStorageSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSharedStorageSearchResults.h; sourceTree = "<group>"; };
-		CDAB30001BDFCE07009077BE /* HLSharedStorageSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSharedStorageSearchResults.m; sourceTree = "<group>"; };
-		CDC0F6A6196FD80800670565 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		CDC81D691C0BA19400FB642C /* HLMatchChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatchChange.h; sourceTree = "<group>"; };
-		CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatchChange.m; sourceTree = "<group>"; };
-		CDCE9B4C1C0F6ED600C4009A /* HLMultiplayerSampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMultiplayerSampleTest.m; sourceTree = "<group>"; };
-		CDCFE6F11AED211C006A20CB /* HLHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLHttpClient.h; sourceTree = "<group>"; };
-		CDCFE6F21AED2133006A20CB /* HLHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLHttpClient.m; sourceTree = "<group>"; };
-		CDDD98731B4CA2EF00CD56E6 /* HLPurchaseVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPurchaseVerification.h; sourceTree = "<group>"; };
-		CDDD98741B4CA2FB00CD56E6 /* HLPurchaseVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPurchaseVerification.m; sourceTree = "<group>"; };
-		CDECE7AF1A54461A000ADDEF /* HLLeaderboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLeaderboard.m; sourceTree = "<group>"; };
-		CDECE7B11A544622000ADDEF /* HLLeaderboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLLeaderboard.h; sourceTree = "<group>"; };
-		CDECE7B41A5446A1000ADDEF /* HLLeaderboardRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLeaderboardRank.m; sourceTree = "<group>"; };
-		CDECE7B61A5446A9000ADDEF /* HLLeaderboardRank.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLLeaderboardRank.h; sourceTree = "<group>"; };
-		CDEEBF101B9F3CF500A57588 /* heroiclabs-sdk-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "heroiclabs-sdk-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDEEBF131B9F3CF500A57588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CDEEBF141B9F3CF500A57588 /* HLSessionClientTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLSessionClientTest.m; sourceTree = "<group>"; };
-		CDEEBF1C1B9F3EA300A57588 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
-		CDFDAB7D19701CD2000826E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F8D9F1E027613DBE73841BAA /* Pods-heroiclabs-sdk-tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heroiclabs-sdk-tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests.debug.xcconfig"; sourceTree = "<group>"; };
+		CD3168C91D5604FF009935F3 /* HeroicLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HeroicLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3168D31D5604FF009935F3 /* HeroicLabsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeroicLabsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3168E81D5606ED009935F3 /* HeroicLabs-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HeroicLabs-Prefix.pch"; sourceTree = "<group>"; };
+		CD3168E91D5606ED009935F3 /* HLAchievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLAchievement.h; sourceTree = "<group>"; };
+		CD3168EA1D5606ED009935F3 /* HLAchievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLAchievement.m; sourceTree = "<group>"; };
+		CD3168EB1D5606ED009935F3 /* HLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLClient.h; sourceTree = "<group>"; };
+		CD3168EC1D5606ED009935F3 /* HLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLClient.m; sourceTree = "<group>"; };
+		CD3168ED1D5606ED009935F3 /* HLDatastoreObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLDatastoreObject.h; sourceTree = "<group>"; };
+		CD3168EE1D5606ED009935F3 /* HLDatastoreObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLDatastoreObject.m; sourceTree = "<group>"; };
+		CD3168EF1D5606ED009935F3 /* HLDefaultRequestRetryHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLDefaultRequestRetryHandler.h; sourceTree = "<group>"; };
+		CD3168F01D5606ED009935F3 /* HLDefaultRequestRetryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLDefaultRequestRetryHandler.m; sourceTree = "<group>"; };
+		CD3168F11D5606ED009935F3 /* HLGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLGame.h; sourceTree = "<group>"; };
+		CD3168F21D5606ED009935F3 /* HLGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGame.m; sourceTree = "<group>"; };
+		CD3168F31D5606ED009935F3 /* HLGameCenterCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLGameCenterCredentials.h; sourceTree = "<group>"; };
+		CD3168F41D5606ED009935F3 /* HLGameCenterCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGameCenterCredentials.m; sourceTree = "<group>"; };
+		CD3168F51D5606ED009935F3 /* HLGamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLGamer.h; sourceTree = "<group>"; };
+		CD3168F61D5606ED009935F3 /* HLGamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLGamer.m; sourceTree = "<group>"; };
+		CD3168F71D5606ED009935F3 /* HLgzipRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLgzipRequestSerializer.h; sourceTree = "<group>"; };
+		CD3168F81D5606ED009935F3 /* HLgzipRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLgzipRequestSerializer.m; sourceTree = "<group>"; };
+		CD3168F91D5606ED009935F3 /* HLHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLHttpClient.h; sourceTree = "<group>"; };
+		CD3168FA1D5606ED009935F3 /* HLHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLHttpClient.m; sourceTree = "<group>"; };
+		CD3168FB1D5606ED009935F3 /* HLJSONSerialisableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLJSONSerialisableProtocol.h; sourceTree = "<group>"; };
+		CD3168FC1D5606ED009935F3 /* HLLeaderboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLeaderboard.h; sourceTree = "<group>"; };
+		CD3168FD1D5606ED009935F3 /* HLLeaderboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLeaderboard.m; sourceTree = "<group>"; };
+		CD3168FE1D5606ED009935F3 /* HLLeaderboardRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLeaderboardRank.h; sourceTree = "<group>"; };
+		CD3168FF1D5606ED009935F3 /* HLLeaderboardRank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLeaderboardRank.m; sourceTree = "<group>"; };
+		CD3169001D5606ED009935F3 /* HLMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatch.h; sourceTree = "<group>"; };
+		CD3169011D5606ED009935F3 /* HLMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatch.m; sourceTree = "<group>"; };
+		CD3169021D5606ED009935F3 /* HLMatchChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatchChange.h; sourceTree = "<group>"; };
+		CD3169031D5606ED009935F3 /* HLMatchChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatchChange.m; sourceTree = "<group>"; };
+		CD3169041D5606ED009935F3 /* HLMatchTurn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMatchTurn.h; sourceTree = "<group>"; };
+		CD3169051D5606ED009935F3 /* HLMatchTurn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMatchTurn.m; sourceTree = "<group>"; };
+		CD3169061D5606ED009935F3 /* HLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLMessage.h; sourceTree = "<group>"; };
+		CD3169071D5606ED009935F3 /* HLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMessage.m; sourceTree = "<group>"; };
+		CD3169081D5606ED009935F3 /* HLNoRequestRetryHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLNoRequestRetryHandler.h; sourceTree = "<group>"; };
+		CD3169091D5606ED009935F3 /* HLNoRequestRetryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLNoRequestRetryHandler.m; sourceTree = "<group>"; };
+		CD31690A1D5606ED009935F3 /* HLPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPing.h; sourceTree = "<group>"; };
+		CD31690B1D5606ED009935F3 /* HLPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPing.m; sourceTree = "<group>"; };
+		CD31690C1D5606ED009935F3 /* HLPurchaseVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPurchaseVerification.h; sourceTree = "<group>"; };
+		CD31690D1D5606ED009935F3 /* HLPurchaseVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPurchaseVerification.m; sourceTree = "<group>"; };
+		CD31690E1D5606ED009935F3 /* HLRequestRetryHandlerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLRequestRetryHandlerProtocol.h; sourceTree = "<group>"; };
+		CD31690F1D5606ED009935F3 /* HLServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLServer.h; sourceTree = "<group>"; };
+		CD3169101D5606ED009935F3 /* HLServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLServer.m; sourceTree = "<group>"; };
+		CD3169111D5606ED009935F3 /* HLSessionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSessionClient.h; sourceTree = "<group>"; };
+		CD3169121D5606ED009935F3 /* HLSessionClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSessionClient.m; sourceTree = "<group>"; };
+		CD3169131D5606ED009935F3 /* HLSharedStorageSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSharedStorageSearchResults.h; sourceTree = "<group>"; };
+		CD3169141D5606ED009935F3 /* HLSharedStorageSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSharedStorageSearchResults.m; sourceTree = "<group>"; };
+		CD3169151D5606ED009935F3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD3169161D5606ED009935F3 /* NSData+GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GZIP.h"; sourceTree = "<group>"; };
+		CD3169171D5606ED009935F3 /* NSData+GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+GZIP.m"; sourceTree = "<group>"; };
+		CD3169181D5606ED009935F3 /* NSURLRequest+HLURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+HLURLRequest.h"; sourceTree = "<group>"; };
+		CD3169191D5606ED009935F3 /* NSURLRequest+HLURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+HLURLRequest.m"; sourceTree = "<group>"; };
+		CD31694D1D560B1F009935F3 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		CD31694E1D560B1F009935F3 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		CD3169531D560B24009935F3 /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Expecta.framework; path = Carthage/Build/iOS/Expecta.framework; sourceTree = "<group>"; };
+		CD3169551D560C1D009935F3 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		CD3169571D560F2B009935F3 /* HLClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLClientTest.m; sourceTree = "<group>"; };
+		CD3169581D560F2B009935F3 /* HLMultiplayerSampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLMultiplayerSampleTest.m; sourceTree = "<group>"; };
+		CD3169591D560F2B009935F3 /* HLPushNotificationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPushNotificationTest.m; sourceTree = "<group>"; };
+		CD31695A1D560F2B009935F3 /* HLSessionClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSessionClientTest.m; sourceTree = "<group>"; };
+		CD31695B1D560F2B009935F3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD31695C1D560F2B009935F3 /* iosmailboxtest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosmailboxtest.js; sourceTree = "<group>"; };
+		CD31695D1D560F2B009935F3 /* iosunittest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = iosunittest.js; sourceTree = "<group>"; };
+		CD31695E1D560F2B009935F3 /* local-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "local-config.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CD0742E91969FDF1003F0BE8 /* Frameworks */ = {
+		CD3168C51D5604FF009935F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD0742F01969FDF1003F0BE8 /* Foundation.framework in Frameworks */,
-				1A60A1E94749958352B52638 /* libPods-heroiclabs-sdk.a in Frameworks */,
+				CD31694F1D560B1F009935F3 /* AFNetworking.framework in Frameworks */,
+				CD3169501D560B1F009935F3 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDEEBF0D1B9F3CF500A57588 /* Frameworks */ = {
+		CD3168D01D5604FF009935F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDEEBF161B9F3CF500A57588 /* libheroiclabs-sdk.a in Frameworks */,
-				7E8B387FC3DDE512F3B107B5 /* libPods-heroiclabs-sdk-tests.a in Frameworks */,
+				CD3168D41D5604FF009935F3 /* HeroicLabs.framework in Frameworks */,
+				CD3169541D560B24009935F3 /* Expecta.framework in Frameworks */,
+				CD3169511D560B24009935F3 /* AFNetworking.framework in Frameworks */,
+				CD3169521D560B24009935F3 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BB6DC5F665798112BAE17647 /* Pods */ = {
+		CD3168BF1D5604FF009935F3 = {
 			isa = PBXGroup;
 			children = (
-				966D54AA34E9E6CA41EC75D3 /* Pods-heroiclabs-sdk.debug.xcconfig */,
-				13D9C560893C6BEFDA4D1A92 /* Pods-heroiclabs-sdk.release.xcconfig */,
-				F8D9F1E027613DBE73841BAA /* Pods-heroiclabs-sdk-tests.debug.xcconfig */,
-				1FC932BB8E9AC11BE8D1E1A1 /* Pods-heroiclabs-sdk-tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		CD0742E31969FDF1003F0BE8 = {
-			isa = PBXGroup;
-			children = (
-				CDEEBF111B9F3CF500A57588 /* Tests */,
-				CD0742F11969FDF1003F0BE8 /* Classes */,
-				CD0742EE1969FDF1003F0BE8 /* Frameworks */,
-				CD0742ED1969FDF1003F0BE8 /* Products */,
-				BB6DC5F665798112BAE17647 /* Pods */,
+				CD3168E71D5606ED009935F3 /* Classes */,
+				CD3169561D560F2B009935F3 /* Tests */,
+				CD3169531D560B24009935F3 /* Expecta.framework */,
+				CD31694D1D560B1F009935F3 /* AFNetworking.framework */,
+				CD31694E1D560B1F009935F3 /* PromiseKit.framework */,
+				CD3168CA1D5604FF009935F3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CD0742ED1969FDF1003F0BE8 /* Products */ = {
+		CD3168CA1D5604FF009935F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD0742EC1969FDF1003F0BE8 /* libheroiclabs-sdk.a */,
-				CDEEBF101B9F3CF500A57588 /* heroiclabs-sdk-tests.xctest */,
+				CD3168C91D5604FF009935F3 /* HeroicLabs.framework */,
+				CD3168D31D5604FF009935F3 /* HeroicLabsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CD0742EE1969FDF1003F0BE8 /* Frameworks */ = {
+		CD3168E71D5606ED009935F3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CD2C7A021C7D2D4C0036E06F /* libz.1.dylib */,
-				CDEEBF1C1B9F3EA300A57588 /* libPods.a */,
-				CD1D2AB11979190A009D1D4D /* libPods.a */,
-				CDFDAB7D19701CD2000826E3 /* UIKit.framework */,
-				CD0742EF1969FDF1003F0BE8 /* Foundation.framework */,
-				CD0742FD1969FDF1003F0BE8 /* XCTest.framework */,
-				CDC0F6A6196FD80800670565 /* CoreFoundation.framework */,
-				6FC2392B76E8792C0E34DFB8 /* libPods-heroiclabs-sdk.a */,
-				75AE7FBE56DBDA8FA984592F /* libPods-heroiclabs-sdk-tests.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CD0742F11969FDF1003F0BE8 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				CDCFE6F11AED211C006A20CB /* HLHttpClient.h */,
-				CDCFE6F21AED2133006A20CB /* HLHttpClient.m */,
-				CD8828B01991083D009E8D10 /* HLClient.h */,
-				CD8828B11991083D009E8D10 /* HLClient.m */,
-				CD3ECA7A1B123E270020DD1F /* HLSessionClient.h */,
-				CD3ECA781B123E1C0020DD1F /* HLSessionClient.m */,
-				CD4C6A541D1C9E2600B2AD10 /* HLDatastoreObject.h */,
-				CD4C6A551D1C9E5300B2AD10 /* HLDatastoreObject.m */,
-				CD6EAB021BA23A3D00DC7E96 /* HLPing.h */,
-				CD6EAB031BA23A3D00DC7E96 /* HLPing.m */,
-				8A018FB11A2F7DEF007EF85E /* HLServer.h */,
-				8A018FB21A2F7DEF007EF85E /* HLServer.m */,
-				CD0742F41969FDF1003F0BE8 /* HLGame.h */,
-				CD0742F61969FDF1003F0BE8 /* HLGame.m */,
-				CD77CF85197F1B13006ACC0D /* HLGamer.h */,
-				CD77CF86197F1B13006ACC0D /* HLGamer.m */,
-				8A018FAF1A2F7DEF007EF85E /* HLAchievement.h */,
-				8A018FB01A2F7DEF007EF85E /* HLAchievement.m */,
-				CDECE7B11A544622000ADDEF /* HLLeaderboard.h */,
-				CDECE7AF1A54461A000ADDEF /* HLLeaderboard.m */,
-				CDECE7B61A5446A9000ADDEF /* HLLeaderboardRank.h */,
-				CDECE7B41A5446A1000ADDEF /* HLLeaderboardRank.m */,
-				CDA951021B1F67E90058955C /* HLMatch.h */,
-				CDA951031B1F67F70058955C /* HLMatch.m */,
-				CDA951051B1F68030058955C /* HLMatchTurn.h */,
-				CDA951061B1F68130058955C /* HLMatchTurn.m */,
-				CDC81D691C0BA19400FB642C /* HLMatchChange.h */,
-				CDC81D6B1C0BA41A00FB642C /* HLMatchChange.m */,
-				CDDD98731B4CA2EF00CD56E6 /* HLPurchaseVerification.h */,
-				CDDD98741B4CA2FB00CD56E6 /* HLPurchaseVerification.m */,
-				CD6063141BC81619007D4F70 /* HLMessage.h */,
-				CD6063161BC81638007D4F70 /* HLMessage.m */,
-				CDAB2FFF1BDFCCFA009077BE /* HLSharedStorageSearchResults.h */,
-				CDAB30001BDFCE07009077BE /* HLSharedStorageSearchResults.m */,
-				CD40500E1C7DF25400AABCF2 /* HLGameCenterCredentials.m */,
-				CD40500D1C7DF25400AABCF2 /* HLGameCenterCredentials.h */,
-				CD34E7DC1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.h */,
-				CD34E7DD1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m */,
-				8AB0CBDE1982ADEC004E243D /* HLJSONSerialisableProtocol.h */,
-				CD33F21E1A50208600275061 /* HLRequestRetryHandlerProtocol.h */,
-				CD33F2211A50280000275061 /* HLDefaultRequestRetryHandler.h */,
-				CD33F21F1A5027F400275061 /* HLDefaultRequestRetryHandler.m */,
-				CD34E7D91A50992D00A253E0 /* HLNoRequestRetryHandler.h */,
-				CD34E7DA1A50995200A253E0 /* HLNoRequestRetryHandler.m */,
-				CD2C79FF1C7D2B330036E06F /* HLgzipRequestSerializer.h */,
-				CD2C7A001C7D2B700036E06F /* HLgzipRequestSerializer.m */,
-				CD2C7A041C7D2E010036E06F /* NSData+GZIP.h */,
-				CD2C7A051C7D2E190036E06F /* NSData+GZIP.m */,
-				CD0742F21969FDF1003F0BE8 /* Supporting Files */,
+				CD3168F91D5606ED009935F3 /* HLHttpClient.h */,
+				CD3168FA1D5606ED009935F3 /* HLHttpClient.m */,
+				CD3169111D5606ED009935F3 /* HLSessionClient.h */,
+				CD3169121D5606ED009935F3 /* HLSessionClient.m */,
+				CD3168EB1D5606ED009935F3 /* HLClient.h */,
+				CD3168EC1D5606ED009935F3 /* HLClient.m */,
+				CD3168E91D5606ED009935F3 /* HLAchievement.h */,
+				CD3168EA1D5606ED009935F3 /* HLAchievement.m */,
+				CD3168ED1D5606ED009935F3 /* HLDatastoreObject.h */,
+				CD3168EE1D5606ED009935F3 /* HLDatastoreObject.m */,
+				CD3168EF1D5606ED009935F3 /* HLDefaultRequestRetryHandler.h */,
+				CD3168F01D5606ED009935F3 /* HLDefaultRequestRetryHandler.m */,
+				CD3168F11D5606ED009935F3 /* HLGame.h */,
+				CD3168F21D5606ED009935F3 /* HLGame.m */,
+				CD3168F31D5606ED009935F3 /* HLGameCenterCredentials.h */,
+				CD3168F41D5606ED009935F3 /* HLGameCenterCredentials.m */,
+				CD3168F51D5606ED009935F3 /* HLGamer.h */,
+				CD3168F61D5606ED009935F3 /* HLGamer.m */,
+				CD3168F71D5606ED009935F3 /* HLgzipRequestSerializer.h */,
+				CD3168F81D5606ED009935F3 /* HLgzipRequestSerializer.m */,
+				CD3168FB1D5606ED009935F3 /* HLJSONSerialisableProtocol.h */,
+				CD3168FC1D5606ED009935F3 /* HLLeaderboard.h */,
+				CD3168FD1D5606ED009935F3 /* HLLeaderboard.m */,
+				CD3168FE1D5606ED009935F3 /* HLLeaderboardRank.h */,
+				CD3168FF1D5606ED009935F3 /* HLLeaderboardRank.m */,
+				CD3169001D5606ED009935F3 /* HLMatch.h */,
+				CD3169011D5606ED009935F3 /* HLMatch.m */,
+				CD3169021D5606ED009935F3 /* HLMatchChange.h */,
+				CD3169031D5606ED009935F3 /* HLMatchChange.m */,
+				CD3169041D5606ED009935F3 /* HLMatchTurn.h */,
+				CD3169051D5606ED009935F3 /* HLMatchTurn.m */,
+				CD3169061D5606ED009935F3 /* HLMessage.h */,
+				CD3169071D5606ED009935F3 /* HLMessage.m */,
+				CD3169081D5606ED009935F3 /* HLNoRequestRetryHandler.h */,
+				CD3169091D5606ED009935F3 /* HLNoRequestRetryHandler.m */,
+				CD31690A1D5606ED009935F3 /* HLPing.h */,
+				CD31690B1D5606ED009935F3 /* HLPing.m */,
+				CD31690C1D5606ED009935F3 /* HLPurchaseVerification.h */,
+				CD31690D1D5606ED009935F3 /* HLPurchaseVerification.m */,
+				CD31690E1D5606ED009935F3 /* HLRequestRetryHandlerProtocol.h */,
+				CD31690F1D5606ED009935F3 /* HLServer.h */,
+				CD3169101D5606ED009935F3 /* HLServer.m */,
+				CD3169131D5606ED009935F3 /* HLSharedStorageSearchResults.h */,
+				CD3169141D5606ED009935F3 /* HLSharedStorageSearchResults.m */,
+				CD3169161D5606ED009935F3 /* NSData+GZIP.h */,
+				CD3169171D5606ED009935F3 /* NSData+GZIP.m */,
+				CD3169181D5606ED009935F3 /* NSURLRequest+HLURLRequest.h */,
+				CD3169191D5606ED009935F3 /* NSURLRequest+HLURLRequest.m */,
+				CD31694C1D56070F009935F3 /* Supporting Files */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		CD0742F21969FDF1003F0BE8 /* Supporting Files */ = {
+		CD31694C1D56070F009935F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CD0742F31969FDF1003F0BE8 /* HeroicLabs-Prefix.pch */,
+				CD3169551D560C1D009935F3 /* module.modulemap */,
+				CD3169151D5606ED009935F3 /* Info.plist */,
+				CD3168E81D5606ED009935F3 /* HeroicLabs-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CDEEBF111B9F3CF500A57588 /* Tests */ = {
+		CD3169561D560F2B009935F3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CD97C1101BC03D5B009ABCDB /* iosunittest.js */,
-				CD5266301BCE89AE00C23093 /* iosmailboxtest.js */,
-				CD6EAB001BA0FC6000DC7E96 /* HLClientTest.m */,
-				CDEEBF141B9F3CF500A57588 /* HLSessionClientTest.m */,
-				CDAB2FFD1BDF9DED009077BE /* HLPushNotificationTest.m */,
-				CDCE9B4C1C0F6ED600C4009A /* HLMultiplayerSampleTest.m */,
-				CDEEBF121B9F3CF500A57588 /* Supporting Files */,
-				CD52662E1BCE898C00C23093 /* local-config.plist */,
+				CD3169571D560F2B009935F3 /* HLClientTest.m */,
+				CD3169581D560F2B009935F3 /* HLMultiplayerSampleTest.m */,
+				CD3169591D560F2B009935F3 /* HLPushNotificationTest.m */,
+				CD31695A1D560F2B009935F3 /* HLSessionClientTest.m */,
+				CD3169671D560F9A009935F3 /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		CDEEBF121B9F3CF500A57588 /* Supporting Files */ = {
+		CD3169671D560F9A009935F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CDEEBF131B9F3CF500A57588 /* Info.plist */,
+				CD31695B1D560F2B009935F3 /* Info.plist */,
+				CD31695C1D560F2B009935F3 /* iosmailboxtest.js */,
+				CD31695D1D560F2B009935F3 /* iosunittest.js */,
+				CD31695E1D560F2B009935F3 /* local-config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		CD0742EB1969FDF1003F0BE8 /* heroiclabs-sdk */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CD07430F1969FDF1003F0BE8 /* Build configuration list for PBXNativeTarget "heroiclabs-sdk" */;
-			buildPhases = (
-				FE1386E1D3940169E83CC877 /* [CP] Check Pods Manifest.lock */,
-				CD0742E81969FDF1003F0BE8 /* Sources */,
-				CD0742E91969FDF1003F0BE8 /* Frameworks */,
-				CD0742EA1969FDF1003F0BE8 /* Copy Files */,
-				CD8828A91990FEA6009E8D10 /* Resources */,
-				E3994CF7D6E0B62C42DC8A24 /* [CP] Copy Pods Resources */,
+/* Begin PBXHeadersBuildPhase section */
+		CD3168C61D5604FF009935F3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3169291D5606ED009935F3 /* HLgzipRequestSerializer.h in Headers */,
+				CD31694A1D5606ED009935F3 /* NSURLRequest+HLURLRequest.h in Headers */,
+				CD31692B1D5606ED009935F3 /* HLHttpClient.h in Headers */,
+				CD31692E1D5606ED009935F3 /* HLLeaderboard.h in Headers */,
+				CD3169341D5606ED009935F3 /* HLMatchChange.h in Headers */,
+				CD3169401D5606ED009935F3 /* HLRequestRetryHandlerProtocol.h in Headers */,
+				CD3169231D5606ED009935F3 /* HLGame.h in Headers */,
+				CD3169431D5606ED009935F3 /* HLSessionClient.h in Headers */,
+				CD31691D1D5606ED009935F3 /* HLClient.h in Headers */,
+				CD3169411D5606ED009935F3 /* HLServer.h in Headers */,
+				CD31691B1D5606ED009935F3 /* HLAchievement.h in Headers */,
+				CD3169321D5606ED009935F3 /* HLMatch.h in Headers */,
+				CD31693E1D5606ED009935F3 /* HLPurchaseVerification.h in Headers */,
+				CD3169481D5606ED009935F3 /* NSData+GZIP.h in Headers */,
+				CD3169211D5606ED009935F3 /* HLDefaultRequestRetryHandler.h in Headers */,
+				CD3169381D5606ED009935F3 /* HLMessage.h in Headers */,
+				CD3169251D5606ED009935F3 /* HLGameCenterCredentials.h in Headers */,
+				CD31693A1D5606ED009935F3 /* HLNoRequestRetryHandler.h in Headers */,
+				CD31691A1D5606ED009935F3 /* HeroicLabs-Prefix.pch in Headers */,
+				CD31692D1D5606ED009935F3 /* HLJSONSerialisableProtocol.h in Headers */,
+				CD31693C1D5606ED009935F3 /* HLPing.h in Headers */,
+				CD31691F1D5606ED009935F3 /* HLDatastoreObject.h in Headers */,
+				CD3169451D5606ED009935F3 /* HLSharedStorageSearchResults.h in Headers */,
+				CD3169361D5606ED009935F3 /* HLMatchTurn.h in Headers */,
+				CD3169271D5606ED009935F3 /* HLGamer.h in Headers */,
+				CD3169301D5606ED009935F3 /* HLLeaderboardRank.h in Headers */,
 			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "heroiclabs-sdk";
-			productName = GUGameUpSDK;
-			productReference = CD0742EC1969FDF1003F0BE8 /* libheroiclabs-sdk.a */;
-			productType = "com.apple.product-type.library.static";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDEEBF0F1B9F3CF500A57588 /* heroiclabs-sdk-tests */ = {
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CD3168C81D5604FF009935F3 /* HeroicLabs */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CDEEBF191B9F3CF500A57588 /* Build configuration list for PBXNativeTarget "heroiclabs-sdk-tests" */;
+			buildConfigurationList = CD3168DD1D5604FF009935F3 /* Build configuration list for PBXNativeTarget "HeroicLabs" */;
 			buildPhases = (
-				5268C078DD46EF57F704CB02 /* [CP] Check Pods Manifest.lock */,
-				CDEEBF0C1B9F3CF500A57588 /* Sources */,
-				CDEEBF0D1B9F3CF500A57588 /* Frameworks */,
-				CDEEBF0E1B9F3CF500A57588 /* Resources */,
-				4B0400E14016A8EF7AD8580A /* [CP] Embed Pods Frameworks */,
-				CBAD036224CB130957147312 /* [CP] Copy Pods Resources */,
+				CD3168C41D5604FF009935F3 /* Sources */,
+				CD3168C51D5604FF009935F3 /* Frameworks */,
+				CD3168C61D5604FF009935F3 /* Headers */,
+				CD3168C71D5604FF009935F3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CDEEBF181B9F3CF500A57588 /* PBXTargetDependency */,
 			);
-			name = "heroiclabs-sdk-tests";
-			productName = "heroiclabs-sdk-tests";
-			productReference = CDEEBF101B9F3CF500A57588 /* heroiclabs-sdk-tests.xctest */;
+			name = HeroicLabs;
+			productName = "heroiclabs-sdk-ios";
+			productReference = CD3168C91D5604FF009935F3 /* HeroicLabs.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CD3168D21D5604FF009935F3 /* HeroicLabsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD3168E01D5604FF009935F3 /* Build configuration list for PBXNativeTarget "HeroicLabsTests" */;
+			buildPhases = (
+				CD3168CF1D5604FF009935F3 /* Sources */,
+				CD3168D01D5604FF009935F3 /* Frameworks */,
+				CD3168D11D5604FF009935F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD3168D61D5604FF009935F3 /* PBXTargetDependency */,
+			);
+			name = HeroicLabsTests;
+			productName = "heroiclabs-sdk-iosTests";
+			productReference = CD3168D31D5604FF009935F3 /* HeroicLabsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CD0742E41969FDF1003F0BE8 /* Project object */ = {
+		CD3168C01D5604FF009935F3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = HL;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = HeroicLabs;
 				TargetAttributes = {
-					CDEEBF0F1B9F3CF500A57588 = {
-						CreatedOnToolsVersion = 6.4;
+					CD3168C81D5604FF009935F3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = YDR437PH2E;
+					};
+					CD3168D21D5604FF009935F3 = {
+						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
 			};
-			buildConfigurationList = CD0742E71969FDF1003F0BE8 /* Build configuration list for PBXProject "HeroicLabs" */;
-			compatibilityVersion = "Xcode 6.3";
+			buildConfigurationList = CD3168C31D5604FF009935F3 /* Build configuration list for PBXProject "HeroicLabs" */;
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = CD0742E31969FDF1003F0BE8;
-			productRefGroup = CD0742ED1969FDF1003F0BE8 /* Products */;
+			mainGroup = CD3168BF1D5604FF009935F3;
+			productRefGroup = CD3168CA1D5604FF009935F3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD0742EB1969FDF1003F0BE8 /* heroiclabs-sdk */,
-				CDEEBF0F1B9F3CF500A57588 /* heroiclabs-sdk-tests */,
+				CD3168C81D5604FF009935F3 /* HeroicLabs */,
+				CD3168D21D5604FF009935F3 /* HeroicLabsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CD8828A91990FEA6009E8D10 /* Resources */ = {
+		CD3168C71D5604FF009935F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDEEBF0E1B9F3CF500A57588 /* Resources */ = {
+		CD3168D11D5604FF009935F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD52662F1BCE898C00C23093 /* local-config.plist in Resources */,
-				CD5266311BCE89AE00C23093 /* iosmailboxtest.js in Resources */,
-				CD97C1111BC03D5B009ABCDB /* iosunittest.js in Resources */,
+				CD3169651D560F2B009935F3 /* iosunittest.js in Resources */,
+				CD3169661D560F2B009935F3 /* local-config.plist in Resources */,
+				CD3169641D560F2B009935F3 /* iosmailboxtest.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		4B0400E14016A8EF7AD8580A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5268C078DD46EF57F704CB02 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CBAD036224CB130957147312 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heroiclabs-sdk-tests/Pods-heroiclabs-sdk-tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E3994CF7D6E0B62C42DC8A24 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-heroiclabs-sdk/Pods-heroiclabs-sdk-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FE1386E1D3940169E83CC877 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		CD0742E81969FDF1003F0BE8 /* Sources */ = {
+		CD3168C41D5604FF009935F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD4C6A561D1C9E5300B2AD10 /* HLDatastoreObject.m in Sources */,
-				8A018FB31A2F7DEF007EF85E /* HLAchievement.m in Sources */,
-				CD8828B21991083D009E8D10 /* HLClient.m in Sources */,
-				8A018FB41A2F7DEF007EF85E /* HLServer.m in Sources */,
-				CD6063171BC81638007D4F70 /* HLMessage.m in Sources */,
-				CDA951041B1F67F70058955C /* HLMatch.m in Sources */,
-				CDC81D6C1C0BA41A00FB642C /* HLMatchChange.m in Sources */,
-				CD8828AD199107A4009E8D10 /* HLGamer.m in Sources */,
-				CD6EAB041BA23A3D00DC7E96 /* HLPing.m in Sources */,
-				CDCFE6F31AED2133006A20CB /* HLHttpClient.m in Sources */,
-				CD0742F71969FDF1003F0BE8 /* HLGame.m in Sources */,
-				CDAB30011BDFCE07009077BE /* HLSharedStorageSearchResults.m in Sources */,
-				CD3ECA791B123E1C0020DD1F /* HLSessionClient.m in Sources */,
-				CDA951071B1F68130058955C /* HLMatchTurn.m in Sources */,
-				CD33F2201A5027F400275061 /* HLDefaultRequestRetryHandler.m in Sources */,
-				CDDD98751B4CA2FB00CD56E6 /* HLPurchaseVerification.m in Sources */,
-				CD34E7DE1A50A94A00A253E0 /* NSURLRequest+HLURLRequest.m in Sources */,
-				CD34E7DB1A50995200A253E0 /* HLNoRequestRetryHandler.m in Sources */,
-				CDECE7B01A54461A000ADDEF /* HLLeaderboard.m in Sources */,
-				CDECE7B51A5446A1000ADDEF /* HLLeaderboardRank.m in Sources */,
-				CD2C7A011C7D2B700036E06F /* HLgzipRequestSerializer.m in Sources */,
-				CD2C7A061C7D2E190036E06F /* NSData+GZIP.m in Sources */,
-				CD40500F1C7DF25400AABCF2 /* HLGameCenterCredentials.m in Sources */,
+				CD3169491D5606ED009935F3 /* NSData+GZIP.m in Sources */,
+				CD3169461D5606ED009935F3 /* HLSharedStorageSearchResults.m in Sources */,
+				CD31694B1D5606ED009935F3 /* NSURLRequest+HLURLRequest.m in Sources */,
+				CD3169391D5606ED009935F3 /* HLMessage.m in Sources */,
+				CD3169311D5606ED009935F3 /* HLLeaderboardRank.m in Sources */,
+				CD31693B1D5606ED009935F3 /* HLNoRequestRetryHandler.m in Sources */,
+				CD31691E1D5606ED009935F3 /* HLClient.m in Sources */,
+				CD3169421D5606ED009935F3 /* HLServer.m in Sources */,
+				CD31692F1D5606ED009935F3 /* HLLeaderboard.m in Sources */,
+				CD3169351D5606ED009935F3 /* HLMatchChange.m in Sources */,
+				CD3169441D5606ED009935F3 /* HLSessionClient.m in Sources */,
+				CD31692C1D5606ED009935F3 /* HLHttpClient.m in Sources */,
+				CD3169201D5606ED009935F3 /* HLDatastoreObject.m in Sources */,
+				CD3169371D5606ED009935F3 /* HLMatchTurn.m in Sources */,
+				CD31693F1D5606ED009935F3 /* HLPurchaseVerification.m in Sources */,
+				CD31691C1D5606ED009935F3 /* HLAchievement.m in Sources */,
+				CD3169241D5606ED009935F3 /* HLGame.m in Sources */,
+				CD3169221D5606ED009935F3 /* HLDefaultRequestRetryHandler.m in Sources */,
+				CD31692A1D5606ED009935F3 /* HLgzipRequestSerializer.m in Sources */,
+				CD3169331D5606ED009935F3 /* HLMatch.m in Sources */,
+				CD3169261D5606ED009935F3 /* HLGameCenterCredentials.m in Sources */,
+				CD3169281D5606ED009935F3 /* HLGamer.m in Sources */,
+				CD31693D1D5606ED009935F3 /* HLPing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDEEBF0C1B9F3CF500A57588 /* Sources */ = {
+		CD3168CF1D5604FF009935F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6EAB011BA0FC6000DC7E96 /* HLClientTest.m in Sources */,
-				CDAB2FFE1BDF9E3D009077BE /* HLPushNotificationTest.m in Sources */,
-				CDCE9B4D1C0F6ED600C4009A /* HLMultiplayerSampleTest.m in Sources */,
-				CDEEBF151B9F3CF500A57588 /* HLSessionClientTest.m in Sources */,
+				CD3169601D560F2B009935F3 /* HLMultiplayerSampleTest.m in Sources */,
+				CD3169611D560F2B009935F3 /* HLPushNotificationTest.m in Sources */,
+				CD31695F1D560F2B009935F3 /* HLClientTest.m in Sources */,
+				CD3169621D560F2B009935F3 /* HLSessionClientTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CDEEBF181B9F3CF500A57588 /* PBXTargetDependency */ = {
+		CD3168D61D5604FF009935F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CD0742EB1969FDF1003F0BE8 /* heroiclabs-sdk */;
-			targetProxy = CDEEBF171B9F3CF500A57588 /* PBXContainerItemProxy */;
+			target = CD3168C81D5604FF009935F3 /* HeroicLabs */;
+			targetProxy = CD3168D51D5604FF009935F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		CD07430D1969FDF1003F0BE8 /* Debug */ = {
+		CD3168DB1D5604FF009935F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -590,35 +482,45 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		CD07430E1969FDF1003F0BE8 /* Release */ = {
+		CD3168DC1D5604FF009935F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -630,88 +532,104 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		CD0743101969FDF1003F0BE8 /* Debug */ = {
+		CD3168DE1D5604FF009935F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 966D54AA34E9E6CA41EC75D3 /* Pods-heroiclabs-sdk.debug.xcconfig */;
 			buildSettings = {
-				DSTROOT = "/tmp/heroiclabs-sdk.dst";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Classes/HeroicLabs-Prefix.pch";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.heroiclabs.heroiclabs-sdk-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		CD0743111969FDF1003F0BE8 /* Release */ = {
+		CD3168DF1D5604FF009935F3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13D9C560893C6BEFDA4D1A92 /* Pods-heroiclabs-sdk.release.xcconfig */;
 			buildSettings = {
-				DSTROOT = "/tmp/heroiclabs-sdk.dst";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Classes/HeroicLabs-Prefix.pch";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.heroiclabs.heroiclabs-sdk-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		CDEEBF1A1B9F3CF500A57588 /* Debug */ = {
+		CD3168E11D5604FF009935F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8D9F1E027613DBE73841BAA /* Pods-heroiclabs-sdk-tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
+				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.heroiclabs.$(PRODUCT_NAME:rfc1034identifier)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.heroiclabs.heroiclabs-sdk-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		CDEEBF1B1B9F3CF500A57588 /* Release */ = {
+		CD3168E21D5604FF009935F3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FC932BB8E9AC11BE8D1E1A1 /* Pods-heroiclabs-sdk-tests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_NO_COMMON_BLOCKS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.heroiclabs.$(PRODUCT_NAME:rfc1034identifier)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.heroiclabs.heroiclabs-sdk-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -719,34 +637,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD0742E71969FDF1003F0BE8 /* Build configuration list for PBXProject "HeroicLabs" */ = {
+		CD3168C31D5604FF009935F3 /* Build configuration list for PBXProject "HeroicLabs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD07430D1969FDF1003F0BE8 /* Debug */,
-				CD07430E1969FDF1003F0BE8 /* Release */,
+				CD3168DB1D5604FF009935F3 /* Debug */,
+				CD3168DC1D5604FF009935F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD07430F1969FDF1003F0BE8 /* Build configuration list for PBXNativeTarget "heroiclabs-sdk" */ = {
+		CD3168DD1D5604FF009935F3 /* Build configuration list for PBXNativeTarget "HeroicLabs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD0743101969FDF1003F0BE8 /* Debug */,
-				CD0743111969FDF1003F0BE8 /* Release */,
+				CD3168DE1D5604FF009935F3 /* Debug */,
+				CD3168DF1D5604FF009935F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CDEEBF191B9F3CF500A57588 /* Build configuration list for PBXNativeTarget "heroiclabs-sdk-tests" */ = {
+		CD3168E01D5604FF009935F3 /* Build configuration list for PBXNativeTarget "HeroicLabsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CDEEBF1A1B9F3CF500A57588 /* Debug */,
-				CDEEBF1B1B9F3CF500A57588 /* Release */,
+				CD3168E11D5604FF009935F3 /* Debug */,
+				CD3168E21D5604FF009935F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CD0742E41969FDF1003F0BE8 /* Project object */;
+	rootObject = CD3168C01D5604FF009935F3 /* Project object */;
 }

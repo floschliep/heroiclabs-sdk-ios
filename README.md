@@ -2,7 +2,7 @@ Heroic Labs iOS SDK
 ===================
 The iOS SDK for the Heroic Labs service.
 
-[SDK Guide](https://heroiclabs.com/docs/guide/ios/) | [SDK Reference](http://cocoadocs.org/docsets/HeroicLabs/0.6.0/)
+[SDK Guide](https://heroiclabs.com/docs/guide/ios/) | [SDK Reference](http://cocoadocs.org/docsets/HeroicLabs/0.11.0/)
 
 ---
 
@@ -10,16 +10,31 @@ Heroic Labs is AWS for game developers. Easily add social, multiplayer, and comp
 
 For a full list of the API have a look at the [features](https://heroiclabs.com/features).
 
-### Install
+### Install (Carthage)
+
+1. Add the following to your Carthage `Cartfile`:
+
+```github "heroiclabs/heroiclabs-sdk-ios"```.
+
+2. Then run `carthage update`.
+3. Navigate to your project's directory and locate `Carthage/Build/iOS/`.
+4. Drag the `HeroicLabs.framework` (as well as `PromiseKit.framework` and `AFNetowrking.framework`) file into your XCode project's `Link Binary With Libraries` section in `Build Phases`.
+5. Add mentioned Frameworks to `Embedded Binaries` section of your target.
+
+### Install (CocoaPods)
 The client SDK is available on [CocoaPods](http://cocoadocs.org/docsets/HeroicLabs/)
 
-It is fully compatible with iOS 7, tvOS 9.0.
+It is fully compatible with iOS 8, tvOS 9.0.
 
 Simply add this to your `Podfile`:
 
 ```cocoapods
 pod 'HeroicLabs'
 ```
+
+and run `pod update`.
+
+### Usage
 
 Once the SDK is installed, import `<HeroicLabs/HLClient.h>` into your Objective-C code and Copy and paste this code in your file:
 
@@ -44,13 +59,13 @@ You can find the full guide for the iOS SDK [online](https://heroiclabs.com/docs
 To develop on the codebase you'll need:
 
 * [Xcode](https://developer.apple.com/xcode) The Xcode Editor.
-* [CocoaPods](http://cocoapods.org) Objective-C/Swift Dependency Manager
+* [Carthage](https://github.com/Carthage/Carthage) Objective-C/Swift Dependency Manager (`brew install carthage`)
+* [CocoaPods](http://cocoapods.org) Objective-C/Swift Dependency Manager.
 
 #### Setup
 
-1. Open terminal, navigate to the root folder of the project and execute `pod install`.
+1. Open terminal, navigate to the root folder of the project and execute `carthage update`.
 2. Open Xcode and choose to open an existing project - choose `HeroicLabs.xcworkspace` file.
-3. Once open, set the active scheme to `heroiclabs-sdk`.
 4. Click on the `Product` menu bar, and then `Build`.
 
 All contributions to the documentation and the codebase are very welcome and feel free to open issues on the tracker wherever the documentation needs enhancements.
@@ -64,11 +79,11 @@ Tests require a file called `local-config.plist`. This file needs to be in the s
 To run the SDK tests, execute the following command:
 
 ```
-xcodebuild test -workspace HeroicLabs.xcworkspace -scheme heroiclabs-sdk-tests -destination "name=iPhone 4s"
+xcodebuild test -workspace HeroicLabs.xcworkspace -scheme heroiclabs-sdk-ios -destination "name=iPhone 4s"
 ```
 
 or to see a pretty output:
 
 ```
-xcodebuild test -workspace HeroicLabs.xcworkspace -scheme heroiclabs-sdk-tests -destination "name=iPhone 4s" | xcpretty -c
+xcodebuild test -workspace HeroicLabs.xcworkspace -scheme heroiclabs-sdk-ios -destination "name=iPhone 4s" | xcpretty -c
 ```

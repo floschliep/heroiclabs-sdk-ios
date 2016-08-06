@@ -7,16 +7,30 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "YES"
+            buildForTesting = "NO"
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD0742EB1969FDF1003F0BE8"
-               BuildableName = "libheroiclabs-sdk.a"
-               BlueprintName = "heroiclabs-sdk"
+               BlueprintIdentifier = "CD3168C81D5604FF009935F3"
+               BuildableName = "HeroicLabs.framework"
+               BlueprintName = "HeroicLabs"
+               ReferencedContainer = "container:HeroicLabs.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD3168D21D5604FF009935F3"
+               BuildableName = "HeroicLabsTests.xctest"
+               BlueprintName = "HeroicLabsTests"
                ReferencedContainer = "container:HeroicLabs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,7 +42,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD3168D21D5604FF009935F3"
+               BuildableName = "HeroicLabsTests.xctest"
+               BlueprintName = "HeroicLabsTests"
+               ReferencedContainer = "container:HeroicLabs.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CD3168C81D5604FF009935F3"
+            BuildableName = "HeroicLabs.framework"
+            BlueprintName = "HeroicLabs"
+            ReferencedContainer = "container:HeroicLabs.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,9 +78,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD0742EB1969FDF1003F0BE8"
-            BuildableName = "libheroiclabs-sdk.a"
-            BlueprintName = "heroiclabs-sdk"
+            BlueprintIdentifier = "CD3168C81D5604FF009935F3"
+            BuildableName = "HeroicLabs.framework"
+            BlueprintName = "HeroicLabs"
             ReferencedContainer = "container:HeroicLabs.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +96,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD0742EB1969FDF1003F0BE8"
-            BuildableName = "libheroiclabs-sdk.a"
-            BlueprintName = "heroiclabs-sdk"
+            BlueprintIdentifier = "CD3168C81D5604FF009935F3"
+            BuildableName = "HeroicLabs.framework"
+            BlueprintName = "HeroicLabs"
             ReferencedContainer = "container:HeroicLabs.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
