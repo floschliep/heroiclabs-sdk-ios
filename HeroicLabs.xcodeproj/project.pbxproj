@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		136035111D5E3371002AFF78 /* HeroicLabs.h in Headers */ = {isa = PBXBuildFile; fileRef = 136035101D5E3371002AFF78 /* HeroicLabs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD3168D41D5604FF009935F3 /* HeroicLabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3168C91D5604FF009935F3 /* HeroicLabs.framework */; };
 		CD31691A1D5606ED009935F3 /* HeroicLabs-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = CD3168E81D5606ED009935F3 /* HeroicLabs-Prefix.pch */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD31691B1D5606ED009935F3 /* HLAchievement.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3168E91D5606ED009935F3 /* HLAchievement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		136035101D5E3371002AFF78 /* HeroicLabs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroicLabs.h; sourceTree = "<group>"; };
 		CD3168C91D5604FF009935F3 /* HeroicLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HeroicLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3168D31D5604FF009935F3 /* HeroicLabsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeroicLabsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3168E81D5606ED009935F3 /* HeroicLabs-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HeroicLabs-Prefix.pch"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		CD3168E71D5606ED009935F3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				136035101D5E3371002AFF78 /* HeroicLabs.h */,
 				CD3168F91D5606ED009935F3 /* HLHttpClient.h */,
 				CD3168FA1D5606ED009935F3 /* HLHttpClient.m */,
 				CD3169111D5606ED009935F3 /* HLSessionClient.h */,
@@ -303,6 +306,7 @@
 				CD3169321D5606ED009935F3 /* HLMatch.h in Headers */,
 				CD31693E1D5606ED009935F3 /* HLPurchaseVerification.h in Headers */,
 				CD3169481D5606ED009935F3 /* NSData+GZIP.h in Headers */,
+				136035111D5E3371002AFF78 /* HeroicLabs.h in Headers */,
 				CD3169211D5606ED009935F3 /* HLDefaultRequestRetryHandler.h in Headers */,
 				CD3169381D5606ED009935F3 /* HLMessage.h in Headers */,
 				CD3169251D5606ED009935F3 /* HLGameCenterCredentials.h in Headers */,
@@ -565,7 +569,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -588,7 +592,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
